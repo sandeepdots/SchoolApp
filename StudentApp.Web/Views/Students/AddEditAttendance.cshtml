@@ -1,0 +1,64 @@
+﻿@model SchoolApp.Web.Models.AddAttendance
+@using SchoolApp.Web.Models
+@using System.Web
+@using SchoolApp.Web.Code.Serialization
+
+
+<div id="frm-add-edit-attendance">
+    @using (Html.BeginForm("SubmitAttendance", "Students", null, FormMethod.Post, new { @class = "form-horizontal", id = "formAddAttendance" }))
+    {
+        @Html.Partial("_ModalHeader", new ModalHeader { Heading = String.Format("{0} Student", Convert.ToInt32(@ViewContext.RouteData.Values["id"]) == 0 ? "Add" : "Edit") })
+        <div id="validation-summary"></div>
+
+        @Html.HiddenFor(m => m.HdnAttendanceData);
+        <div class="modal-body form-horizontal">
+            <div class="form-group">
+                <span style="color:black">DATE</span>
+                @Html.TextBoxFor(model => model.AttendanceDate, htmlAttributes: new { @class = "datefield" })
+
+            </div>
+            <table class="table table-bordered table-responsive table-hover">
+                <thead>
+                    <tr>
+                        <th>Student Name </th>
+                        <th>SessionFirst</th>
+                        <th>SessionSecond</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var student in Model.Students)
+                    {
+                        <tr>
+                            <td>@student.Name</td>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" class="switch form-control form-checkbox" name="@(student.StudentId)" id="@("First"+student.StudentId)" data-on-text="normal" data-off-text="abnormal" />
+                                    <span class="slider round"></span>
+                                    <p>PRESENT    ABSENT</p>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" class="switch form-control form-checkbox" name="@(student.StudentId)" id="@("Second"+student.StudentId)" data-on-text="Present" data-off-text="Absent" />
+                                    <span class="slider round"></span>
+                                    <p>PRESENT    ABSENT</p>
+                                </label>
+                            </td>
+                        </tr>
+
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+
+        @Html.Partial("_ModalFooter", new ModalFooter { SubmitButtonID = "submitAttendance", CancelButtonID = "cancelAttendance" })
+    }
+</div>
+
+
+
+
+
+

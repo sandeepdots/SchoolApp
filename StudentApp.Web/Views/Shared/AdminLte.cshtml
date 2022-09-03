@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    @*<title>EPR@(!string.IsNullOrEmpty(ViewBag.Title) ? " : " + ViewBag.Title : string.Empty)</title>*@
+
+    <title>Attendance Management System</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+    <!--Style section-->
+    @Styles.Render("~/Content/plugins/fontawesome-free/css/all.min.css")
+    @Styles.Render("~/Content/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css")
+    @Styles.Render("~/Content/plugins/icheck-bootstrap/icheck-bootstrap.min.css")
+    @Styles.Render("~/Content/plugins/jqvmap/jqvmap.min.css")
+    @Styles.Render("~/Content/dist/css/adminlte.min.css")
+    @Styles.Render("~/Content/plugins/overlayScrollbars/css/OverlayScrollbars.min.css")
+    @Styles.Render("~/Content/plugins/daterangepicker/daterangepicker.css")
+    @Styles.Render("~/Content/plugins/summernote/summernote-bs4.min.css")
+    @RenderSection("Styles", required: false)
+</head>
+<body class="hold-transition skin-blue sidebar-mini mainbodycontent" @*oncontextmenu="return false;"*@>
+
+
+
+    <div class="wrapper">
+        @{ Html.RenderPartial("_AdminLteHeader"); }
+
+
+        @{ Html.RenderPartial("_AdminLteSideBar"); }
+
+        <!-- Content Wrapper. Contains page content -->
+
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+
+               
+
+                @RenderBody()
+            </section>
+            <script type="text/javascript">
+
+            </script>
+            <!-- /.content -->
+
+        </div>
+        <!-- /.content-wrapper -->
+
+        @{ Html.RenderPartial("_AdminLteFooter");}
+        <div class="control-sidebar-bg"></div>
+    </div>
+
+    <!--script section code -->
+
+    <script src="~/Scripts/bootstrap/bootstrap.bundle.min.js"></script>
+
+    @Scripts.Render("~/Scripts/jquery.js", "~/Scripts/bootstrap.js")
+
+    @Scripts.Render("~/Scripts/jquery-3.4.1.min.js", "~/Scripts/jquery-ui.min.js", "~/Scripts/bootstrap/bootstrap.bundle.min.js", "~/Content/plugins/summernote/summernote-bs4.min.js")
+
+    @Scripts.Render("~/Content/plugins/moment/moment.min.js", "~/Content/plugins/daterangepicker/daterangepicker.js", "~/Content/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js", "~/Content/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js")
+    @Scripts.Render("~/Scripts/Adminlte/adminlte.js")
+    @Scripts.Render("~/Content/dist/js/pages/dashboard.js")
+    @Scripts.Render("~/Scripts/Attendance/attendance-list.js")
+    @RenderSection("scripts", required: false)
+
+
+    <!-- Bootstrap 3.3.7 -->
+
+</body>
+
+</html>

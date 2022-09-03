@@ -1,0 +1,17 @@
+﻿@model SchoolApp.Web.Models.Modal
+
+@using (Html.BeginForm())
+{
+    if (Model.IsHeader)
+    {
+        @Html.Partial("_ModalHeader", Model.Header)
+    }
+
+    <div id="validation-summary"></div>
+    <div class="modal-body">
+        <p class="del-msg">@Model.Message</p>
+    </div>
+    @Html.Partial("_ModalFooter", Model.Footer)
+}
+
+

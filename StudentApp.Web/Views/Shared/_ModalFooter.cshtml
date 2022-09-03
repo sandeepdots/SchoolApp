@@ -1,0 +1,13 @@
+﻿@model SchoolApp.Web.Models.ModalFooter
+
+<div class="modal-footer">
+    <button data-dismiss="modal" id="@Model.Id" class="@Model.CancelButtonCss" type="button">@Model.CancelButtonText</button>
+    @if (!Model.OnlyCancelButton)
+    {
+        <button  id="@Model.SubmitButtonID"  class="@Model.SubmitButtonCss" type="submit">
+            @*<i class=" fa fa-spinner" ></i>*@
+            @Model.SubmitButtonText
+        </button>
+    }
+</div>
+

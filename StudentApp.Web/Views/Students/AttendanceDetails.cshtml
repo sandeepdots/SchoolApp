@@ -1,0 +1,41 @@
+﻿@model SchoolApp.Web.Models.StudentsViewModel
+@using System.Web
+@{ System.Data.DataTable dataTable = Model.StudentAttendance;
+
+
+    List<string> ColumnNames = new List<string>();
+    foreach (System.Data.DataColumn dc in dataTable.Columns)
+    {
+        ColumnNames.Add(dc.ColumnName);
+    } }
+<table class="table table-bordered table-responsive">
+    <thead>
+        <tr>
+            @foreach (string cName in ColumnNames)
+            {
+
+                <th>@(cName)</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (System.Data.DataRow r in dataTable.Rows)
+        {
+            <tr>
+                @foreach (string columnName in ColumnNames)
+                {
+                    <td>
+                        @(Convert.ToString(r[columnName]))
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval", "~/Scripts/switch", "~/Scripts/jquery-datatable", "~/Scripts/views/AttendanceList.js")
+
+}
+
