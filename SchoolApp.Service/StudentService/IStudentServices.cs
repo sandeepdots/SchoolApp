@@ -15,7 +15,7 @@ namespace SchoolApp.Service.StudentService
         bool DeleteStudent(int id);
         Student FindById(int id);
         Student GetStudentPresenter(int id);
-        PagedListResult<Student> GetStudentPresenters(SearchQuery<Student> query, out int totalItems);
+        PagedListResult<Student> GetStudentList(SearchQuery<Student> query, out int totalItems);
 
         Student SaveStudentPresenter(Student student);
         Student UpdateStudentPresenter(Student student);

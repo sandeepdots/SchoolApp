@@ -1,5 +1,8 @@
 ﻿using Newtonsoft.Json;
 using SchoolApp.Data;
+using SchoolApp.DataTable.Extension;
+using SchoolApp.DataTable.Search;
+using SchoolApp.DataTable.Sort;
 using SchoolApp.Service.AttendanceService;
 using SchoolApp.Service.StudentService;
 using SchoolApp.Web.Models;
@@ -60,7 +63,9 @@ namespace SchoolApp.Web.Controllers
             return View(model);
         }
 
-
+        public ActionResult StudentIndex() {
+            return View();
+        }
 
         /// <summary>
         /// Refresh Table
@@ -177,7 +182,85 @@ namespace SchoolApp.Web.Controllers
             return null;
 
         }
+
        
+
+        #region [Get Student Data]
+
+        [HttpPost]
+        public ActionResult GetStudentData(SchoolApp.DataTable.DataTable dataTable)
+        {
+            List<DataTableRow> table = new List<DataTableRow>();
+
+            List<int> column1 = new List<int>();
+            for (int i = dataTable.iDisplayStart; i < dataTable.iDisplayStart + dataTable.iDisplayLength; i++)
+            {
+                column1.Add(i);
+            }
+
+            //for seraching in dataTable
+            var query = new SearchQuery<Student>();
+
+            if (!string.IsNullOrEmpty(dataTable.sSearch))
+            {
+                string sSearch = dataTable.sSearch.ToLower();
+                query.AddFilter(q => q.Name.Contains(sSearch));
+            }
+            //for sorting in dataTable
+            var sortColumnIndex = Convert.ToInt32(Request["iSortCol_0"]);
+            var sortDirection = Request["sSortDir_0"];
+            switch (sortColumnIndex)
+            {
+                case 2:
+                    query.AddSortCriteria(new ExpressionSortCriteria<Student, string>(q => q.Name, sortDirection == "asc" ? SortDirection.Ascending : SortDirection.Descending));
+                    break;
+                case 3:
+                    query.AddSortCriteria(new ExpressionSortCriteria<Student, string>(q => q.FatherName, sortDirection == "asc" ? SortDirection.Ascending : SortDirection.Descending));
+                    break;
+                case 5:
+                    query.AddSortCriteria(new ExpressionSortCriteria<Student, string>(q => q.Email, sortDirection == "asc" ? SortDirection.Ascending : SortDirection.Descending));
+                    break;
+                case 6:
+                    query.AddSortCriteria(new ExpressionSortCriteria<Student, bool>(q => q.IsActive, sortDirection == "asc" ? SortDirection.Ascending : SortDirection.Descending));
+                    break;
+
+                default:
+                    query.AddSortCriteria(new ExpressionSortCriteria<Student, DateTime?>(q => q.UpdatedDate, SortDirection.Ascending));
+                    break;
+            }
+            //for pagination
+            query.Take = dataTable.iDisplayLength;
+            query.Skip = dataTable.iDisplayStart;
+
+            int count = dataTable.iDisplayStart + 1, total = 0;
+
+            //To get data from table  using searchquery
+            IEnumerable<Student> students = _studentServices.GetStudentList(query, out total).Entities;
+            
+            foreach (Student student in students)
+            {
+     
+               
+                table.Add(new DataTableRow("rowId" + count.ToString(), "dtrowclass")
+                {
+                    student.StudentId.ToString(), //0
+                    count.ToString(),//1
+                    student.Name,//2
+                    student.FatherName,//3
+                    !string.IsNullOrEmpty(student.Class)?$"{student.Class} / {student.Section}":"NA",//4
+                    student.DOB.Value.ToString("MM/dd/yyyy"),//5
+                    student.Gender,//6
+                    "CSE",//7
+                    $"Email: {student.Email} Mob: {student.Phone}",//8
+                    student.IsActive?"Active":"Inactive" //9
+                });
+                count++;
+            }
+            return new DataTableResultExt(dataTable, table.Count(), total, table);
+        }
+
+
+        #endregion
     }
 }
 
