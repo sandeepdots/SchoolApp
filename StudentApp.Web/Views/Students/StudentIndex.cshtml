@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "Student Manager";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles{
+    @Styles.Render("~/Scripts/jquery-datatable/css/jquery.dataTables.min.css")
+}
+
+
+
+<div class="dash-mid-head d-block clearfix">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-8"><h2>Student Manager</h2></div>
+        <div class="col-md-4 position-static text-right">
+            <!--searchfilter-->
+        </div>
+
+    </div>
+</div>
+<section>
+    <div class="card">
+        <div class="row form-group card-header">
+            @*<div class="col-md-3">
+                    @Html.LabelFor(model => model.Student, new { @class = "col-lg-12 col-sm-12 control-label" })
+                    @Html.DropDownListFor(x => x.StudentId, Model.Student, "select", new { @class = "form-control", id = "StudentId" })
+                </div>
+                <div class="col-md-3">
+                    @Html.Label("From Date", "From Date", new { @class = "col-lg-12 col-sm-12 control-label " })
+                    <input type="date" name="From" id="FromDate" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                    @Html.Label("To Date", "To Date", new { @class = "col-lg-12 col-sm-12 control-label" })
+                    <input type="date" name="To" id="ToDate" class="form-control" />
+                </div>
+                <div class="col-md-3" style="text-align: right; margin-top: 32px;">
+                    <a id="addEditPresenterModal" data-toggle="modal" href="@Url.Action("AddEditAttendance")" data- data-target="#modal-add-edit-attendance" class="btn btn-primary">
+                        <i class="fa fa-plus"></i> Add Attendance
+                    </a>
+                </div>*@
+
+        </div>
+        <div class="row card-body">
+            <div class="table-responsive custom-search larg-table" id="divAttendanceData">
+                <table id="grid-student" class="table table-striped table-bordered table-condensed table-hover tab-content">
+                    <thead style="color:green ;background-color:lightcyan;font-size:17px">
+                        <tr>
+                            <th>Id</th>
+                            <th width="2%">#</th>
+                            <th>Student Name</th>
+                            <th>Father Name</th>
+                            <th>Class/Section</th>
+                            <th>DOB</th>
+                            <th>Gender</th>
+                            <th>Department Name</th>
+                            <th>Contact Detail</th>
+                            <th>Active</th>
+                            <th width="22%">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody style="background-color:lightcyan;color:green"></tbody>
+                    <tfoot></tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval", "~/Scripts/switch", "~/Scripts/moment.min.js", "~/Scripts/bootstrap-datepicker.js", "~/Scripts/jquery-datatable", "~/Scripts/bootstrap-switch.js", "~/Scripts/views/student/student-list.js")
+}
+

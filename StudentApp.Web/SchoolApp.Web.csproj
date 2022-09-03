@@ -2194,6 +2194,7 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\views\AttendanceDetails.js" />
+    <Content Include="Scripts\views\student\student-list.js" />
     <Content Include="Scripts\views\AttendanceList.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -2208,7 +2209,6 @@
     <Compile Include="Code\Serialization\RequestOutcome.cs" />
     <Compile Include="Code\Serialization\SiteKeys.cs" />
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2414,6 +2414,7 @@
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_SideBar.cshtml" />
+    <Content Include="Views\Students\StudentIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

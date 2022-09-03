@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SchoolAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SchoolAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Attendance">
           <Key>
             <PropertyRef Name="AttendanceId" />
@@ -23,6 +23,18 @@
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Address" Type="nvarchar" MaxLength="100" />
           <Property Name="Location" Type="nvarchar" MaxLength="100" />
+          <Property Name="FatherName" Type="nvarchar" MaxLength="100" />
+          <Property Name="MotherName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+          <Property Name="Gender" Type="char" MaxLength="1" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="DepartmentId" Type="int" />
+          <Property Name="Class" Type="nvarchar" MaxLength="6" />
+          <Property Name="Section" Type="nvarchar" MaxLength="6" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_Students_Attendance">
           <End Role="Students" Type="Self.Students" Multiplicity="1" />
@@ -49,8 +61,7 @@
             <End Role="Attendance" EntitySet="Attendance" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SchoolAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -63,23 +74,48 @@
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="SessionFirst" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="SessionSecond" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Student" Relationship="Self.FK_Students_Attendance" FromRole="Attendance" ToRole="Students" />
+          <NavigationProperty Name="Student" Relationship="SchoolAppModel.FK_Students_Attendance" FromRole="Attendance" ToRole="Student" />
         </EntityType>
+        <EntityContainer Name="SchoolAppEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Attendances" EntityType="Self.Attendance" />
+          <FunctionImport Name="Demo1">
+            <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+            <Parameter Name="StudentId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Students" EntityType="SchoolAppModel.Student" />
+          <AssociationSet Name="FK_Students_Attendance" Association="SchoolAppModel.FK_Students_Attendance">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Attendance" EntitySet="Attendances" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Student">
           <Key>
             <PropertyRef Name="StudentId" />
           </Key>
           <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Location" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Attendances" Relationship="Self.FK_Students_Attendance" FromRole="Students" ToRole="Attendance" />
+          <Property Name="FatherName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MotherName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="DepartmentId" Type="Int32" />
+          <Property Name="Class" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Section" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Attendances" Relationship="SchoolAppModel.FK_Students_Attendance" FromRole="Student" ToRole="Attendance" />
         </EntityType>
         <Association Name="FK_Students_Attendance">
-          <End Role="Students" Type="Self.Student" Multiplicity="1" />
-          <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
+          <End Type="SchoolAppModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="SchoolAppModel.Attendance" Role="Attendance" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Students">
+            <Principal Role="Student">
               <PropertyRef Name="StudentId" />
             </Principal>
             <Dependent Role="Attendance">
@@ -87,19 +123,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SchoolAppEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Attendances" EntityType="Self.Attendance" />
-          <EntitySet Name="Students" EntityType="Self.Student" />
-          <AssociationSet Name="FK_Students_Attendance" Association="Self.FK_Students_Attendance">
-            <End Role="Students" EntitySet="Students" />
-            <End Role="Attendance" EntitySet="Attendances" />
-          </AssociationSet>
-          <FunctionImport Name="Demo1">
-            <Parameter Name="StartDate" Mode="In" Type="DateTime" />
-            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
-            <Parameter Name="StudentId" Mode="In" Type="Int32" />
-          </FunctionImport>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -117,17 +140,29 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Demo1" FunctionName="SchoolAppModel.Store.Demo1" />
           <EntitySetMapping Name="Students">
             <EntityTypeMapping TypeName="SchoolAppModel.Student">
               <MappingFragment StoreEntitySet="Students">
-                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="MotherName" ColumnName="MotherName" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
                 <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="Demo1" FunctionName="SchoolAppModel.Store.Demo1" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

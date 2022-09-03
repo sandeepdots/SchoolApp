@@ -82,7 +82,7 @@ namespace SchoolApp.Service.StudentService
             return _AttendanceRepo.FindById(id);
         }
 
-        public PagedListResult<Student> GetStudentPresenters(SearchQuery<Student> query, out int totalItems)
+        public PagedListResult<Student> GetStudentList(SearchQuery<Student> query, out int totalItems)
         {
             return _StudentRepo.Search(query, out totalItems);
         }
