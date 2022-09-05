@@ -430,6 +430,7 @@
     <Compile Include="Code\Serialization\RequestOutcome.cs" />
     <Compile Include="Code\Serialization\SiteKeys.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -470,6 +471,7 @@
     <Content Include="Views\Shared\_SideBar.cshtml" />
     <Content Include="Views\Students\StudentIndex.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Department\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
