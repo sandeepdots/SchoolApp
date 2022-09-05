@@ -1,0 +1,70 @@
+﻿.sla-input {
+border-radius:2px;
+border:1px solid rgba(34,36,38,.15);
+cursor:pointer;
+padding:0 3px;
+}
+
+.sla-input.disabled {
+color:#AAA;
+cursor:default;
+}
+
+.sla-popover {
+min-width:113px;
+}
+
+.sla-popover input {
+display:inline;
+margin-bottom:3px;
+width:60px;
+}
+
+.sla-block {
+display:inline-block;
+line-height:1;
+text-align:center;
+padding:5px 3px;
+}
+.dropdown-menu {
+    font-size: 14px;
+    text-align: center;
+    list-style: none;
+}
+.sla-label {
+font-size:70%;
+}
+
+#modal-add-edit-nature-type input[type="number"],#modal-add-edit-product-enquiry-nature input[type="number"],#modal-add-edit-flight-enquiry-nature input[type="number"] {
+-moz-appearance:inherit;
+}
+
+.slatimegroup input[type=number]::-webkit-outer-spin-button,.slatimegroup input[type=number]::-webkit-inner-spin-button {
+opacity:1!important;
+-moz-appearance:inherit!important;
+-webkit-appearance:inner-spin-button!important;
+}
+
+.slatimegroup .popover.bottom {
+margin-top:3px;
+}
+
+.slatimegroup .popover {
+top:40px;
+left:301.5px!important;
+display:block;
+}
+
+.slatimegroup .popover.bottom > .arrow {
+top:-11px;
+left:50%;
+margin-left:-16px;
+border-top-width:0;
+border-bottom-color:rgba(0,0,0,.25);
+}
+
+.toggle-popover {
+float:right;
+margin-top:10px;
+margin-right:5px;
+}

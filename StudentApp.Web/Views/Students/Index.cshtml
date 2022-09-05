@@ -10,49 +10,57 @@
 
 <link href="~/Content/css/bootstrap-switch.css" rel="stylesheet" />
 <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" />
+<section class="content-header">
+    <h1>
+        Manage Attendance
+    </h1>
 
+</section>
 @using (Html.BeginForm("GetTableData", "Students", null, FormMethod.Post, new { @class = "form-horizontal", id = "formAddEditAttendance" }))
 {
+    <section class="content">
 
-    <div class="dash-mid-head d-block clearfix">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-8"><h2>Attendance Manager</h2></div>
-            <div class="col-md-4 position-static text-right">
-                <!--searchfilter-->
-            </div>
+            <div class="col-xs-12">
+                <div class="box">
 
-        </div>
-    </div>
-    <section>
-        <div class="card">
-            <div class="row form-group card-header">
-                <div class="col-md-3">
-                    @Html.LabelFor(model => model.Student, new { @class = "col-lg-12 col-sm-12 control-label" })
-                    @Html.DropDownListFor(x => x.StudentId, Model.Student, "select", new { @class = "form-control", id = "StudentId" })
-                </div>
-                <div class="col-md-3">
-                    @Html.Label("From Date", "From Date", new { @class = "col-lg-12 col-sm-12 control-label " })
-                    <input type="date" name="From" id="FromDate" class="form-control" />
-                </div>
-                <div class="col-md-3">
-                    @Html.Label("To Date", "To Date", new { @class = "col-lg-12 col-sm-12 control-label" })
-                    <input type="date" name="To" id="ToDate" class="form-control" />
-                </div>
-                <div class="col-md-3" style="text-align: right; margin-top: 32px;">
-                    <a id="addEditPresenterModal" data-toggle="modal" href="@Url.Action("AddEditAttendance")" data- data-target="#modal-add-edit-attendance" class="btn btn-primary">
-                        <i class="fa fa-plus"></i> Add Attendance
-                    </a>
-                </div>
+                    <div class="box-body">
+                        <div class="clearfix">
+                            <div class="row form-group card-header">
+                                <div class="col-md-3">
+                                    @Html.LabelFor(model => model.Student, new { @class = "col-lg-12 col-sm-12 control-label" })
+                                    @Html.DropDownListFor(x => x.StudentId, Model.Student, "select", new { @class = "form-control", id = "StudentId" })
+                                </div>
+                                <div class="col-md-3">
+                                    @Html.Label("From Date", "From Date", new { @class = "col-lg-12 col-sm-12 control-label " })
+                                    <input type="date" name="From" id="FromDate" class="form-control" />
+                                </div>
+                                <div class="col-md-3">
+                                    @Html.Label("To Date", "To Date", new { @class = "col-lg-12 col-sm-12 control-label" })
+                                    <input type="date" name="To" id="ToDate" class="form-control" />
+                                </div>
+                                <div class="col-md-3" style="text-align: right; margin-top: 32px;">
+                                    <a id="addEditPresenterModal" data-toggle="modal" href="@Url.Action("AddEditAttendance")" data- data-target="#modal-add-edit-attendance" class="btn btn-primary">
+                                        <i class="fa fa-plus"></i> Add Attendance
+                                    </a>
+                                </div>
 
-            </div>
-            <div class="row card-body">
-                <div class="table-responsive custom-search larg-table" id="divAttendanceData">
-                    @Html.Partial("AttendanceDetails", Model)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body table-responsive" id="divAttendanceData">
+
+                        @Html.Partial("AttendanceDetails", Model)
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+}
+
    
+
+
 }
 @Html.Partial("_Modal", new Modal { ID = "modal-add-edit-attendance", AreaLabeledId = "modal-add-edit-attendance-label", Size = ModalSize.Large })
 

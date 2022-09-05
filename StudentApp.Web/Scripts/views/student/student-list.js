@@ -6,7 +6,7 @@
 
         function initializeGrid() {
 
-            var gridPresenter = new Global.GridHelper('#grid-student', {
+            var gridPresenter = new Global.GridHelper('#grid-student-management', {
                 "columnDefs": [
                     {
                         "targets": [0],
@@ -124,8 +124,8 @@
                 "bProcessing": true,
                 "bServerSide": true,
                 "bAutoWidth": false,
-                "stateSave": true,
-                "sAjaxSource": 'http://localhost:44315/' +"Students/GetStudentData",
+                "stateSave": false,
+                "sAjaxSource": 'https://localhost:44315/' +"Students/GetStudentData",
                 "fnServerData": function (url, data, callback) {
                     debugger;
                     $.ajax({

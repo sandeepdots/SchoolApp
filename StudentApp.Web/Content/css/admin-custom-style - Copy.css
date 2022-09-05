@@ -1,0 +1,1342 @@
+.stay-on-top {
+    top: 0 !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+label.error {
+    color: red;
+    font-weight: 400;
+    font-size: 12px;
+    vertical-align: top;
+}
+
+span.error {
+    color: red;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+a,
+a label {
+    cursor: pointer;
+}
+
+.date-time-picker {
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+
+.requiredasterisk:after {
+    content: "*";
+    font-weight: bold;
+    /*color: red;*/
+}
+
+.customMargin {
+    margin-top: 20px;
+}
+
+.backgroundGrey {
+    background-color: #eee;
+}
+
+table.dataTable thead tr th:last-child {
+    min-width: 110px;
+    max-width: 110px;
+    text-align: center;
+}
+
+table.dataTable tbody tr td:last-child {
+    text-align: center;
+}
+
+    table.dataTable tbody tr td:last-child .btn {
+        display: inline-block;
+    }
+
+#grid-patient-management thead tr th:last-child {
+    min-width: 110px;
+    max-width: 110px;
+    text-align: left;
+}
+
+#grid-patient-management tbody tr td:last-child {
+    text-align: left;
+}
+
+#grid-doctor-management tbody tr td:last-child {
+    padding-left: 15px;
+    text-align: left;
+}
+
+span.grid-span {
+    background-color: #f4f4f4;
+    border: 1PX SOLID;
+    border-color: #ddd;
+    padding: 5px;
+    font-size: 12px;
+}
+
+.middleAlign {
+    vertical-align: middle !important
+}
+/*******************************************************************************************************************************/
+.alertify .ajs-dialog .ajs-header {
+    background-color: #6d7380;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 18px
+}
+
+.alertify .ajs-dialog .ajs-buttons .ajs-button.ajs-ok {
+    background-color: #00CFDD;
+    border: 1px none #E8E8EC;
+    color: #FFFFFF;
+}
+
+.alertify .ajs-dialog .ajs-buttons .ajs-button.ajs-cancel {
+    background-color: #FFFFFF;
+    border: 1px solid #00CFDD;
+    color: #00CFDD;
+}
+
+.ajs-button {
+    padding: 5px;
+}
+
+
+/*******************************************************************************************************************************/
+
+.importdata {
+    float: right;
+    position: relative;
+    top: -10px;
+    right: 0;
+}
+
+.browse-btn {
+    padding: 7px 26px 8px;
+}
+
+.select-lbl {
+    padding-top: 9px;
+}
+
+.browse-block {
+    padding: 10px;
+    background: #f8f8f8;
+    border: 1px solid #f2f2f2;
+    display: inline-block;
+    width: 100%;
+}
+
+.input-group label.error {
+    position: absolute;
+    left: 0px;
+    top: 100%;
+    /*margin-top: -25px;*/
+    font-size: 12px;
+}
+
+.d-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#grid-product-management thead th {
+    position: sticky;
+    top: -10px;
+    background: #fff;
+    z-index: 1;
+}
+
+@media only screen and (max-width:767px) {
+    .select-lbl {
+        padding-top: 3px;
+    }
+
+    .browse-block {
+        text-align: center;
+    }
+}
+
+
+.upload-img-btn input {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.upload-img-btn {
+    background: url(../images/file-upload-btn.png) no-repeat;
+    width: 110px;
+    height: 100px;
+    background-size: 110px;
+    position: relative;
+    cursor: pointer;
+}
+
+.upload-img-block ul, ol {
+    list-style: none !important;
+    margin: 0 !important;
+}
+
+.upload-img-block {
+    margin-top: 15px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.upload-imgs-list li {
+    display: inline-block;
+    margin-right: 15px;
+    position: relative;
+    margin-bottom: 10px;
+    height: 100px;
+    width: 110px;
+}
+
+    .upload-imgs-list li .remove-img {
+        background: url(../images/close-orange.png) no-repeat;
+        width: 18px;
+        height: 18px;
+        background-size: 18px;
+        position: absolute;
+        right: -7px;
+        top: -7px;
+    }
+
+    .upload-imgs-list li img {
+        height: 100%;
+        width: 100%;
+        display: block !important;
+    }
+/*
+.support-filter {
+    float: right;
+    width: 68%;
+}*/
+
+
+.support-filter {
+    display: flex;
+    justify-content: flex-end;
+    max-width: 940px;
+    width: 100% !important;
+}
+
+.support-filter {
+    float: right;
+    padding-right: 10px;
+}
+
+    .support-filter .filter-group {
+        max-width: 550px;
+        width: 100% !important;
+    }
+
+    .support-filter label {
+        white-space: nowrap !important;
+    }
+
+    .support-filter .btn-primary {
+        margin-left: 10px;
+    }
+
+    .support-filter label.main-lbl {
+        vertical-align: top;
+        font-weight: 400;
+        margin-bottom: 0;
+        padding-top: 7px;
+        float: left
+    }
+/*
+.filter-group {
+    float: left;
+    padding: 0 10px;
+    width: calc(100% - 132px);
+}
+*/
+
+.filter-group {
+    float: left;
+    padding: 0 10px;
+    width: auto;
+}
+
+.filter-select-group {
+    display: inline-block;
+    padding: 0 5px;
+    width: 33.33%;
+    float: left;
+}
+
+    .filter-select-group:last-child {
+        padding-right: 0;
+    }
+
+.filter-block {
+    width: 100%;
+    float: left;
+    margin-bottom: 15px;
+    padding-top: 10px;
+}
+
+
+.filter-select-group .form-control {
+    height: 40px;
+    background-color: #f7f7f7;
+    border: 1px solid #dddddd !important;
+    border-radius: 0px !important;
+}
+
+.search-btn {
+    background: #333333;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    float: left;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+    .search-btn a {
+        color: #fff;
+    }
+
+
+.new i {
+    background-color: #fcbdbd
+}
+
+.inprogress i {
+    background-color: #e3b7eb
+}
+
+.closed i {
+    background-color: #ecfbfd
+}
+
+.hold i {
+    background-color: #ffcd85
+}
+
+.resolved i {
+    background-color: #c3e0a7
+}
+
+.reopen i {
+    background-color: #fff494
+}
+
+.New {
+    background-color: #fcbdbd
+}
+
+.In Progress {
+    background-color: #e3b7eb
+}
+
+.Closed {
+    background-color: #ecfbfd
+}
+
+.Hold {
+    background-color: #ffcd85
+}
+
+.Resolved {
+    background-color: #c3e0a7
+}
+
+.Reopened {
+    background-color: #fff494
+}
+
+
+
+.notification-sign li {
+    float: left;
+    padding-right: 16px;
+    padding-top: 5px;
+}
+
+    .notification-sign li i {
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .notification-sign li span {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 14px;
+        padding-left: 4px;
+    }
+
+.search-btn a:hover {
+    color: #fff;
+}
+
+.search-btn:hover {
+    background: #00cfdd;
+}
+
+
+
+.support-comments-col .support-comment-thumb {
+    float: left;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -ms-border-radius: 50%;
+}
+
+    .support-comments-col .support-comment-thumb img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -ms-border-radius: 50%;
+        object-fit: cover;
+    }
+
+.support-comments-col .support-comment-content {
+    float: right;
+    width: calc(100% - 78px);
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+}
+
+.support-comments-col:nth-last-child(2) .support-comment-content {
+    border-bottom: none;
+    padding-bottom: 0px;
+    margin-bottom: 25px;
+}
+
+.support-comment-content h3 {
+    font-size: 16px;
+    font-weight: 500;
+    padding-bottom: 3px;
+}
+
+    .support-comment-content h3 + p {
+        padding-bottom: 0;
+        font-size: 12px;
+    }
+
+.support-comment-content p {
+    color: #666;
+    padding-bottom: 8px;
+}
+
+.comment-attach-imgs {
+    display: block;
+}
+
+    .comment-attach-imgs a {
+        background: url("../images/attach-img.png") no-repeat left;
+        line-height: 22px;
+        display: inline-block;
+        background-size: 22px;
+        font-size: 14px;
+        color: #666;
+        padding-left: 32px;
+        margin-right: 20px;
+        margin-bottom: 5px;
+    }
+
+        .comment-attach-imgs a:hover {
+            color: #333;
+        }
+
+.support-comment-box {
+    float: right;
+    width: calc(100% - 76px);
+}
+
+.upload-imgs-list {
+    padding-left: 0px;
+}
+
+.support-det-top {
+    background: #f7f7f7;
+}
+
+    .support-det-top p {
+        padding: 25px;
+        color: #666;
+    }
+
+    .support-det-top ul {
+        padding: 25px 25px 10px;
+        float: left;
+        width: 100%;
+    }
+
+        .support-det-top ul li {
+            font-size: 14px;
+            color: #666;
+            width: 33.33%;
+            float: left;
+            padding-bottom: 5px;
+        }
+
+            .support-det-top ul li span {
+                font-size: 14px;
+                color: #333;
+                font-weight: 500;
+                padding-right: 20px;
+            }
+
+            .support-det-top ul li:last-child {
+                width: 100%;
+            }
+
+            .support-det-top ul li#lititle {
+                width: 100%;
+            }
+
+.support-comment-box textarea.form-control {
+    padding-left: 15px;
+    padding-top: 12px;
+    width: calc(100% - 54px);
+}
+
+.support-comment-box textarea.form-control {
+    border: 1px solid #ddd;
+    color: #666;
+    min-height: 160px;
+    border-radius: 4px;
+    font-size: 14px;
+    background: #fbfbfb;
+}
+
+
+/* Support Details */
+.support-comments-col .support-comment-thumb {
+    float: left;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -ms-border-radius: 50%;
+}
+
+    .support-comments-col .support-comment-thumb img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -ms-border-radius: 50%;
+        object-fit: cover;
+    }
+
+.support-comments-col .support-comment-content {
+    float: right;
+    width: calc(100% - 78px);
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+}
+
+.support-comments-col:nth-last-child(2) .support-comment-content {
+    border-bottom: none;
+    padding-bottom: 0px;
+    margin-bottom: 25px;
+}
+
+.support-comment-content h3 {
+    font-size: 16px;
+    font-weight: 500;
+    padding-bottom: 3px;
+}
+
+    .support-comment-content h3 + p {
+        padding-bottom: 0;
+        font-size: 12px;
+    }
+
+.support-comment-content p {
+    color: #666;
+    padding-bottom: 8px;
+}
+
+.comment-attach-imgs {
+    display: block;
+}
+
+    .comment-attach-imgs a {
+        background: url("../images/attach-img.png") no-repeat left;
+        line-height: 22px;
+        display: inline-block;
+        background-size: 22px;
+        font-size: 14px;
+        color: #666;
+        padding-left: 32px;
+        margin-right: 20px;
+        margin-bottom: 5px;
+    }
+
+        .comment-attach-imgs a:hover {
+            color: #333;
+        }
+
+.support-comment-box {
+    float: right;
+    width: calc(100% - 78px);
+}
+
+.support-det-top {
+    background: #f7f7f7;
+}
+
+    .support-det-top p {
+        padding: 25px;
+        color: #666;
+    }
+
+    .support-det-top ul {
+        padding: 25px 25px 10px;
+        float: left;
+        width: 100%;
+    }
+
+        .support-det-top ul li {
+            list-style-type: none;
+            font-size: 14px;
+            color: #666;
+            width: 33.33%;
+            float: left;
+            padding-bottom: 5px;
+        }
+
+            .support-det-top ul li span {
+                font-size: 14px;
+                color: #333;
+                font-weight: 600;
+                padding-right: 20px;
+            }
+
+.ticket-col {
+    display: inline-block;
+    padding: 0 3px;
+    vertical-align: middle;
+}
+
+    .ticket-col select {
+        width: 120px;
+    }
+
+.tickerrow {
+    margin: 0 0 20px 0 !important;
+    /* padding: 0 !important; */
+    background: #eee;
+    padding: 9px 8px 0 8px;
+    display: inline-block;
+    border-radius: 4px;
+    width: calc(100% - 53px);
+}
+
+.coascrollar {
+    max-height: 500px;
+    overflow-y: auto;
+}
+/*==========================================Responsive=====================================*/
+@media only screen and (max-width: 991px) {
+    .support-filter {
+        float: right;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .filter-group {
+        float: left;
+        padding: 0;
+        width: 100%;
+    }
+
+    .filter-select-group, .filter-select-group:last-child {
+        padding: 0 0px 0 0;
+        width: 100%;
+        margin-bottom: 12px;
+    }
+
+    .support-filter label.main-lbl {
+        margin-bottom: 6px;
+    }
+
+    .search-btn {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
+
+.user-panel > .image > img {
+    min-height: 45px !important;
+}
+
+.auditbox .filter-select-group {
+    width: 24.33%;
+}
+
+.auditbox .support-filter {
+    width: 84.33%;
+}
+
+.btn-right-margin {
+    float: right;
+    margin-top: 15px;
+}
+
+.no-left-padding {
+    padding-left: 0px !important;
+}
+
+.no-right-padding {
+    padding-right: 0px !important;
+}
+
+.autocomplete-suggestions {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #999;
+    background: #FFF;
+    cursor: default;
+    overflow: auto;
+    -webkit-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64);
+    -moz-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64);
+    box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64);
+}
+
+.autocomplete-suggestion {
+    padding: 2px 5px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.autocomplete-no-suggestion {
+    padding: 2px 5px;
+}
+
+.autocomplete-selected {
+    background: #F0F0F0;
+}
+
+.autocomplete-suggestions strong {
+    font-weight: bold;
+    color: #000;
+}
+
+.autocomplete-group {
+    padding: 2px 5px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #000;
+    display: block;
+    border-bottom: 1px solid #000;
+}
+
+.d-inline {
+    display: inline-block;
+}
+
+.mrg-r10 {
+    margin-right: 10px;
+}
+
+.display-none {
+    display: none;
+}
+
+.ad_faq {
+    background-image: linear-gradient(to bottom, #01b599, #00d1e2);
+    padding: 10px 15px !important;
+    float: left;
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+}
+
+.ad_faqTitle {
+    text-align: left;
+    vertical-align: -webkit-baseline-middle;
+    font-weight: 600;
+    color: #fff;
+    float: left;
+    width: calc(100% - 60px);
+    margin: 0 2px;
+}
+
+.faq-delete {
+    float: right;
+    font-size: 16px;
+    color: #fff;
+}
+
+.faq-panelF {
+    display: block;
+    border: solid 1px #ddd;
+    padding: 15px;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    margin-bottom: 15px;
+}
+
+.marB0 {
+    margin-bottom: 0px !important;
+}
+
+.faq-btnpad {
+    padding: 12px 0;
+}
+
+.div-block {
+    display: block;
+}
+
+.btn-disable {
+    background-color: #bab3b3;
+    color: #000000;
+}
+
+.select-custom-outer {
+    display: flex;
+    flex-direction: column;
+}
+
+    .select-custom-outer label.error {
+        order: 3;
+        /*Margin-top: -15px !important;*/
+    }
+
+    .select-custom-outer .select2 .select2-container .select2-container--default {
+        order: 1;
+    }
+
+.bg-yellow {
+    background-color: #f39c12 !important;
+}
+
+.bg-yellow {
+    background-color: #f39c12 !important;
+}
+
+.bg-aquaDark {
+    background-color: #3c8dbc !important;
+    color: #fff !important;
+}
+
+.boxclose {
+    margin-left: -75px;
+    vertical-align: top;
+    cursor: pointer;
+    color: #fff;
+    border: 1px solid #AEAEAE;
+    border-radius: 30px;
+    background: #605F61;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 0px;
+    padding: 2px 3px;
+    margin-top: -5px;
+}
+
+
+
+#formViewSecretary .iti-flag, #formPatientProfile .iti-flag, #formDoctor .iti-flag, #formDoctorProfile .iti-flag, #formViewPatient .iti-flag, #formPatient .iti-flag {
+    background-image: url('../images/flags.png');
+}
+
+.intl-tel-input {
+    width: 100% !important;
+}
+
+#ProductListDiv FIELDSET, #frm-product FIELDSET {
+    margin: 15px !important;
+    border: 1px solid silver;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+#ProductListDiv LEGEND, #frm-product LEGEND {
+    padding: 2px;
+    width: auto !important;
+    border-bottom: none;
+    font-size: 16px;
+}
+
+#frm-product .input-group label.error {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    margin-top: 0px;
+    font-size: 12px;
+}
+
+
+#AddedLabeledCannabis .checkbox label:before {
+    border-radius: 3px;
+    background: none;
+    box-shadow: none;
+    border: solid 1px #c7c7c7;
+    height: 22px;
+    width: 22px;
+}
+
+#AddedLabeledCannabis .checkbox label:before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-bottom: -1px;
+    position: absolute;
+    left: 0;
+    bottom: 1px;
+    background-color: #ffffff;
+    border: solid 1px #c7c7c7;
+}
+
+#AddedLabeledCannabis .checkbox input[type=checkbox] {
+    margin-left: 0px;
+}
+
+    #AddedLabeledCannabis .checkbox input[type=checkbox]:checked + label:before {
+        font-family: 'FontAwesome';
+        font-weight: 900;
+        content: "\f00c";
+        font-size: 13px;
+        color: #00c1cc;
+        text-align: center;
+        line-height: 19px;
+        border-color: #00c1cc;
+    }
+
+#AddedLabeledCannabis .checkbox label {
+    margin-left: 5px;
+    margin-right: 15px
+}
+
+.inline_ul {
+    padding-left: 1px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #000000;
+}
+
+.inline-nowrap {
+    white-space: nowrap !important;
+}
+
+.margin-top20 {
+    margin-top: 20px !important;
+}
+
+
+/*31-3-2020*/
+.productlabelcannabinoidslist li {
+    position: relative;
+}
+
+    .productlabelcannabinoidslist li a {
+        padding-right: 20px;
+    }
+
+    .productlabelcannabinoidslist li button.close {
+        left: -20px;
+        position: relative
+    }
+
+.productlabelcannabinoidsdetail .input-group {
+    margin-bottom: 15px;
+}
+/*31-3-2020*/
+
+.disableLink {
+    pointer-events: none;
+    color: #000 !important;
+    background-color: #cac7c7;
+    cursor: not-allowed;
+}
+
+.headerStyle {
+    background: #3c8dbc;
+    padding: 8px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.readonlyctrlClass {
+    pointer-events: none;
+    cursor: not-allowed !important;
+}
+
+    .readonlyctrlClass select, .readonlyctrlClass select.form-control {
+        background: none;
+    }
+
+.margin-left10 {
+    margin-left: 10px;
+}
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+.radio-customs {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+}
+
+    .radio-customs input[type="radio"] {
+        bottom: 0;
+        display: block;
+        height: 100%;
+        left: 0;
+        margin: 0;
+        opacity: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+    }
+
+        .radio-customs input[type="radio"] + label {
+            color: #000;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 22px;
+            margin: 0 15px 10px 0;
+            min-height: 20px;
+            padding: 0 0 0 26px;
+            position: relative;
+            background-image: url(../images/ico-radio-new.png);
+            background-repeat: no-repeat;
+            cursor: pointer;
+        }
+
+        .radio-customs input[type="radio"]:checked + label {
+            background-image: url(../images/ico-radio-chacked-new.png);
+        }
+
+.spnError {
+    color: red;
+    font-size: 13px;
+}
+
+.autocomplete-suggestions {
+    width: auto !important;
+}
+
+#modal-add_exising-patient .modal-lg {
+    width: 1150px;
+}
+
+.intl-tel-input.allow-dropdown .flag-container, .intl-tel-input.separate-dial-code .flag-container {
+    height: 34px;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    margin: 4px 4px 0 0;
+    display: inline-block;
+    vertical-align: top;
+}
+
+/*productdetail*/
+.inline-flex {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.custom-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+    .custom-row.mrg-lr {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+
+.col-half {
+    max-width: 100%;
+    flex: 0 0 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.col-full {
+    flex: 0 0 100%;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.productlabelcannabinoidsdetail .input-group {
+    width: calc(100% - 175px);
+}
+
+    .productlabelcannabinoidsdetail .input-group .form-control {
+        width: calc(20% - 10px);
+        margin-right: 5px;
+        padding-left: 5px;
+        padding-right: 4px;
+    }
+
+        .productlabelcannabinoidsdetail .input-group .form-control.amount {
+            width: calc(24% - 10px);
+        }
+
+        .productlabelcannabinoidsdetail .input-group .form-control.quantity {
+            width: calc(15% - 10px);
+        }
+
+        .productlabelcannabinoidsdetail .input-group .form-control:last-child {
+            margin-right: 0;
+        }
+
+    .productlabelcannabinoidsdetail .input-group .per-label {
+        margin: 0 5px 0 0;
+    }
+
+.productlabelcannabinoidsdetail .checkbox-group {
+    margin-bottom: 18px;
+}
+
+    .productlabelcannabinoidsdetail .checkbox-group input {
+        margin: 4px 0 0 10px;
+    }
+
+.wd1 {
+    width: 15%;
+    margin-bottom: 15px;
+}
+
+.wd2 {
+    width: 14%;
+    margin-bottom: 15px;
+}
+
+.wd3 {
+    width: 24%;
+    margin-bottom: 15px;
+}
+
+.wd4 {
+    width: 28%;
+    padding-left: 10px;
+    margin-bottom: 15px;
+}
+
+.wd5 {
+    width: 19%;
+    padding-left: 10px;
+    margin-bottom: 15px;
+}
+
+.field-group {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
+    .field-group span {
+        margin: 0 10px 0 0;
+    }
+
+.radio-inline.pad-t0 {
+    padding-top: 0;
+}
+
+@media only screen and (max-width:1700px) {
+    .productlabelcannabinoidsdetail .input-group {
+        width: calc(100% - 155px);
+    }
+
+    .productlabelcannabinoidsdetail .checkbox-group input {
+        margin: 4px 0 0 0;
+    }
+}
+
+@media Only screen and (max-width: 1599px) {
+    .col-half.custom {
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+}
+
+@media only screen and (max-width:1365px) {
+    .productlabelcannabinoidsdetail .col-half {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+@media only screen and (max-width:1199px) {
+    #modal-add_exising-patient .modal-lg {
+        width: 970px;
+    }
+}
+
+@media only screen and (max-width:991px) {
+    #modal-add_exising-patient .modal-lg {
+        width: 740px;
+    }
+
+    .support-filter {
+        padding-left: 10px;
+        text-align: right;
+    }
+        /*
+        .support-filter label {
+            width: 100%;
+            text-align: left;
+        }
+
+        .support-filter .filter-group {
+            float: left;
+            padding: 0;
+            width: 100%;
+            margin-bottom: 10px;
+        }*/
+
+        .support-filter .filter-group {
+            max-width: 100%;
+            width: 100% !important;
+            margin-bottom: 15px;
+            padding: 0px;
+        }
+
+    .support-filter {
+        flex-wrap: wrap;
+    }
+
+        .support-filter label {
+            width: 100%;
+            text-align: left !important;
+            margin-left: 0px !important;
+        }
+
+        .support-filter .filter-select-group {
+            padding: 0px;
+            width: 100% !important;
+        }
+
+    .productlabelcannabinoidsdetail .input-group {
+        width: 100%;
+    }
+
+        .productlabelcannabinoidsdetail .input-group .per-label {
+            width: 100%;
+            margin: 6px 0 8px 0;
+        }
+
+        .productlabelcannabinoidsdetail .input-group .form-control {
+            width: calc(33.33% - 10px);
+        }
+
+            .productlabelcannabinoidsdetail .input-group .form-control.amount {
+                width: calc(36% - 10px);
+            }
+
+            .productlabelcannabinoidsdetail .input-group .form-control.quantity {
+                width: calc(50% - 10px);
+            }
+
+    .wd1 {
+        width: 25%;
+    }
+
+    .wd2 {
+        width: 25%;
+    }
+
+    .wd3 {
+        width: 50%;
+    }
+
+    .wd4 {
+        width: 55%;
+        padding-left: 0;
+    }
+
+    .wd5 {
+        width: 45%;
+    }
+}
+
+@media only screen and (max-width:767px) {
+    #modal-add_exising-patient .modal-lg {
+        width: auto;
+    }
+}
+
+@media only screen and (max-width: 479px) {
+    .productlabelcannabinoidsdetail .input-group .per-label {
+        margin: 0 0 8px 0;
+    }
+
+    .productlabelcannabinoidsdetail .input-group .form-control {
+        width: calc(50% - 10px);
+        margin-bottom: 10px;
+    }
+
+        .productlabelcannabinoidsdetail .input-group .form-control.amount {
+            width: calc(50% - 10px);
+        }
+
+    .wd1 {
+        width: 35%;
+    }
+
+    .wd2 {
+        width: 65%;
+    }
+
+    .wd3 {
+        width: 100%;
+        padding: 0;
+    }
+}
+
+.flag-container .selected-flag {
+    height: 100% !important;
+}
+
+.disabled-btn {
+    color: #444;
+    background: #f7f7f7;
+    cursor: not-allowed !important;
+}
+
+.disabled-btn:hover, .disabled-btn:active, .disabled-btn:focus {
+    color: #444;
+    background: #f7f7f7;
+}

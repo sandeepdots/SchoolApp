@@ -1,13 +1,13 @@
 ﻿
 /*global window, $*/
-//$.validator.addMethod(
-//    "regex",
-//    function (value, element, param) {
-//        var re = new RegExp(param.pattern);
-//        return this.optional(element) || re.test(value);
-//    },
-//    "Invalid format."
-//);
+$.validator.addMethod(
+    "regex",
+    function (value, element, param) {
+        var re = new RegExp(param.pattern);
+        return this.optional(element) || re.test(value);
+    },
+    "Invalid format."
+);
 
 var Global = {
     MessageType: {
@@ -107,7 +107,7 @@ Global.FormHelper = function (formElement, options, onSucccess, onError, onValid
     } catch {
 
     }
-
+    
 
 
 
@@ -262,8 +262,8 @@ Global.FormHelperWithCon = function (formElement, options, onSucccess, onError) 
     formElement.validate(settings.validateSettings);
 
     formElement.submit(function (e) {
-        var stop = $(this).data("stopSubmit");
-        if (stop == "true")
+        var stop=$(this).data("stopSubmit");
+        if (stop=="true")
             return true;
         var submitBtn = formElement.find(':submit');
 
@@ -388,17 +388,17 @@ Global.ConfirmWith = function (title, message, okCallback, cancelCallback) {
     }, function () {
         if (cancelCallback)
             cancelCallback();
-    }).set({ transition: 'fade', 'closable': false, 'movable': false }).set('labels', { ok: ' Return to add the batch number', cancel: 'Continue to submit without coa data' });
+        }).set({ transition: 'fade', 'closable': false, 'movable': false }).set('labels', { ok: ' Return to add the batch number', cancel: 'Continue to submit without coa data' });
 };
 
-Global.ConfirmWithCustomLable = function (title, message, okbuttontext, cancelText, okCallback, cancelCallback) {
+Global.ConfirmWithCustomLable = function (title, message,okbuttontext,cancelText, okCallback, cancelCallback) {
     return alertify.confirm(title, message, function () {
         if (okCallback)
             okCallback();
     }, function () {
         if (cancelCallback)
-            cancelCallback();
-    }).set({ transition: 'fade', 'closable': false, 'movable': false }).set('labels', { ok: okbuttontext != undefined && okbuttontext != null && okbuttontext != '' ? okbuttontext : 'OK', cancel: cancelText != undefined && cancelText != null && cancelText != '' ? cancelText : 'Cancel' });
+                cancelCallback();
+        }).set({ transition: 'fade', 'closable': false, 'movable': false }).set('labels', { ok: okbuttontext != undefined && okbuttontext != null && okbuttontext != '' ? okbuttontext : 'OK', cancel: cancelText != undefined && cancelText != null && cancelText != '' ? cancelText : 'Cancel' });
 };
 
 Global.ShowMessage = function (message, type) {
@@ -495,7 +495,7 @@ $(document).ready(function () {
 var randeredItems = [];
 
 Global.Select2Tab = function (controlId, mainCollectionId, otherCollectionId, placeholderText, multiSelectData, onChangeCallback) {
-
+   
     if (controlId != null) {
         function format(state, element) {
             var isExistsInmultiSelectData = function (textToSearch) {
@@ -519,7 +519,7 @@ Global.Select2Tab = function (controlId, mainCollectionId, otherCollectionId, pl
             var newIndex = 0;
             if ((otherCollectionId == "SelectedOtherAllergy" && itemControlId.includes("SelectedOtherAllergy")) || (otherCollectionId == "SelectedOtherMedications" && itemControlId.includes("SelectedOtherMedications")) ||
                 (otherCollectionId == "SelectedOtherSymptom" && itemControlId.includes("SelectedOtherSymptom"))) {
-
+                
                 var newItemToBeRandered = $('<input id="' + itemControlId + '_' + newIndex + '__Value" name="' + itemControlId + '[' + newIndex + '].Value" data-type-value="' + state.id + '" type="hidden" class="' + itemControlId + '" value="' + state.text + '">'
                     + '&nbsp; &nbsp; &nbsp;<label> ' + state.text + ' </label>');
 
@@ -532,7 +532,7 @@ Global.Select2Tab = function (controlId, mainCollectionId, otherCollectionId, pl
 
                 return newItemToBeRandered;
             }
-
+          
         }
         var resetRanderedItemIndexing = function () {
             randeredItems = [];
@@ -542,7 +542,7 @@ Global.Select2Tab = function (controlId, mainCollectionId, otherCollectionId, pl
                 });
             }
             if (otherCollectionId != undefined && otherCollectionId != '') {
-
+                
                 $("input[type=hidden]." + otherCollectionId).each(function (i, e) {
                     $(this).attr("id", otherCollectionId + "_" + i + "__Value").attr("name", otherCollectionId + "[" + i + "].Value");
                 });
@@ -554,13 +554,13 @@ Global.Select2Tab = function (controlId, mainCollectionId, otherCollectionId, pl
                     $(this).attr("id", newOtherControlId + "_" + i + "__Value").attr("name", newOtherControlId + "[" + i + "].Value");
                 });
             }
-
+            
         };
 
         if ($("#" + controlId).hasClass("select2-hidden-accessible")) {
             $("#" + controlId).select2('destroy');
         }
-        if (controlId === "MedicalProfileSecondaryDiagnoses" || controlId === 'AVSDiagnose') {
+        if (controlId === "MedicalProfileSecondaryDiagnoses" || controlId ==='AVSDiagnose') {
             $("#" + controlId).select2({
                 placeholder: placeholderText,
                 tags: true,
@@ -610,7 +610,7 @@ Global.Select2Tab = function (controlId, mainCollectionId, otherCollectionId, pl
         setTimeout(function () {
             resetRanderedItemIndexing();
         }, 500);
-
+       
     }
 };
 //$(document).off("click", ".paginate_button").on("click", ".paginate_button", function (event) {
@@ -625,21 +625,17 @@ Global.Select2Tab = function (controlId, mainCollectionId, otherCollectionId, pl
 //function for google calendar sync
 Global.StartSyncWithGoogle = function (eventId) {
     $.get(domain + "Users/ManageAppointment/GetEventsForSync?eventId=" + eventId, function (data) {
-        blockUI();
         if (data != undefined && data != null && data != '' && data != '[]') {
             return gapi.auth2.getAuthInstance()
                 .signIn({ scope: "https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/calendar.events" })
                 .then(function (daa) {
-                    blockUI();
                     alertify.success("Appointment schedules are synced successfully with google calendar");
-                    UnblockUI();
                     loadClient(data);
                 },
-                    function (err) { console.error("Error signing in", err); UnblockUI(); });
+                    function (err) { console.error("Error signing in", err);  });
         }
 
     }).always(function () {
-        UnblockUI();
     });
 
 
@@ -647,21 +643,19 @@ Global.StartSyncWithGoogle = function (eventId) {
 }
 Global.StartSecretarySyncWithGoogle = function (eventId, doctorId) {
     $.get(domain + "Users/ManageAppointment/GetEventsForSync?eventId=" + eventId + "&doctorId=" + doctorId, function (data) {
-        blockUI();
         if (data != undefined && data != null && data != '' && data != '[]') {
             return gapi.auth2.getAuthInstance()
                 .signIn({ scope: "https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/calendar.events" })
                 .then(function (daa) {
-                    blockUI();
                     alertify.success("Appointment schedules are synced successfully with google calendar");
-                    UnblockUI();
                     loadClient(data, eventId);
                 },
-                    function (err) { console.error("Error signing in", err); UnblockUI(); });
+                function (err) {
+                    console.error("Error signing in", err);
+                });
         }
 
     }).always(function () {
-        UnblockUI();
     });
 
 
@@ -736,7 +730,7 @@ function loadmultipledata(data) {
 
                     });
                 }, 500);
-
+                
 
 
             }
@@ -801,7 +795,6 @@ function execute(data, googleAppointmentId, googleEventId) {
 function SyncAppointmentWithGoogleCalendar(googleAppointmentId, googleEventId) {
 
     $.get(domain + "Users/ManageAppointment/GetEventsForSync?eventId=" + googleAppointmentId, function (data) {
-        blockUI();
         if (data != undefined && data != null && data != '' && data != '[]') {
 
             try {
@@ -809,7 +802,7 @@ function SyncAppointmentWithGoogleCalendar(googleAppointmentId, googleEventId) {
                     Global.Alert("Network problem. Please check your internet connection.");
                     return false;
                 }
-            } catch {
+            } catch{
                 Global.Alert("Network problem. Please check your internet connection.");
                 return false;
             }
@@ -826,15 +819,14 @@ function SyncAppointmentWithGoogleCalendar(googleAppointmentId, googleEventId) {
                     return gapi.auth2.getAuthInstance()
                         .signIn({ scope: "https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/calendar.events" })
                         .then(function (daa) {
-                            blockUI();
                             alertify.success("Appointment schedules are synced successfully with google calendar");
-                            UnblockUI();
                             loadClient(data, googleAppointmentId, googleEventId);
                         },
-                            function (err) { console.error("Error signing in", err); UnblockUI(); });
+                        function (err) {
+                            console.error("Error signing in", err); 
+                        });
                 }
-            } catch {
-                UnblockUI();
+            } catch{
                 Global.Alert("Network problem. Please check your internet connection.");
                 return false;
             }
@@ -843,6 +835,32 @@ function SyncAppointmentWithGoogleCalendar(googleAppointmentId, googleEventId) {
 
 }
 
+function PreventCharcter(obj, key) {
+    if (key.keyCode < 48 || key.keyCode > 57) {
+        return false;
+    }
+    var txtDOB = $('.DOBValidation').val()
+    var DOB = txtDOB.split('/')
+    var year = parseInt(DOB[2], 10);
+    if (year.toString().length >= 4) {
+        return false;
+    }
+}
+
+function ValidateDOB(obj) {
+    var txtDOB = $('.DOBValidation').val()
+    var DOB = txtDOB.split('/')
+    var day = parseInt(DOB[1], 10);
+    var month = parseInt(DOB[0], 10);
+    var year = parseInt(DOB[2], 10);
+    if (year < 1000 || year > 3000 || month == 0 || month > 12) {
+        $('.dobError').text("Please enter DOB in MM/DD/YYYY format.");
+        $(obj).find('.DOBValidation').focus();
+        return false;
+    }
+    $('.dobError').text("");
+
+}
 //$(".alert-success,alert-danger").fadeTo(5000, 1000).slideUp(1000, function () {
 //    $(".alert-success,alert-danger").slideUp(1000);
 //});

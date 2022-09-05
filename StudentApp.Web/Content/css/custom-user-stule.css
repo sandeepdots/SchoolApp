@@ -1,0 +1,10 @@
+﻿label.error {
+    color: red;
+    font-weight: 400;
+   
+}
+.requiredasterisk:after {
+    content: "*";
+    font-weight: bold;
+    color: red;
+}

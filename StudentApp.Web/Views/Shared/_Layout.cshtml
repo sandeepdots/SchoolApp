@@ -1,46 +1,1 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Student Management</title>
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link href="" rel="stylesheet" />
-
-    @Styles.Render("~/Content/plugins/fontawesome-free/css/all.min.css","~/Content/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css","~/Content/plugins/icheck-bootstrap/icheck-bootstrap.min.css", "~/Content/dist/css/adminlte.min.css","~/Content/plugins/overlayScrollbars/css/OverlayScrollbars.min.css","~/Content/plugins/daterangepicker/daterangepicker.css")
-    @RenderSection("styles", required: false)
-</head>
-<body class="hold-transition skin-blue sidebar-mini mainbodycontent" @*oncontextmenu="return false;"*@>
-
-
-
-    <div class="wrapper">
-        @{ Html.RenderPartial("_Header");}
-        @{ Html.RenderPartial("_SideBar");}
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Main content -->
-            <section class="content">
-                @RenderBody()
-            </section>
-            
-            <!-- /.content -->
-        </div>
-        <!-- /.content-wrapper -->
-        @{ Html.RenderPartial("_Footer");}
-        <div class="control-sidebar-bg"></div>
-    </div>
-    
-    @Scripts.Render("~/Content/plugins/jquery/jquery.min.js", "~/Scripts/global.js","~/Scripts/jquery-ui.min.js", "~/Scripts/bootstrap/bootstrap.bundle.min.js",
-    "~/Content/plugins/moment/moment.min.js", "~/Content/plugins/daterangepicker/daterangepicker.js", "~/Content/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js", "~/Content/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js", "~/Content/dist/js/adminlte.js")
-    @RenderSection("Scripts", required: false)
-
-
-
-    <!-- Bootstrap 3.3.7 -->
-
-</body>
-
-
-
-</html>
+﻿<!DOCTYPE html><html><head>    <meta charset="utf-8">    <meta http-equiv="X-UA-Compatible" content="IE=edge">    <title>EPR@(!string.IsNullOrEmpty(ViewBag.Title) ? " : " + ViewBag.Title : string.Empty)</title>    <!-- Tell the browser to be responsive to screen width -->    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">    <!-- Bootstrap 3.3.7 -->    @Styles.Render("~/bundles/AdminCss")    @Styles.Render("~/bundles/IntTeInputCss", "~/bundles/DataTablesCss")    @RenderSection("Styles", required: false)    <!-- Google Font -->    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"></head><body class="hold-transition skin-blue sidebar-mini mainbodycontent" @*oncontextmenu="return false;"*@>    <div class="wrapper">        @{ Html.RenderPartial("_Header");}        @{ Html.RenderPartial("_SideBar");}        <!-- Content Wrapper. Contains page content -->        <div class="content-wrapper">            <!-- Main content -->            <section class="content">                @RenderBody()            </section>            <script type="text/javascript">                var domain = "@Request.Url";                var defaultUrl = domain;            </script>            <!-- /.content -->        </div>        <!-- /.content-wrapper -->        @{ Html.RenderPartial("_Footer");}        <div class="control-sidebar-bg"></div>    </div>    @Scripts.Render("~/bundles/jquery", "~/bundles/bootstrap", "~/bundles/AdminJs")    @Scripts.Render("~/bundles/validateJs")    @Scripts.Render("~/bundles/globalJs")    @Scripts.Render("~/bundles/appJS", "~/bundles/DataTables", "~/Scripts/datepicker/moment.min.js", "~/Scripts/datepicker/bootstrap-datepicker.js", "~/Scripts/bootstrap-switch.js")      @RenderSection("Scripts", required: false)     <!-- Bootstrap 3.3.7 --></body></html>

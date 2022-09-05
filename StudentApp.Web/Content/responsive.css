@@ -1,0 +1,246 @@
+@media only screen and (max-width:1440px){
+    /*header css start*/
+    .site-header .navbar-nav li{margin-left: 25px;}
+    .site-header .navbar-nav li a.nav-link{font-size: 14px;}
+    /*header css end*/    
+    /*home page css start*/
+    .home-sign-up-form{max-width: 400px;}
+    .home-banner-block .bnr-img img{height:390px; object-position:16% center;}
+    .home-form p{font-size: 14px; margin-bottom: 20px;}
+    .feature-block .icon{width: 200px; height: 190px;}
+    .feature-block .icon svg{max-height: 65px;}
+    .home-form .form-field{height: 45px;}
+    .home-form .form-field i{width: 18px; left: 19px;}
+    .home-form .form-field .form-control{padding-left: 50px;}
+    .home-form .form-link{padding-top: 20px;}
+    .home-sign-up-form .sign-btn-block .btn-custom{height: 50px; line-height: 49px; font-size: 25px;}
+    .home-feature{padding-top: 45px;}
+    .feature-block{padding-left: 15px; padding-right: 15px;}
+    .feature-block .h3{line-height: 1.3;}
+    .footer{padding-top: 35px;}
+    .bubble-bg{background-size: 10%;}
+    /*home page css end*/
+    /*about us css start*/
+    .aboutus-block{padding: 45px 0;}
+    .about-content ul li{margin-bottom: 15px; padding-left: 18px;}
+    .about-content ul li::before{width: 10px; height: 10px; top: 5px;}
+    /*about us css end*/
+    /*contact page css start*/
+    .contact-info-block {padding: 45px 0;}
+    .side-info-block ul li .icon img{max-height: 35px;}
+    /*contact page css end*/
+    /*verify patient css start*/
+    .verify-block{padding-top: 45px; padding-bottom: 45px;}
+    /*verify patient css end*/
+    /*faq css start*/
+    .faq-block {padding: 45px 0;}
+    .faq-inner-content .card-header a{font-size: 14px;}
+    /*faq css end*/
+    /*sign up page css start*/
+    .user-login-signup{padding-top: 45px; padding-bottom: 45px;}
+    .signup-tab-block .nav-pills .nav-link{padding: 25px;}
+    .mobile-no-field .country-code{top: 7px;}
+    /*sign up page css end*/
+    /*CMS css start*/
+    .cms-block{padding: 45px 0;}
+    /*CMS css end*/
+    }
+    
+    @media only screen and (max-width:1366px){
+    .container{padding-left:35px; padding-right:35px;}
+    }
+    
+    @media only screen and (max-width:1199px){
+    /*home page css start*/
+    .home-form{padding-top: 25px;}
+    .home-form .user-login-form {padding: 0 25px 20px;}
+    .home-form .form-link {padding-top: 15px;}
+    .home-sign-up-form .sign-btn-block{padding: 25px 25px 20px;}
+    .home-sign-up-form .sign-btn-block .btn-custom{font-size: 25px; height: 55px; line-height: 55px;}
+    .home-feature {padding: 45px 0 45px 0;}
+    .feature-block .icon {width: 185px;height: 180px;}
+    .feature-block .icon svg{max-height: 70px;}
+    /*home page css end*/
+    /*sign up page css start*/
+    .signup-tab-block .nav-pills .nav-link{padding: 20px;}
+    .tab-head-info .h2{font-size: 20px;}
+    .tab-head-info ul li{font-size: 12px;}
+    .tab-icon{width: 95px; height: 95px; padding: 15px;}
+    /*sign up page css end*/
+    /*contact page css start*/
+    .side-info-block{width: 320px;}
+    .side-info-block ul li{padding: 20px 0 20px 64px;}
+    .side-info-block ul li .icon{width: 50px; height: 50px; padding: 9px;}
+    .side-info-block ul li h3{font-size: 20px;}
+    .contact-form{width: calc(100% - 320px);}
+    /*contact page css end*/
+    /*verify patient css start*/
+    .verify-form{padding: 30px 30px 30px 30px;}
+    /*verify patient css end*/
+    /*about us css start*/
+    .about-content{padding: 30px 115px 30px 20px;}
+    /*about us css end*/
+    /*faq css start*/
+    .faq-block {padding: 35px 0;}
+    .faq-inner-content .card-header a::before{font-size: 27px;}
+    .faq-inner-content .card-header a[aria-expanded="true"]::before{font-size: 32px;}
+    /*faq css end*/
+    /*CMS css start*/
+    .cms-block{padding: 35px 0;}
+    /*CMS css end*/
+    /*video tab Css Start*/
+    .video-tab-block .nav-tabs{width: 310px;}
+    .video-tab-block .nav-tabs .nav-link{font-size: 16px;}
+    .video-tab-block .tab-content{width: calc(100% - 310px);}
+    /*video tab Css End*/
+    }
+    @media only screen and (max-width:991px){
+    .container{padding-left:25px; padding-right:25px;}
+    /*header css start*/
+    .navbar-toggler{padding: 0; background: none; border: none; width: 40px; height: 40px; border-radius: 0; position: absolute; right: 0; top: auto;}
+    .navbar-light .navbar-toggler-icon{ background: url('../images/nav-icon.png') no-repeat; background-size: 100%; width: 28px; height: 21px;}
+    .navbar-collapse{position: fixed; top: 80px; left: -100%; right: 0; background: #00CFDD; box-shadow: 0 2px 6px -3px rgba(0,0,0,0.2); overflow: auto; padding: 0; width: 100%; max-width: 255px; height: calc(100vh - 80px)!important; transition:all 0.2s ease;-moz-transition:all 0.2s ease;}
+    .navbar-collapse.show{left: 0;}
+    .site-header .navbar-nav li{margin: 0; border-bottom: solid 1px rgba(255,255,255,0.2);}
+    .site-header .navbar-nav li:first-child{border-top: solid 1px rgba(255,255,255,0.2);}
+    .site-header .navbar-nav li a.nav-link{padding: 7px 20px; color: #ffffff;}
+    .site-header .navbar-nav li a.nav-link:after{display: none;}
+    .site-header .navbar-nav .nav-link:hover, .site-header .navbar-nav .nav-link:focus{background: #ffffff; color: #000000;}
+    .site-header .navbar-nav .active > .nav-link, .site-header .navbar-nav .nav-link.active, .site-header .navbar-nav .nav-link.show, .site-header .navbar-nav .show > .nav-link{color: #000000; background: #ffffff;}
+    /*header css end*/
+    /*home page css start*/
+    .home-banner-block{padding-top:40px;}
+    .home-banner-block .bnr-img img {height: 258px;object-position: 16% center;}
+    .home-sign-up-form{max-width: 320px;}
+    .home-form .user-login-form {padding: 0 15px 20px;}
+    .home-form h1{font-size: 25px;}
+    .home-form p {font-size: 13px;margin-bottom: 15px;}
+    .home-form .form-field{height: 50px;}
+    .home-form .form-field i{left: 15px;}
+    .home-form .form-field .form-control{padding-left: 48px;}
+    .home-form .form-link {padding-top: 15px;font-size: 12px;}
+    .home-sign-up-form .sign-btn-block {padding: 20px 15px 15px;}
+    .home-sign-up-form .sign-btn-block .btn-custom {font-size: 20px;height: 50px;line-height: 50px;}
+    .home-sign-up-form .sign-btn-block p{margin: 15px 0 0 0;}
+    .home-feature {padding: 40px 0 45px 0;}
+    .feature-block{margin-top: 35px;}
+    .foot-link{max-width: 50%;}
+    /*home page css end*/
+    /*sign up page css start*/
+    .signup-tab-block .nav-pills .nav-link{padding: 15px 20px; flex-wrap: wrap;}
+    .tab-icon{margin: 0 auto 10px 0;}
+    .tab-head-info .h2{font-size: 18px;}
+    .signup-form-head h3{font-size: 18px;}
+    .signup-tab-block .seprater{margin: 0 23px;}
+    .signup-tab-block .btn-custom.bdr{padding:0 18px;}
+    .tab-head-info{width: 100%;}
+    /*sign up page css end*/
+    /*contact page css start*/
+    .contact-info-block{padding: 40px 0;}
+    .side-info-block{width: 100%; padding: 0 15px;}
+    .side-info-block ul li h3 {font-size: 18px;margin-bottom: 5px;}
+    .contact-form{width: 100%; margin-top: 25px; padding: 0;}
+    /*contact page css end*/
+    /*verify patient css start*/
+    .verify-block {padding: 35px 0 50px;}
+    .verify-form {padding: 30px 30px 30px 30px;width: 100%;}
+    .about-img {width: 100%;margin: 30px 0 0 0;}
+    /*verify patient css end*/
+    /*about us css start*/
+    .aboutus-block{padding: 40px 0;}
+    .about-content{padding: 20px; width: 100%;}
+    /*about us css end*/
+    /*video tab Css Start*/
+    .video-tab-block .nav-tabs{width: 46px;}
+    .video-tab-block .nav-tabs .nav-link span{display: none;}
+    .video-tab-block .nav-tabs .nav-link:hover span {display: flex;position: absolute;left: 46px;top: 50%;min-width: calc(100vw - 96px);transform: translateY(-50%);background: #F8F8F8;z-index: 1;height: 100%;align-items: center;color: #555555;font-size: 15px;padding: 0 15px;margin-top: -1px;}
+    .video-tab-block .tab-content{width: calc(100% - 46px);}
+    /*video tab Css End*/
+    }
+    @media only screen and (max-width:767px){
+    /*home page css start*/
+    .home-banner-block{padding: 0;}
+    .home-banner-block .bnr-img{border-width: 4px; position:relative;}
+    .home-sign-up-form{max-width: 100%; margin-top: 25px;}
+    .footer h4{margin-top: 25px;}
+    /*home page css end*/
+    /*inner bnr css start*/
+    .inner-bnr{height: 125px; border-width: 4px;}
+    /*inner bnr css start*/
+    /*sign up page css start*/
+    .user-login-signup{padding: 40px 0;}
+    .tab-icon{width: 80px; height: 80px;}
+    .signup-form-head h3 {font-size: 18px;width: 100%;text-align: center;margin-bottom: 15px;}
+    .signup-tab-block .seprater{margin: 0 auto 15px;}
+    .signup-tab-block .btn-custom.bdr{width: 100%;}
+    .signup-tab-block form .custom-check {margin: 0 0 25px 0;}
+    .signup-tab-block .info-icon {top: 36px;}
+    /*sign up page css end*/
+    }
+    @media only screen and (max-width:679px){
+    /*home page css start*/
+    .home-banner-block .bnr-img img{height: 200px;}
+    /*home page css end*/
+    /*sign up page css start*/
+    .signup-tab-block .nav-pills .nav-link{text-align: center; padding: 15px 10px;}
+    .signup-tab-block .nav-pills .nav-link.provider{background-image: none;}
+    .signup-tab-block .nav-pills .nav-link.caregiver{background-image: none;}
+    .tab-icon{margin: 0 auto 10px;}
+    .tab-head-info .h2{font-size: 16px;}
+    .tab-head-info ul{display: none;}
+    /*sign up page css end*/
+    }
+    @media only screen and (max-width: 575px){
+    .container {padding-left: 20px;padding-right: 20px;}
+    /*header css start*/
+    .site-header{padding: 15px 0 15px 0;}
+    .navbar-collapse{top: 60px; height: calc(100vh - 60px) !important;}
+    .site-header .navbar-nav li a.nav-link {font-size: 14px;}
+    .navbar-brand img{max-width: 215px;}
+    .beta-msg-box{top: 45px;}
+    .beta-msg-box::before{right: 162px;}
+    /*header css end*/
+    /*home page css start*/
+    .home-banner-block .bnr-img img{height: 155px;}
+    .home-feature {padding: 15px 0 45px 0;}
+    .feature-block .icon {width: 155px;height: 149px; border-radius: 65px 0 65px 0;}
+    .feature-block .icon svg{max-height: 58px;}
+    /*home page css end*/
+    /*inner bnr css start*/
+    .inner-bnr{height: 95px;}
+    /*inner bnr css start*/
+    /*verify patient css start*/
+    .verify-form {padding: 20px;}
+    /*verify patient css end*/
+    /*video tab Css Start*/
+    .video-tab-block .nav-tabs{width: 100%; margin-bottom: 46px;}
+    .video-tab-block .nav-tabs .nav-item{display: inline-flex; width: auto;}
+    .video-tab-block .nav-tabs .nav-link{position: static; border: none!important;}
+    .video-tab-block .nav-tabs .nav-link i{margin: 0;}
+    .video-tab-block .nav-tabs .nav-item.show .nav-link, .nav-tabs > li.active > a:hover, .video-tab-block .nav-tabs .nav-link.active, .video-tab-block .nav-tabs li.active .nav-link, .video-tab-block .nav-tabs > li.active > a:focus{border: none!important;}
+    .video-tab-block .nav-tabs .nav-link.active span, .video-tab-block .nav-tabs .nav-link:hover span {display: flex;position: absolute;left: 0;top: 100%;min-width: 100%;transform: translateY(0);background: #00cfdd;align-items: center;color: #ffffff;font-size: 15px;padding: 14px 15px; margin:0; z-index: 1; height:auto; border-bottom:solid 1px #fff;}
+    .video-tab-block .tab-content{padding: 15px; width: 100%;}
+    /*video tab Css End*/
+    }
+    @media only screen and (max-width:479px){
+    /*header css start*/
+    #nav-icon{position: absolute; right: 0; top: 5px;}
+    .navbar-collapse {top: 92px;height: calc(100vh - 92px) !important;}
+    /*header css end*/
+    /*home page css start*/
+    .home-banner-block .bnr-img img{height: 125px;}
+    /*beta msg screen css start*/
+    .beta-msg-icon {width: 100%;text-align: center;margin: 9px auto 2px 0;}
+    .beta-msg-box {width: auto;max-width: 100%;right: 15px;top: 76px;padding: 25px 20px 15px;}
+    .beta-msg-box:before {left: 50%;right: auto;}
+    /*beta msg screen css end*/
+    /*home page css end*/
+    /*sign up page css start*/
+    .signup-tab-block .nav-item{width: 50%;}
+    .signup-tab-block .nav-pills .nav-link{padding: 15px 0 5px;}
+    .signup-tab-block .nav-pills .nav-link.active::after{border-width:10px; margin-left:-10px;}
+    .tab-icon{width: 65px; height: 65px;}
+    .tab-head-info .h2{font-size: 11px;}
+    /*sign up page css end*/
+    }
+    

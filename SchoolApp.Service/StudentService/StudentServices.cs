@@ -12,9 +12,10 @@ namespace SchoolApp.Service.StudentService
     {
         private readonly IRepository<Student> _StudentRepo;
         private readonly IRepository<Attendance> _AttendanceRepo;
-        public StudentServices(IRepository<Student> StudentRepo)
+        public StudentServices(IRepository<Student> StudentRepo, IRepository<Attendance> AttendanceRepo)
         {
             _StudentRepo = StudentRepo;
+            _AttendanceRepo = AttendanceRepo;
         }
         public List<Student> GetStudent()
         {
