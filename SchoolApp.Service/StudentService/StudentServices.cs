@@ -75,6 +75,11 @@ namespace SchoolApp.Service.StudentService
 
         public int DeleteStudentPresenter(int id)
         {
+           var attendenceId= _AttendanceRepo.Query().Filter(x => x.StudentId == id).Get().Select(x => x.AttendanceId).ToList();
+            foreach (var item in attendenceId)
+            {
+                _AttendanceRepo.Delete(item);
+            }
             _StudentRepo.Delete(id);
             return id;
         }
