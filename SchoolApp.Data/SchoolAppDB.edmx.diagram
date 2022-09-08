@@ -4,10 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="49e07b4818184d66bcd7e95515153950" Name="Diagram1">
-        <EntityTypeShape EntityType="SchoolAppModel.Attendance" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SchoolAppModel.Student" Width="1.5" PointX="0.75" PointY="7" />
-        <AssociationConnector Association="SchoolAppModel.FK_Students_Attendance" />
+      <Diagram DiagramId="1c533cd9697e4ce3bbadddd646bf85ea" Name="Diagram1">
+        <EntityTypeShape EntityType="SchoolAppModel.Attendance" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolAppModel.DepartmentMaster" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolAppModel.FacultyMaster" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolAppModel.Student" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <AssociationConnector Association="SchoolAppModel.FK_Students_Attendance" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolAppModel.FK__FacultyMa__Depar__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolAppModel.FK__Students__Depart__412EB0B6" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

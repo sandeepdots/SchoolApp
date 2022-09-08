@@ -74,7 +74,7 @@ namespace SchoolApp.Web.Controllers
         public PartialViewResult GetTableData(DateTime? StartDate, DateTime? EndDate, int? StudentId)
         {
             StudentsViewModel model = new StudentsViewModel();
-            SchoolAppEntities db = new SchoolAppEntities();
+            //SchoolAppEntities db = new SchoolAppEntities();
             if (!(StudentId > 0))
             {
                 StudentId = 0;
@@ -99,7 +99,7 @@ namespace SchoolApp.Web.Controllers
         private System.Data.DataTable GetData(DateTime? StartDate, DateTime? EndDate, int? StudentId)
         {
 
-            SqlConnection con = new SqlConnection(@"Data Source=JAGATPALSINGH\SQLEXPRESS2017;Initial Catalog=Random;User ID=IMS;Password=admin123;MultipleActiveResultSets=True;Application Name=EntityFramework");
+            SqlConnection con = new SqlConnection("Data Source=ds252.projectstatus.co.uk;initial catalog=SchoolApp;User ID=schoolapp;Password=schoolapp@909");
             using (SqlCommand cmd = new SqlCommand("Demo1", con))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -261,6 +261,9 @@ namespace SchoolApp.Web.Controllers
 
 
         #endregion
+
+
+
     }
 }
 
