@@ -26,12 +26,6 @@
                         "searchable": true
                     },
                     {
-                        "targets": [2],
-                        "visible": true,
-                        "sortable": true,
-                        "searchable": true
-                    },
-                    {
                         "targets": [3],
                         "visible": true,
                         "sortable": true,
@@ -73,18 +67,18 @@
                         "sortable": true,
                         "searchable": true
                     },
+
                     {
                         "targets": 10,
                         "searchable": false,
                         "sortable": false,
-                        "data": "0",
                         "render": function (data, type, row, meta) {
                             var actionLink = $("<a/>", {
-                                href: 'https://localhost:44315/' + "Office/AddEditTeamLeader/" + row[0],
+                                href: 'https://localhost:44315/' + "Students/AddEditStudent/" + row[0],
                                 id: "editPresenterModal",
                                 class: "btn btn-primary btn-sm",
                                 'data-toggle': "modal",
-                                'data-target': "#modal-add-edit-presenter",
+                                'data-target': "#modal-add-edit-student",
                                 html: $("<i/>", {
                                     class: "fa fa-pencil"
                                 }),
@@ -92,27 +86,15 @@
 
 
                             actionLink += $("<a/>", {
-                                href: 'https://localhost:51483/' + "Office/DeleteTeamLeader/" + row[0],
-                                id: "deletePresenter",
+                                href: 'https://localhost:44315/' + "Students/DeleteStudent/" + row[0],
+                                id: "deleteStudent",
                                 class: "btn btn-danger btn-sm",
                                 'data-toggle': "modal",
-                                'data-target': "#modal-delete-presenter",
+                                'data-target': "#modal-delete-student",
                                 html: $("<i/>", {
                                     class: "fa fa-trash-o"
                                 }),
                             }).append(" Delete").get(0).outerHTML + "&nbsp;"
-
-                            actionLink += $("<a/>", {
-                                href: 'https://localhost:51483/' + "Office/DetailsTeamLead/" + row[0],
-                                id: "detailsPresenter",
-                                class: "btn btn-info btn-sm",
-                                'data-toggle': "modal",
-                                'data-target': "#modal-details-presenter",
-                                html: $("<i/>", {
-                                    class: "fa fa-align-justify"
-                                }),
-                            }).append(" Details").get(0).outerHTML + "&nbsp;"
-
 
                             return actionLink;
                         }
@@ -125,7 +107,7 @@
                 "bServerSide": true,
                 "bAutoWidth": false,
                 "stateSave": false,
-                "sAjaxSource": 'https://localhost:44315/' +"Students/GetStudentData",
+                "sAjaxSource": 'https://localhost:44315/' + "Students/GetStudentData",
                 "fnServerData": function (url, data, callback) {
                     debugger;
                     $.ajax({
@@ -168,7 +150,7 @@
 
 
 
-          
+
 
         }
         function initGridControlsWithEvents() {
@@ -190,12 +172,26 @@
         }
 
         function initializeModalWithForm() {
-            $("#modal-add-edit-attendance").on('loaded.bs.modal', function (e) {
+
+            //Add & Edit Student---------->
+
+            $("#modal-add-edit-student").on('loaded.bs.modal', function (e) {
+                debugger;
                 $attendanceValue = [];
-                formAddEditPresenter = new Global.FormHelper($("#form-Add-Edit-Attendance"),
-                    { updateTargetId: "validation-summary" }, function onSuccess(result) {
+                formAddEditVendor = new Global.FormHelper($("#form-Add-Edit-Student"), { updateTargetId: "validation-summary" }, function (data) {
+
+                    //console.log(data.isSuccess);
+                    if (data.isSuccess == true) {
+                        $("#validation-summary").html("");
+                        $("#validation-summary").hide();
+                        //  window.location.href = data.redirectUrl;
                         window.location.reload();
-                    });
+                    }
+                    else {
+                        // $("#validation-summary").show();
+                        $("#validation-summary").text(data.data).show().delay(5000).fadeOut(2000);
+                    }
+                });
                 $('.form-checkbox').bootstrapSwitch(
                 );
                 $('.datefield').datepicker({
@@ -205,44 +201,34 @@
                 }).on('change', function (e) {
 
                 });
-                $(document).off("click", "#submitAttendance").on("click", '#submitAttendance', function () {
-                    // New array
-                    $attendanceValue = [];
-                    $(".form-checkbox").each(function (e) {
-                        var id = $(this).attr('id');
-                        var studentId = $(this).attr('name');
-                        if ($(this).is(':checked')) {
-                            var isExist = false;
-                            $.each($attendanceValue, function (index, value) {
-                                if (value.Id == studentId) {
-                                    isExist = true;
-                                    if (id.includes('First')) {
-                                        value.SessionFirstAttendance = true;
-                                    }
-                                    else if (id.includes('Second')) {
-                                        value.SessionSecondAttendance = true;
-                                    }
-                                }
-                            })
-                            if (!isExist) {
-                                var attendanceData = {
-                                    StudentId: studentId,
-                                    SessionFirstAttendance: (id).includes('First') ? true : false,
-                                    SessionSecondAttendance: (id).includes('Second') ? true : false,
-                                }
-                                $attendanceValue.push(attendanceData);
-                            }
 
-                        }
 
-                    });
-                    $('#HdnAttendanceData').val(JSON.stringify($attendanceValue));
 
-                    $('#formAddEditAttendance').submit();
-                });
+
+
+
 
 
             }).on('hidden.bs.modal', function (e) {
+                $("#modal-add-edit-student").find(".modal-content").html("");
+                $(this).removeData('bs.modal');
+            });
+
+            //Delete Student------->
+
+            $("#modal-delete-student").on('loaded.bs.modal', function (e) {
+
+                formDeleteJobTitle = new Global.FormHelper($(this).find("form"), { updateTargetId: "validation-summary" }, function (data) {
+                    if (data.isSuccess) {
+                        alert(data.data);
+                        window.location.reload();
+                    }
+                    else {
+                        alert(data.data);
+                    }
+                });
+            }).on('hidden.bs.modal', function (e) {
+                $("#modal-delete-student").find(".modal-content").html("");
                 $(this).removeData('bs.modal');
             });
 

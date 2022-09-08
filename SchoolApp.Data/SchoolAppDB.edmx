@@ -21,10 +21,9 @@
           </Key>
           <Property Name="DepartmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DepartmentName" Type="nvarchar" MaxLength="225" Nullable="false" />
-          <Property Name="DepartmentDescription" Type="nvarchar" MaxLength="225" />
+          <Property Name="DepartmentDescription" Type="nvarchar" MaxLength="225" Nullable="false" />
           <Property Name="UpdateOn" Type="datetime" Nullable="false" />
-          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="225" Nullable="false" />
         </EntityType>
         <EntityType Name="FacultyMaster">
           <Key>
@@ -148,8 +147,8 @@
             <End Role="Student" EntitySet="Students" />
             <End Role="Attendance" EntitySet="Attendances" />
           </AssociationSet>
-          <EntitySet Name="FacultyMasters" EntityType="SchoolAppModel.FacultyMaster" />
           <EntitySet Name="DepartmentMasters" EntityType="SchoolAppModel.DepartmentMaster" />
+          <EntitySet Name="FacultyMasters" EntityType="SchoolAppModel.FacultyMaster" />
           <AssociationSet Name="FK__FacultyMa__Depar__46E78A0C" Association="SchoolAppModel.FK__FacultyMa__Depar__46E78A0C">
             <End Role="DepartmentMaster" EntitySet="DepartmentMasters" />
             <End Role="FacultyMaster" EntitySet="FacultyMasters" />
@@ -158,7 +157,7 @@
             <End Role="DepartmentMaster" EntitySet="DepartmentMasters" />
             <End Role="Student" EntitySet="Students" />
           </AssociationSet>
-          </EntityContainer>
+        </EntityContainer>
         <EntityType Name="Student">
           <Key>
             <PropertyRef Name="StudentId" />
@@ -194,6 +193,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="DepartmentMaster">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="225" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmentDescription" Type="String" Nullable="false" MaxLength="225" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="225" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FacultyMasters" Relationship="SchoolAppModel.FK__FacultyMa__Depar__46E78A0C" FromRole="DepartmentMaster" ToRole="FacultyMaster" />
+          <NavigationProperty Name="Students" Relationship="SchoolAppModel.FK__Students__Depart__412EB0B6" FromRole="DepartmentMaster" ToRole="Student" />
+        </EntityType>
         <EntityType Name="FacultyMaster">
           <Key>
             <PropertyRef Name="FacultyId" />
@@ -209,19 +220,6 @@
           <Property Name="active" Type="Boolean" />
           <Property Name="DepartmentId" Type="Int32" />
           <NavigationProperty Name="DepartmentMaster" Relationship="SchoolAppModel.FK__FacultyMa__Depar__46E78A0C" FromRole="FacultyMaster" ToRole="DepartmentMaster" />
-        </EntityType>
-        <EntityType Name="DepartmentMaster">
-          <Key>
-            <PropertyRef Name="DepartmentId" />
-          </Key>
-          <Property Name="DepartmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="225" FixedLength="false" Unicode="true" />
-          <Property Name="DepartmentDescription" Type="String" MaxLength="225" FixedLength="false" Unicode="true" />
-          <Property Name="UpdateOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="FacultyMasters" Relationship="SchoolAppModel.FK__FacultyMa__Depar__46E78A0C" FromRole="DepartmentMaster" ToRole="FacultyMaster" />
-          <NavigationProperty Name="Students" Relationship="SchoolAppModel.FK__Students__Depart__412EB0B6" FromRole="DepartmentMaster" ToRole="Student" />
         </EntityType>
         <Association Name="FK__FacultyMa__Depar__46E78A0C">
           <End Type="SchoolAppModel.DepartmentMaster" Role="DepartmentMaster" Multiplicity="0..1" />
@@ -247,7 +245,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        </Schema>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -287,6 +285,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="DepartmentMasters">
+            <EntityTypeMapping TypeName="SchoolAppModel.DepartmentMaster">
+              <MappingFragment StoreEntitySet="DepartmentMaster">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdateOn" ColumnName="UpdateOn" />
+                <ScalarProperty Name="DepartmentDescription" ColumnName="DepartmentDescription" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="FacultyMasters">
             <EntityTypeMapping TypeName="SchoolAppModel.FacultyMaster">
               <MappingFragment StoreEntitySet="FacultyMaster">
@@ -300,18 +309,6 @@
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="FacultyId" ColumnName="FacultyId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DepartmentMasters">
-            <EntityTypeMapping TypeName="SchoolAppModel.DepartmentMaster">
-              <MappingFragment StoreEntitySet="DepartmentMaster">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="UpdateOn" ColumnName="UpdateOn" />
-                <ScalarProperty Name="DepartmentDescription" ColumnName="DepartmentDescription" />
-                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
-                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

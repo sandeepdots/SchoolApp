@@ -5,6 +5,7 @@ using SchoolApp.DataTable.Search;
 using SchoolApp.DataTable.Sort;
 using SchoolApp.Service.AttendanceService;
 using SchoolApp.Service.StudentService;
+using SchoolApp.Web.Code.Serialization;
 using SchoolApp.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -187,6 +188,8 @@ namespace SchoolApp.Web.Controllers
 
        
 
+
+
         #region [Get Student Data]
 
         [HttpPost]
@@ -219,10 +222,10 @@ namespace SchoolApp.Web.Controllers
                 case 3:
                     query.AddSortCriteria(new ExpressionSortCriteria<Student, string>(q => q.FatherName, sortDirection == "asc" ? SortDirection.Ascending : SortDirection.Descending));
                     break;
-                case 5:
+                case 7:
                     query.AddSortCriteria(new ExpressionSortCriteria<Student, string>(q => q.Email, sortDirection == "asc" ? SortDirection.Ascending : SortDirection.Descending));
                     break;
-                case 6:
+                case 8:
                     query.AddSortCriteria(new ExpressionSortCriteria<Student, bool>(q => q.IsActive, sortDirection == "asc" ? SortDirection.Ascending : SortDirection.Descending));
                     break;
 
@@ -263,6 +266,112 @@ namespace SchoolApp.Web.Controllers
 
 
         #endregion
+
+
+        //FOR ADD & EDIT STUDENT DETAILS
+
+        [HttpGet]
+
+        public PartialViewResult AddEditStudent(int? id)
+        {
+            StudentsViewModel model = new StudentsViewModel();
+            if (id.HasValue)
+            {
+                Student student = _studentServices.GetStudentPresenter(id.Value);
+                model.Name = student.Name;
+                model.FatherName = student.FatherName;
+                model.MotherName = student.MotherName;
+                model.Class = student.Class;
+                model.Section = student.Section;
+                model.Email = student.Email;
+                model.Phone = student.Phone;
+                model.Gender = student.Gender;
+                model.DOB = student.DOB;
+                model.Address = student.Address;
+                model.Location = student.Location;
+                model.DepartmentId = student.DepartmentId;
+                model.IsActive = student.IsActive;
+            }
+            return PartialView("_AddEditStudent", model);
+        }
+        [HttpPost]
+        public ActionResult AddEditStudent(int? id, StudentsViewModel model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    bool isExist = id.HasValue;
+                    Student student = isExist ? _studentServices.GetStudentPresenter(id.Value) : new Student();
+                    student.Name = model.Name;
+                    student.FatherName = model.FatherName;
+                    student.MotherName = model.MotherName;
+                    student.Class = model.Class;
+                    student.Section = model.Section;
+                    student.Email = model.Email;
+                    student.Phone = model.Phone;
+                    student.Gender = model.Gender;
+                    student.DOB = model.DOB;
+                    student.Address = model.Address;
+                    student.Location = model.Location;
+                    student.DepartmentId = model.DepartmentId;
+                    student.IsActive = model.IsActive;
+                    student.CreatedDate = DateTime.Now;
+                    student.UpdatedDate = DateTime.Now;
+                    student = isExist ? _studentServices.UpdateStudentPresenter(student) : _studentServices.SaveStudentPresenter(student);
+                    //ShowSuccessMessage("Success", String.Format("{0} is successfully {1}", model.Name, isExist ? "updated" : "added"), false);
+                    return NewtonSoftJsonResult(new RequestOutcome<dynamic> { RedirectUrl = @Url.Action("StudentIndex", "Students") });
+                    //String Msg = isExist ? "updated" : "added";
+                    //return NewtonSoftJsonResult(new RequestOutcome<string> { Data = String.Format("Data has been {0}", isExist ? "updated" : "added") });
+
+                }
+            }
+            catch (Exception ex)
+            {
+                return NewtonSoftJsonResult(new RequestOutcome<dynamic> { RedirectUrl = @Url.Action("StudentIndex", "Students") });
+            }
+            return CreateModelStateErrors();
+        }
+
+
+        // FOR DELETE STUDENT
+
+        [HttpGet]
+        public PartialViewResult DeleteStudent()
+        {
+            return PartialView("_ModalDelete", new Modal
+            {
+                Size = ModalSize.Medium,
+                IsHeader = true,
+                Message = "Are you sure want to delete this Student?",
+                Header = new ModalHeader { Heading = "Delete Student" },
+                Footer = new ModalFooter { SubmitButtonText = "Yes", CancelButtonText = "No" }
+            });
+        }
+
+        [HttpPost]
+        public ActionResult DeleteStudent(int id)
+        {
+            try
+            {
+                int get = _studentServices.DeleteStudentPresenter(id);
+                if (get == id)
+                {
+                    ShowSuccessMessage("Success", "Student is successfully deleted", false);
+                    return NewtonSoftJsonResult(new RequestOutcome<string> { Data = "Data Deleted" });
+                }
+                else
+                {
+                    return NewtonSoftJsonResult(new RequestOutcome<string> { Data = "Error Occourd" });
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return NewtonSoftJsonResult(new RequestOutcome<string> { Data = ex.GetBaseException().Message, IsSuccess = false });
+            }
+
+        }
     }
 }
 

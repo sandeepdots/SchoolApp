@@ -8,11 +8,11 @@
         <EntityTypeShape EntityType="SchoolAppModel.Attendance" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolAppModel.Student" Width="1.5" PointX="0.75" PointY="7" />
         <AssociationConnector Association="SchoolAppModel.FK_Students_Attendance" />
+        <EntityTypeShape EntityType="SchoolAppModel.DepartmentMaster" Width="1.5" PointX="0.75" PointY="8" />
         <EntityTypeShape EntityType="SchoolAppModel.FacultyMaster" Width="1.5" PointX="3" PointY="12.625" />
-        <EntityTypeShape EntityType="SchoolAppModel.DepartmentMaster" Width="1.5" PointX="0.75" PointY="10.125" />
         <AssociationConnector Association="SchoolAppModel.FK__FacultyMa__Depar__46E78A0C" />
         <AssociationConnector Association="SchoolAppModel.FK__Students__Depart__412EB0B6" />
-        </Diagram>
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

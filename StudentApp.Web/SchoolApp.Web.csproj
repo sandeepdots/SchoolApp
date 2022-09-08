@@ -411,7 +411,6 @@
     <Content Include="Scripts\rowReorder.dataTables.js" />
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\views\AttendanceDetails.js" />
-    <Content Include="Scripts\views\department\department.js" />
     <Content Include="Scripts\views\student\student-list.js" />
     <Content Include="Scripts\views\AttendanceList.js" />
     <None Include="Scripts\_references.js" />
@@ -429,7 +428,6 @@
     <Compile Include="Code\Serialization\SiteKeys.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
-    <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -440,8 +438,6 @@
     <Compile Include="Model\Common\ModalFooter.cs" />
     <Compile Include="Model\Common\ModalHeader.cs" />
     <Compile Include="Model\Common\Notification.cs" />
-    <Compile Include="Model\DepartmentViewModal.cs" />
-    <Compile Include="Model\RegistrationViewModel.cs" />
     <Compile Include="Model\StudentsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -473,10 +469,8 @@
     <Content Include="Views\Students\StudentIndex.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Department\Index.cshtml" />
-    <Content Include="Views\Department\_AddEditDepartment.cshtml" />
+    <Content Include="Views\Students\_AddEditStudent.cshtml" />
     <Content Include="Views\Shared\_ValidationSummary.cshtml" />
-    <Content Include="Views\Shared\_Empty.cshtml" />
-    <Content Include="Views\Registration\Registration.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
