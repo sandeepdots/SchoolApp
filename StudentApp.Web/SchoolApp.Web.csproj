@@ -432,6 +432,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\FacultyController.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -481,6 +482,8 @@
     <Content Include="Views\Faculty\AddEditFaculty.cshtml" />
     <Content Include="Views\Faculty\FacultyIndex.cshtml" />
     <Content Include="Views\Students\_AddEditStudent.cshtml" />
+    <Content Include="Views\Students\DataAnnotationss.cshtml" />
+    <Content Include="Views\Shared\_ValidationSummary.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

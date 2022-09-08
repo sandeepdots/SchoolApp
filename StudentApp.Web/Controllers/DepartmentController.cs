@@ -2,7 +2,7 @@
 using SchoolApp.DataTable.Extension;
 using SchoolApp.DataTable.Search;
 using SchoolApp.DataTable.Sort;
-using SchoolApp.Service.DepartmentService;
+using SchoolApp.Service.DepartmentServices;
 using SchoolApp.Web.Code.Serialization;
 using SchoolApp.Web.Model;
 using SchoolApp.Web.Models;

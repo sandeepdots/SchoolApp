@@ -1,7 +1,7 @@
 ﻿using SchoolApp.Data;
 using SchoolApp.DataTable.Search;
 using SchoolApp.Repo;
-using SchoolApp.Service.DepartmentService;
+using SchoolApp.Service.DepartmentServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -111,7 +111,7 @@
                 "sAjaxSource": domain + "Faculty/FacultyIndex",      //change By sandep
 
                 "fnServerData": function (url, data, callback) {
-                    debugger;
+                    
                     $.ajax({
                         "url": url,
                         "data": data,

@@ -109,7 +109,7 @@
                 "stateSave": false,
                 "sAjaxSource": domain + "Students/GetStudentData",
                 "fnServerData": function (url, data, callback) {
-                    debugger;
+                   
                     $.ajax({
                         "url": url,
                         "data": data,
@@ -176,7 +176,7 @@
             //Add & Edit Student---------->
 
             $("#modal-add-edit-student").on('loaded.bs.modal', function (e) {
-                debugger;
+               
                 $attendanceValue = [];
                 formAddEditVendor = new Global.FormHelper($("#form-Add-Edit-Student"), { updateTargetId: "validation-summary" }, function (data) {
 
