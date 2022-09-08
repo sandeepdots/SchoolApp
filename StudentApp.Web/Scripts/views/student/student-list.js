@@ -74,7 +74,7 @@
                         "sortable": false,
                         "render": function (data, type, row, meta) {
                             var actionLink = $("<a/>", {
-                                href: 'https://localhost:44315/' + "Students/AddEditStudent/" + row[0],
+                                href: domain + "Students/AddEditStudent/" + row[0],
                                 id: "editPresenterModal",
                                 class: "btn btn-primary btn-sm",
                                 'data-toggle': "modal",
@@ -86,7 +86,7 @@
 
 
                             actionLink += $("<a/>", {
-                                href: 'https://localhost:44315/' + "Students/DeleteStudent/" + row[0],
+                                href: domain + "Students/DeleteStudent/" + row[0],
                                 id: "deleteStudent",
                                 class: "btn btn-danger btn-sm",
                                 'data-toggle': "modal",
@@ -107,7 +107,7 @@
                 "bServerSide": true,
                 "bAutoWidth": false,
                 "stateSave": false,
-                "sAjaxSource": 'https://localhost:44315/' + "Students/GetStudentData",
+                "sAjaxSource": domain + "Students/GetStudentData",
                 "fnServerData": function (url, data, callback) {
                     debugger;
                     $.ajax({

@@ -75,7 +75,7 @@
                         "data": "0",
                         "render": function (data, type, row, meta) {
                             var actionLink = $("<a/>", {
-                                href: 'https://localhost:44315/' + "/Faculty/AddEditFaculty/" + row[0],
+                                href: domain + "/Faculty/AddEditFaculty/" + row[0],
                                 id: "editPresenterModal",
                                 class: "btn btn-primary btn-sm",
                                 'data-toggle': "modal",
@@ -87,7 +87,7 @@
 
 
                             actionLink += $("<a/>", {
-                                href: 'https://localhost:44315/' + "/Faculty/DeleteFaculty/" + row[0],
+                                href: domain + "/Faculty/DeleteFaculty/" + row[0],
                                 id: "deletePresenter",
                                 class: "btn btn-danger btn-sm",
                                 'data-toggle': "modal",
@@ -108,7 +108,7 @@
                 "bServerSide": true,
                 "bAutoWidth": false,
                 "stateSave": false,
-                "sAjaxSource": 'https://localhost:44315/' + "Faculty/FacultyIndex",      //change By sandep
+                "sAjaxSource": domain + "Faculty/FacultyIndex",      //change By sandep
 
                 "fnServerData": function (url, data, callback) {
                     debugger;

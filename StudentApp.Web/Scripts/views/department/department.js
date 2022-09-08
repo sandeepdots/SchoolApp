@@ -39,7 +39,7 @@
                         "data": "0",
                         "render": function (data, type, row, meta) {
                             var actionLink = $("<a/>", {
-                                href: 'https://localhost:44315/' + "Department/AddUpdateDepartment/" + row[0],
+                                href: domain + "Department/AddUpdateDepartment/" + row[0],
                                 id: "editPresenterModal",
                                 class: "btn btn-primary btn-sm",
                                 'data-toggle': "modal",
@@ -51,7 +51,7 @@
 
 
                             actionLink += $("<a/>", {
-                                href: 'https://localhost:44315/' + "Department/DeleteDepartment/" + row[0],
+                                href: domain + "Department/DeleteDepartment/" + row[0],
                                 id: "deleteDepartment",
                                 class: "btn btn-danger btn-sm",
                                 'data-toggle': "modal",

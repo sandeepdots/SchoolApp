@@ -8,8 +8,8 @@
             $(document).off("click", ".btn-attendance").on("click", ".btn-attendance", function () {
                 debugger;
                 $('.dynamicLinkSlotAddAppointment').remove();
-
-                $('body').append('<a id="linkAppointmentAdd" class="dynamicLinkSlotAddAppointment" href="https://localhost:44325/Student/AddEditAttendance" data-toggle="modal"  data-target="#modal-add-edit-attendance"  data-backdrop="static" >& nbsp;</a >');
+                var url = domain + "Student/AddEditAttendance";
+                $('body').append('<a id="linkAppointmentAdd" class="dynamicLinkSlotAddAppointment" href="'+url+'" data-toggle="modal"  data-target="#modal-add-edit-attendance"  data-backdrop="static" >& nbsp;</a >');
                 $('#linkAppointmentAdd')[0].click();
 
             });
@@ -23,7 +23,7 @@
                     studentId = parseInt($('#StudentId').val());
 
                 }
-                $.get("https://localhost:44325/Student/GetTableData?StartDate=" + $('#FromDate').val() + '&EndDate=' + $('#ToDate').val() + '&StudentId=' + studentId, function (result) {
+                $.get(domain+"Student/GetTableData?StartDate=" + $('#FromDate').val() + '&EndDate=' + $('#ToDate').val() + '&StudentId=' + studentId, function (result) {
                     debugger;
                     $('#divAttendanceData').html(result);
 

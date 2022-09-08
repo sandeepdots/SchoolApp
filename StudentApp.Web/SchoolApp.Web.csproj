@@ -412,6 +412,7 @@
     <Content Include="Scripts\rowReorder.dataTables.js" />
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\views\AttendanceDetails.js" />
+    <Content Include="Scripts\views\department\department.js" />
     <Content Include="Scripts\views\faculty\Faculty-List.js" />
     <Content Include="Scripts\views\student\student-list.js" />
     <Content Include="Scripts\views\AttendanceList.js" />
@@ -475,6 +476,11 @@
     <Content Include="Views\Students\StudentIndex.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Department\Index.cshtml" />
+    <Content Include="Views\Department\_AddEditDepartment.cshtml" />
+    <Content Include="Views\Registration\Registration.cshtml" />
+    <Content Include="Views\Faculty\AddEditFaculty.cshtml" />
+    <Content Include="Views\Faculty\FacultyIndex.cshtml" />
+    <Content Include="Views\Students\_AddEditStudent.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
