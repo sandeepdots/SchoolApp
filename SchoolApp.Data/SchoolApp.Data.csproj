@@ -56,58 +56,58 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attendance.cs">
-      <DependentUpon>SchoolAppDB.tt</DependentUpon>
+      <DependentUpon>SchoolModal.tt</DependentUpon>
     </Compile>
     <Compile Include="DepartmentMaster.cs">
-      <DependentUpon>SchoolAppDB.tt</DependentUpon>
+      <DependentUpon>SchoolModal.tt</DependentUpon>
     </Compile>
     <Compile Include="FacultyMaster.cs">
-      <DependentUpon>SchoolAppDB.tt</DependentUpon>
+      <DependentUpon>SchoolModal.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SchoolAppDB.Context.cs">
+    <Compile Include="SchoolModal.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SchoolAppDB.Context.tt</DependentUpon>
+      <DependentUpon>SchoolModal.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="SchoolAppDB.cs">
+    <Compile Include="SchoolModal.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SchoolAppDB.tt</DependentUpon>
+      <DependentUpon>SchoolModal.tt</DependentUpon>
     </Compile>
-    <Compile Include="SchoolAppDB.Designer.cs">
+    <Compile Include="SchoolModal.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SchoolAppDB.edmx</DependentUpon>
+      <DependentUpon>SchoolModal.edmx</DependentUpon>
     </Compile>
     <Compile Include="Student.cs">
-      <DependentUpon>SchoolAppDB.tt</DependentUpon>
+      <DependentUpon>SchoolModal.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
     <None Include="packages.config" />
-    <EntityDeploy Include="SchoolAppDB.edmx">
+    <EntityDeploy Include="SchoolModal.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SchoolAppDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>SchoolModal.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="SchoolAppDB.edmx.diagram">
-      <DependentUpon>SchoolAppDB.edmx</DependentUpon>
+    <None Include="SchoolModal.edmx.diagram">
+      <DependentUpon>SchoolModal.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SchoolAppDB.Context.tt">
+    <Content Include="SchoolModal.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SchoolAppDB.edmx</DependentUpon>
-      <LastGenOutput>SchoolAppDB.Context.cs</LastGenOutput>
+      <DependentUpon>SchoolModal.edmx</DependentUpon>
+      <LastGenOutput>SchoolModal.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="SchoolAppDB.tt">
+    <Content Include="SchoolModal.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SchoolAppDB.edmx</DependentUpon>
-      <LastGenOutput>SchoolAppDB.cs</LastGenOutput>
+      <DependentUpon>SchoolModal.edmx</DependentUpon>
+      <LastGenOutput>SchoolModal.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
