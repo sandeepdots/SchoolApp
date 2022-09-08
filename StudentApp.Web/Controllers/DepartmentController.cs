@@ -107,6 +107,7 @@ namespace SchoolApp.Web.Controllers
             return PartialView("_AddEditDepartMent", model);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult SaveDepartment(DepartmentViewModel model)
         {
             try
