@@ -6,7 +6,7 @@
 
         function initializeGrid() {
 
-            var gridPresenter = new Global.GridHelper('#grid-student-management', {
+            var gridPresenter = new Global.GridHelper('#grid-department-management', {
                 "columnDefs": [
                     {
                         "targets": [0],
@@ -31,54 +31,19 @@
                         "sortable": true,
                         "searchable": true
                     },
+                  
                     {
-                        "targets": [4],
-                        "visible": true,
-                        "sortable": true,
-                        "searchable": true
-                    },
-                    {
-                        "targets": [5],
-                        "visible": true,
-                        "sortable": true,
-                        "searchable": true
-                    },
-                    {
-                        "targets": [6],
-                        "visible": true,
-                        "sortable": true,
-                        "searchable": true
-                    },
-                    {
-                        "targets": [7],
-                        "visible": true,
-                        "sortable": true,
-                        "searchable": true
-                    },
-                    {
-                        "targets": [8],
-                        "visible": true,
-                        "sortable": true,
-                        "searchable": true
-                    },
-                    {
-                        "targets": [9],
-                        "visible": true,
-                        "sortable": true,
-                        "searchable": true
-                    },
-
-                    {
-                        "targets": 10,
+                        "targets": 4,
                         "searchable": false,
                         "sortable": false,
+                        "data": "0",
                         "render": function (data, type, row, meta) {
                             var actionLink = $("<a/>", {
-                                href: 'https://localhost:44315/' + "Students/AddEditStudent/" + row[0],
+                                href: 'https://localhost:44315/' + "Department/AddUpdateDepartment/" + row[0],
                                 id: "editPresenterModal",
                                 class: "btn btn-primary btn-sm",
                                 'data-toggle': "modal",
-                                'data-target': "#modal-add-edit-student",
+                                'data-target': "#modal-add-edit-department",
                                 html: $("<i/>", {
                                     class: "fa fa-pencil"
                                 }),
@@ -86,11 +51,11 @@
 
 
                             actionLink += $("<a/>", {
-                                href: 'https://localhost:44315/' + "Students/DeleteStudent/" + row[0],
-                                id: "deleteStudent",
+                                href: 'https://localhost:44315/' + "Department/DeleteDepartment/" + row[0],
+                                id: "deleteDepartment",
                                 class: "btn btn-danger btn-sm",
                                 'data-toggle': "modal",
-                                'data-target': "#modal-delete-student",
+                                'data-target': "#modal-delete-department",
                                 html: $("<i/>", {
                                     class: "fa fa-trash-o"
                                 }),
@@ -107,9 +72,8 @@
                 "bServerSide": true,
                 "bAutoWidth": false,
                 "stateSave": false,
-                "sAjaxSource": 'https://localhost:44315/' + "Students/GetStudentData",
+                "sAjaxSource": 'https://localhost:44315/' +"Department/Index",
                 "fnServerData": function (url, data, callback) {
-                    debugger;
                     $.ajax({
                         "url": url,
                         "data": data,
@@ -150,7 +114,7 @@
 
 
 
-
+          
 
         }
         function initGridControlsWithEvents() {
@@ -172,51 +136,20 @@
         }
 
         function initializeModalWithForm() {
-
-            //Add & Edit Student---------->
-
-            $("#modal-add-edit-student").on('loaded.bs.modal', function (e) {
-                debugger;
+            $("#modal-add-edit-department").on('loaded.bs.modal', function (e) {
                 $attendanceValue = [];
-                formAddEditVendor = new Global.FormHelper($("#form-Add-Edit-Student"), { updateTargetId: "validation-summary" }, function (data) {
-
-                    //console.log(data.isSuccess);
-                    if (data.isSuccess == true) {
-                        $("#validation-summary").html("");
-                        $("#validation-summary").hide();
-                        //  window.location.href = data.redirectUrl;
+                formAddEditDepartment = new Global.FormHelper($("#formAddEditDepartment"),
+                    { updateTargetId: "validation-summary" }, function onSuccess(result) {
                         window.location.reload();
-                    }
-                    else {
-                        // $("#validation-summary").show();
-                        $("#validation-summary").text(data.data).show().delay(5000).fadeOut(2000);
-                    }
                 });
-                $('.form-checkbox').bootstrapSwitch(
-                );
-                $('.datefield').datepicker({
-                    dateFormat: 'yy-mm-dd',
-                    autoclose: true,
-                    minDate: new Date()
-                }).on('change', function (e) {
-
-                });
-
-
-
-
-
 
 
 
             }).on('hidden.bs.modal', function (e) {
-                $("#modal-add-edit-student").find(".modal-content").html("");
                 $(this).removeData('bs.modal');
             });
 
-            //Delete Student------->
-
-            $("#modal-delete-student").on('loaded.bs.modal', function (e) {
+            $("#modal-delete-department").on('loaded.bs.modal', function (e) {
 
                 formDeleteJobTitle = new Global.FormHelper($(this).find("form"), { updateTargetId: "validation-summary" }, function (data) {
                     if (data.isSuccess) {
@@ -228,7 +161,7 @@
                     }
                 });
             }).on('hidden.bs.modal', function (e) {
-                $("#modal-delete-student").find(".modal-content").html("");
+
                 $(this).removeData('bs.modal');
             });
 
@@ -244,3 +177,14 @@
     });
 
 }(jQuery));
+
+
+
+
+
+
+
+
+
+
+

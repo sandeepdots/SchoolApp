@@ -16,6 +16,7 @@ namespace SchoolApp.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
             //Database.SetInitializer<SchoolApp.Models.EmployeeContext>(null);
         }
     }

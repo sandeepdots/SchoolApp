@@ -12,6 +12,8 @@ using System.Web;
 using System.Web.Mvc;
 using SchoolApp.Service.FacultyService;
 
+using SchoolApp.Service.DepartmentServices;
+
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(NinjectWebCommon), "Stop")]
 namespace SchoolApp.Web.App_Start
@@ -49,7 +51,6 @@ namespace SchoolApp.Web.App_Start
             kernel.Bind(typeof(IRepository<>)).To(typeof(Repository<>));
             kernel.Bind<IStudentServices>().To<StudentServices>();
             kernel.Bind<IAttendanceServices>().To<AttendanceServices>();
-            kernel.Bind<IFacultyServices>().To<FacultyServices>();
 
         }
     }

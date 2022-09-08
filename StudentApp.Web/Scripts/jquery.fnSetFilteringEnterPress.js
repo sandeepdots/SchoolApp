@@ -26,17 +26,17 @@ $.fn.dataTableExt.oApi.fnFilterOnReturn = function (oSettings) {
 
 var couter = 0;
 function bindEnterEventInDataTableJSGrid(isManageInterval) {
-    isManageInterval = isManageInterval != null && isManageInterval != undefined && isManageInterval;
-    if ($.fn.DataTable!=undefined && $.fn.DataTable.fnTables() && $.fn.DataTable.fnTables().length > 0) {
-        if (isManageInterval) {
-            clearInterval(_intervalDataTable);
-        }
-        $.each($.fn.DataTable.fnTables(), function (i, v) {
+    //isManageInterval = isManageInterval != null && isManageInterval != undefined && isManageInterval;
+    //if ($.fn.DataTable!=undefined && $.fn.DataTable.fnTables() && $.fn.DataTable.fnTables().length > 0) {
+    //    if (isManageInterval) {
+    //        clearInterval(_intervalDataTable);
+    //    }
+    //    $.each($.fn.DataTable.fnTables(), function (i, v) {
        
-            var _id = $(v).attr('id');
-            $('#' + _id).dataTable().fnFilterOnReturn();
-        });
-    }
+    //        var _id = $(v).attr('id');
+    //        $('#' + _id).dataTable().fnFilterOnReturn();
+    //    });
+    //}
 }
 var _intervalDataTable = setInterval(function () {
     bindEnterEventInDataTableJSGrid(true);

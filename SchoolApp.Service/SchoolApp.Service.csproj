@@ -48,6 +48,8 @@
     <Compile Include="AttendanceService\AttendanceServices.cs" />
     <Compile Include="AttendanceService\IAttendanceServices.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="DepartmentService\DepartmentServices.cs" />
+    <Compile Include="DepartmentService\IDepartmentServices.cs" />
     <Compile Include="FacultyService\FacultyServices.cs" />
     <Compile Include="FacultyService\IFacultyServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
