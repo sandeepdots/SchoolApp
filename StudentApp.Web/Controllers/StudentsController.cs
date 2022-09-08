@@ -8,6 +8,7 @@ using SchoolApp.Service.StudentService;
 using SchoolApp.Web.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -98,8 +99,9 @@ namespace SchoolApp.Web.Controllers
 
         private System.Data.DataTable GetData(DateTime? StartDate, DateTime? EndDate, int? StudentId)
         {
+            string connectionPath= Convert.ToString(ConfigurationManager.ConnectionStrings["SchoolApp"]);
 
-            SqlConnection con = new SqlConnection(@"Data Source=JAGATPALSINGH\SQLEXPRESS2017;Initial Catalog=Random;User ID=IMS;Password=admin123;MultipleActiveResultSets=True;Application Name=EntityFramework");
+            SqlConnection con = new SqlConnection(connectionPath);
             using (SqlCommand cmd = new SqlCommand("Demo1", con))
             {
                 cmd.CommandType = CommandType.StoredProcedure;

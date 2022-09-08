@@ -1,0 +1,64 @@
+﻿@model SchoolApp.Web.Model.DepartmentViewModel
+<div id="adminUpdateLocationModal">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header ">
+            <button type="button" class="close font16" data-dismiss="modal"><i class="fa fa-times"></i></button>
+            Add/Update Department
+            <h4 class="modal-title"><b><span class="UpdateBrand"></span></b></h4>
+        </div>
+        <div class="modal-body">
+            <div class="full-wdth clearfix otp-section">
+                @using (Html.BeginForm("SaveDepartment", "Department", null, FormMethod.Post, new { @class = "form-horizontal", id = "formAddEditDepartment" }))
+                {
+                   
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+                    <input type="hidden" name="DepartementId" id="DepartmentId" value="@Model.DepartmentId" />
+                    <div id="validation-summary"></div>
+                    <div id="adminAddAllergyMessageDiv" class="alert " style="display:none"> </div>
+                    <div class="form-group">
+                        <div class="col-sm-3 label-schedule">@Html.Label("Department Name", "Department Name", new { @class = "main-label requiredasterisk" })</div>
+                        <div class="col-sm-9">
+                            @Html.TextBoxFor(model => model.DepartmentName, null, htmlAttributes: new { @class = "form-control form-control-sm", placeholder = "Department Name", maxlength = "100" })
+                            @Html.ValidationMessageFor(model => model.DepartmentName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-sm-3 label-schedule">@Html.Label("Description", "Description", new { @class = "main-label " })</div>
+                        <div class="col-sm-9">
+                            @Html.TextAreaFor(model => model.DepartmentDescription, 5, 22, htmlAttributes: new { @class = "form-control form-control-sm", placeholder = "Department Description", maxlength = "100" })
+                            @Html.ValidationMessageFor(model => model.DepartmentDescription, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.IsActive)
+                                @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer customMargin">
+                        <button data-dismiss="modal" id="btn-cancel" class="btn btn-default" type="button">Cancel</button>
+                        <button class="btn btn-primary" id="btn-submit" type="submit">
+                            Submit
+                        </button>
+                    </div>
+                }
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+

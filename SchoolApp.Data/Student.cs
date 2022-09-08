@@ -39,5 +39,6 @@ namespace SchoolApp.Data
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Attendance> Attendances { get; set; }
+        public virtual DepartmentMaster DepartmentMaster { get; set; }
     }
 }
