@@ -67,7 +67,7 @@
                         "sortable": true,
                         "searchable": true
                     },
-                  
+
                     {
                         "targets": 10,
                         "searchable": false,
@@ -107,7 +107,7 @@
                 "bServerSide": true,
                 "bAutoWidth": false,
                 "stateSave": false,
-                "sAjaxSource": 'https://localhost:44315/' +"Students/GetStudentData",
+                "sAjaxSource": 'https://localhost:44315/' + "Students/GetStudentData",
                 "fnServerData": function (url, data, callback) {
                     debugger;
                     $.ajax({
@@ -150,7 +150,7 @@
 
 
 
-          
+
 
         }
         function initGridControlsWithEvents() {
@@ -175,12 +175,23 @@
 
             //Add & Edit Student---------->
 
-            $("#modal-add-edit-student").on('loaded.bs.modal', function (e) {  
+            $("#modal-add-edit-student").on('loaded.bs.modal', function (e) {
+                debugger;
                 $attendanceValue = [];
-                formAddEditPresenter = new Global.FormHelper($("#form-Add-Edit-Student"),
-                    { updateTargetId: "validation-summary" }, function onSuccess(result) {
+                formAddEditVendor = new Global.FormHelper($("#form-Add-Edit-Student"), { updateTargetId: "validation-summary" }, function (data) {
+
+                    //console.log(data.isSuccess);
+                    if (data.isSuccess == true) {
+                        $("#validation-summary").html("");
+                        $("#validation-summary").hide();
+                        //  window.location.href = data.redirectUrl;
                         window.location.reload();
-                    });
+                    }
+                    else {
+                        // $("#validation-summary").show();
+                        $("#validation-summary").text(data.data).show().delay(5000).fadeOut(2000);
+                    }
+                });
                 $('.form-checkbox').bootstrapSwitch(
                 );
                 $('.datefield').datepicker({
@@ -191,11 +202,11 @@
 
                 });
 
-                 //Delete Student------->
 
-              
-             
-              
+
+
+
+
 
 
             }).on('hidden.bs.modal', function (e) {
@@ -203,7 +214,7 @@
                 $(this).removeData('bs.modal');
             });
 
-
+            //Delete Student------->
 
             $("#modal-delete-student").on('loaded.bs.modal', function (e) {
 

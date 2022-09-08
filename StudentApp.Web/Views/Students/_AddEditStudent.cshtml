@@ -2,21 +2,18 @@
 @using SchoolApp.Web.Models
 
 <div id="frm-add-edit-student">
-    @using (Html.BeginForm())
+    @Html.Partial("_ModalHeader", new ModalHeader { Heading = String.Format("{0} Student", Convert.ToInt32(@ViewContext.RouteData.Values["id"]) == 0 ? "Add" : "Edit") })
+    @using (Html.BeginForm("AddEditStudent", "Students", FormMethod.Post, htmlAttributes: new { @Id = "form-Add-Edit-Student" }))
     {
-        <div id="validation-summary"></div>
-        @Html.Partial("_ModalHeader", new ModalHeader { Heading = String.Format("{0} Student", Convert.ToInt32(@ViewContext.RouteData.Values["id"]) == 0 ? "Add" : "Edit") })
         @Html.AntiForgeryToken()
-
         <div class="modal-body form-horizontal">
-            
+            <div id="validation-summary"></div>
             @Html.HiddenFor(model => model.StudentId)
-
             <div class="form-group">
                 @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(model => model.Name,null, htmlAttributes: new { @class = "form-control",@data_rule_required=true})
+                    
                 </div>
             </div>
 
@@ -123,5 +120,4 @@
         @Html.Partial("_ModalFooter", new ModalFooter { })
     }
 </div>
-
 
