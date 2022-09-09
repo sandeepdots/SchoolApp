@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolApp.Service.DepartmentService
+namespace SchoolApp.Service.DepartmentServices
 {
     public interface IDepartmentServices
     {

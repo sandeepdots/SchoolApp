@@ -482,6 +482,8 @@
     <Content Include="Views\Faculty\AddEditFaculty.cshtml" />
     <Content Include="Views\Faculty\FacultyIndex.cshtml" />
     <Content Include="Views\Students\_AddEditStudent.cshtml" />
+    <Content Include="Views\Students\DataAnnotationss.cshtml" />
+    <Content Include="Views\Shared\_ValidationSummary.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

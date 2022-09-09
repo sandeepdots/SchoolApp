@@ -51,8 +51,9 @@ namespace SchoolApp.Web.App_Start
             kernel.Bind(typeof(IRepository<>)).To(typeof(Repository<>));
             kernel.Bind<IStudentServices>().To<StudentServices>();
             kernel.Bind<IAttendanceServices>().To<AttendanceServices>();
-            kernel.Bind<IDepartmentServices>().To<DepartmentServices>();
             kernel.Bind<IFacultyServices>().To<FacultyServices>();
+            kernel.Bind<IDepartmentServices>().To<DepartmentServices>();
+
         }
     }
     public class NinjectDependencyResolver : IDependencyResolver
