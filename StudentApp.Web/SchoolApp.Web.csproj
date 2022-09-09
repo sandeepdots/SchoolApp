@@ -118,6 +118,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\SchoolApp.Web.dll" />
+    <Content Include="bin\SchoolApp.Web.pdb" />
     <Content Include="Content\alertify\alertify.css" />
     <Content Include="Content\alertify\alertify.min.css" />
     <Content Include="Content\alertify\alertify.rtl.css" />
@@ -432,6 +434,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\FacultyController.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -481,6 +484,8 @@
     <Content Include="Views\Faculty\AddEditFaculty.cshtml" />
     <Content Include="Views\Faculty\FacultyIndex.cshtml" />
     <Content Include="Views\Students\_AddEditStudent.cshtml" />
+    <Content Include="Views\Shared\_Empty.cshtml" />
+    <Content Include="Views\Shared\_ValidationSummary.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -490,6 +495,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Connected Services\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
