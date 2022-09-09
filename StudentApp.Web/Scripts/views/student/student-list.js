@@ -1,6 +1,5 @@
 ﻿(function ($) {
 
-
     function StudentList() {
         var $this = this;
 

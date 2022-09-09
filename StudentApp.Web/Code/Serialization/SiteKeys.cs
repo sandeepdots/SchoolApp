@@ -10,7 +10,7 @@ namespace SchoolApp.Web.Code.Serialization
     {
         public static string MainDomain
         {
-            get { return ConfigurationManager.AppSettings["MainDomain"]; }
+            get { return ConfigurationManager.AppSettings["Domain"]; }
         }
     }
 }
