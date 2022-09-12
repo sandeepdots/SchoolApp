@@ -437,6 +437,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\FacultyController.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -449,6 +450,7 @@
     <Compile Include="Model\Common\Notification.cs" />
     <Compile Include="Model\DepartmentViewModal.cs" />
     <Compile Include="Model\Faculty\FacultyViewModel.cs" />
+    <Compile Include="Model\RegistrationViewModel.cs" />
     <Compile Include="Model\StudentsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
