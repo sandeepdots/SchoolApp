@@ -372,25 +372,6 @@ namespace SchoolApp.Web.Controllers
             }
         }
 
-
-            [HttpGet]
-            public ActionResult DataAnnotationss()
-            {
-                return View();
-            }
-
-        [HttpPost]
-        public ActionResult DataAnnotationss(StudentsViewModel model)
-        {
-            if (ModelState.IsValid)
-            { //checking model state
-
-                //update student to db
-
-                return RedirectToAction("Index");
-            }
-            return View(model);
-        }
     }
 
 
