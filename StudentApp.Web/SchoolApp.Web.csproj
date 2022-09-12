@@ -1,5 +1,4 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -48,10 +47,10 @@
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure">
@@ -281,6 +280,15 @@
     <Content Include="Content\ionicons.css" />
     <Content Include="Content\jquery.fancybox.min.css" />
     <Content Include="Content\lightbox.min.css" />
+    <Content Include="Content\RegisterLte\adminlte.css" />
+    <Content Include="Content\RegisterLte\adminlte.min.css" />
+    <Content Include="Content\RegisterLte\all.css" />
+    <Content Include="Content\RegisterLte\all.min.css" />
+    <Content Include="Content\RegisterLte\LteJs\additional-methods.min.js" />
+    <Content Include="Content\RegisterLte\LteJs\adminlte.js" />
+    <Content Include="Content\RegisterLte\LteJs\bootstrap.bundle.js" />
+    <Content Include="Content\RegisterLte\LteJs\bootstrap.min.js" />
+    <Content Include="Content\RegisterLte\LteJs\demo.js" />
     <Content Include="Content\responsive.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />
@@ -312,6 +320,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\back.jpg" />
     <Content Include="Images\default-user.png" />
     <Content Include="Scripts\adminlte.js" />
     <Content Include="Scripts\adminlte.min.js" />
@@ -445,7 +454,7 @@
     <Compile Include="Model\Common\Notification.cs" />
     <Compile Include="Model\DepartmentViewModal.cs" />
     <Compile Include="Model\Faculty\FacultyViewModel.cs" />
-    <Compile Include="Model\RegistrationViewModel.cs" />
+    <Compile Include="Model\UserRegister.cs" />
     <Compile Include="Model\StudentsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -478,12 +487,13 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Department\Index.cshtml" />
     <Content Include="Views\Department\_AddEditDepartment.cshtml" />
-    <Content Include="Views\Registration\Registration.cshtml" />
     <Content Include="Views\Faculty\AddEditFaculty.cshtml" />
     <Content Include="Views\Faculty\FacultyIndex.cshtml" />
     <Content Include="Views\Students\_AddEditStudent.cshtml" />
     <Content Include="Views\Students\DataAnnotationss.cshtml" />
     <Content Include="Views\Shared\_ValidationSummary.cshtml" />
+    <Content Include="Views\Shared\_RegisterMaster.cshtml" />
+    <Content Include="Views\Registration\Registration.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -543,14 +553,6 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
-  </Target>
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

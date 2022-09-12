@@ -13,5 +13,7 @@ namespace SchoolApp.Web.Controllers
         {
             return View();
         }
+
+      
     }
 }
