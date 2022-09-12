@@ -12,6 +12,7 @@
         <AssociationConnector Association="SchoolAppModel.FK_Students_Attendance" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolAppModel.FK__FacultyMa__Depar__46E78A0C" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolAppModel.FK__Students__Depart__412EB0B6" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SchoolAppModel.UserRegistration" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

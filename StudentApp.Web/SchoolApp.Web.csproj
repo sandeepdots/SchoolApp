@@ -447,7 +447,6 @@
     <Compile Include="Model\Common\Notification.cs" />
     <Compile Include="Model\DepartmentViewModal.cs" />
     <Compile Include="Model\Faculty\FacultyViewModel.cs" />
-    <Compile Include="Model\RegistrationViewModel.cs" />
     <Compile Include="Model\StudentsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -480,7 +479,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Department\Index.cshtml" />
     <Content Include="Views\Department\_AddEditDepartment.cshtml" />
-    <Content Include="Views\Registration\Registration.cshtml" />
     <Content Include="Views\Faculty\AddEditFaculty.cshtml" />
     <Content Include="Views\Faculty\FacultyIndex.cshtml" />
     <Content Include="Views\Students\_AddEditStudent.cshtml" />
@@ -498,6 +496,7 @@
     <Folder Include="Connected Services\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Home\" />
+    <Folder Include="Views\Registration\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SchoolApp.Core\SchoolApp.Core.csproj">
