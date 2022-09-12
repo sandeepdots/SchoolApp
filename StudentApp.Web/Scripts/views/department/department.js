@@ -72,7 +72,7 @@
                 "bServerSide": true,
                 "bAutoWidth": false,
                 "stateSave": false,
-                "sAjaxSource": 'https://localhost:44315/' +"Department/Index",
+                "sAjaxSource": domain +"Department/Index",
                 "fnServerData": function (url, data, callback) {
                     $.ajax({
                         "url": url,
@@ -138,7 +138,7 @@
         function initializeModalWithForm() {
             $("#modal-add-edit-department").on('loaded.bs.modal', function (e) {
                 $attendanceValue = [];
-                formAddEditDepartment = new Global.FormHelper($("#formAddEditDepartment"),
+                formAddEditDepartment = new Global.FormHelper($(this).find("form"),
                     { updateTargetId: "validation-summary" }, function onSuccess(result) {
                         window.location.reload();
                 });

@@ -370,10 +370,33 @@ namespace SchoolApp.Web.Controllers
             {
                 return NewtonSoftJsonResult(new RequestOutcome<string> { Data = ex.GetBaseException().Message, IsSuccess = false });
             }
+        }
 
+
+            [HttpGet]
+            public ActionResult DataAnnotationss()
+            {
+                return View();
+            }
+
+        [HttpPost]
+        public ActionResult DataAnnotationss(StudentsViewModel model)
+        {
+            if (ModelState.IsValid)
+            { //checking model state
+
+                //update student to db
+
+                return RedirectToAction("Index");
+            }
+            return View(model);
         }
     }
+
+
+
 }
+    
 
     
    

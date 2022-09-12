@@ -2,7 +2,7 @@
 @using SchoolApp.Web.Models
 
 <div id="frm-add-edit-faculty">
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("AddEditFaculty", "Faculty", FormMethod.Post, htmlAttributes: new { @Id = "form-Add-Edit-Faculty" }))
     {
         @Html.Partial("_ModalHeader", new ModalHeader { Heading = String.Format("{0} Faculty", Convert.ToInt32(@ViewContext.RouteData.Values["id"]) == 0 ? "Add" : "Edit") })
        

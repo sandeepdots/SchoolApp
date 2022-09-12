@@ -5,7 +5,7 @@
         var $this = this;
 
         function initializeGrid() {
-
+            
             var gridPresenter = new Global.GridHelper('#grid-faculty-management', {
                 "columnDefs": [
                     {
@@ -108,10 +108,10 @@
                 "bServerSide": true,
                 "bAutoWidth": false,
                 "stateSave": false,
-                "sAjaxSource": domain + "Faculty/FacultyIndex",      //change By sandep
+                "sAjaxSource": domain + "Faculty/FacultyIndex",   //some changes here //
 
                 "fnServerData": function (url, data, callback) {
-                    debugger;
+                    
                     $.ajax({
                         "url": url,
                         "data": data,
