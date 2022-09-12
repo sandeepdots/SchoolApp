@@ -61,6 +61,8 @@
     <Compile Include="FacultyService\FacultyServices.cs" />
     <Compile Include="FacultyService\IFacultyServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistrationService\IRegistrationServices.cs" />
+    <Compile Include="RegistrationService\RegistrationServices.cs" />
     <Compile Include="StudentService\IStudentServices.cs" />
     <Compile Include="StudentService\StudentServices.cs" />
   </ItemGroup>

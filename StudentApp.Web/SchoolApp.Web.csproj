@@ -118,6 +118,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\SchoolApp.Web.dll" />
+    <Content Include="bin\SchoolApp.Web.pdb" />
     <Content Include="Content\alertify\alertify.css" />
     <Content Include="Content\alertify\alertify.min.css" />
     <Content Include="Content\alertify\alertify.rtl.css" />
@@ -447,7 +449,6 @@
     <Compile Include="Model\Common\Notification.cs" />
     <Compile Include="Model\DepartmentViewModal.cs" />
     <Compile Include="Model\Faculty\FacultyViewModel.cs" />
-    <Compile Include="Model\RegistrationViewModel.cs" />
     <Compile Include="Model\StudentsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -494,8 +495,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Connected Services\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Home\" />
+    <Folder Include="Views\Registration\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SchoolApp.Core\SchoolApp.Core.csproj">
