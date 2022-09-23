@@ -493,6 +493,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Model\AddAttendance.cs" />
+    <Compile Include="Model\ClassMasterViewmodel.cs" />
     <Compile Include="Model\FacultyAllocationModel.cs" />
     <Compile Include="Model\AttendanceViewModel.cs" />
     <Compile Include="Model\ForgotPasswordViewModel.cs" />
@@ -505,7 +506,6 @@
     <Compile Include="Model\Common\Notification.cs" />
     <Compile Include="Model\DepartmentViewModal.cs" />
     <Compile Include="Model\Faculty\FacultyViewModel.cs" />
-    <Compile Include="Model\UserRegister.cs" />
     <Compile Include="Model\StudentsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validation\AddEditFulentValidation.cs" />
@@ -557,8 +557,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="bin\" />
-    <Folder Include="Connected Services\" />
-    <Folder Include="Content\RegisterLte\LteJs\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
