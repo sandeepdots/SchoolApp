@@ -12,28 +12,18 @@ namespace SchoolApp.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class FacultyMaster
+    public partial class SubjectMaster
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public FacultyMaster()
+        public SubjectMaster()
         {
             this.FacultyClassAllocations = new HashSet<FacultyClassAllocation>();
         }
     
-        public int FacultyId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public string Address { get; set; }
-        public decimal Salary { get; set; }
-        public System.DateTime DOJ { get; set; }
-        public Nullable<bool> active { get; set; }
-        public Nullable<int> DepartmentId { get; set; }
-        public Nullable<System.Guid> Faculty_ID { get; set; }
-        public string Password { get; set; }
+        public int SubjectId { get; set; }
+        public string Subject { get; set; }
+        public bool IsActive { get; set; }
     
-        public virtual DepartmentMaster DepartmentMaster { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FacultyClassAllocation> FacultyClassAllocations { get; set; }
     }

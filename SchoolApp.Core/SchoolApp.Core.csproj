@@ -101,6 +101,7 @@
     <Compile Include="PasswordEncryptHelper.cs" />
     <Compile Include="PasswordEncryption.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubjectsEnum.cs" />
     <Compile Include="UserEnum.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,29 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace SchoolApp.Web.Model
 {
+   
     public class RegistrationViewModel
     {
-        public RegistrationViewModel()
-        {
-            RoleList = new List<SelectListItem>();
-        }
-        public Guid? UserId { get; set; }
+       [Required(ErrorMessage = "FirstName is required.")]
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string EmailId { get; set; }
         public string Password { get; set; }
-        public string ConfirmPassword { get; set; }
-        public string SaltKey { get; set; }
-        public int? RoleId { get; set; }
-        public List<SelectListItem> RoleList { get; set; }
-        public System.DateTime CreatedDate { get; set; }
-        public Nullable<System.DateTime> Updatedon { get; set; }
-        public bool IsActive { get; set; }
-        public bool IsDeleted { get; set; }
+        [Required(ErrorMessage = "Retypepassword is required.")]
+        public string Retypepassword { get; set; }
+
     }
 }

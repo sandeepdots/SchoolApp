@@ -67,10 +67,10 @@ namespace SchoolApp.Service.RegistrationService
             {
                 return _repoUserRegistration.Query().Get().ToList();
             }
-        public Guid GetUserIdByEmail(string emailId)
-        {
-            return _repoUserRegistration.Query().Filter(x => x.EmailId == emailId).Get().Select(x => x.UserId).FirstOrDefault();
-        }
+            public int GetUserIdByEmail(string emailId)
+            {
+                return _repoUserRegistration.Query().Filter(x => x.EmailId == emailId).Get().FirstOrDefault().UserId;
+            }
 
     }
     }

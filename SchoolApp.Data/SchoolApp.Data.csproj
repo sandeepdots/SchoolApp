@@ -79,7 +79,13 @@
     <Compile Include="Attendance.cs">
       <DependentUpon>SchoolModal.tt</DependentUpon>
     </Compile>
+    <Compile Include="ClassMaster.cs">
+      <DependentUpon>SchoolModal.tt</DependentUpon>
+    </Compile>
     <Compile Include="DepartmentMaster.cs">
+      <DependentUpon>SchoolModal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FacultyClassAllocation.cs">
       <DependentUpon>SchoolModal.tt</DependentUpon>
     </Compile>
     <Compile Include="FacultyMaster.cs">
@@ -104,12 +110,16 @@
     <Compile Include="Student.cs">
       <DependentUpon>SchoolModal.tt</DependentUpon>
     </Compile>
+    <Compile Include="SubjectMaster.cs">
+      <DependentUpon>SchoolModal.tt</DependentUpon>
+    </Compile>
     <Compile Include="UserRegistration.cs">
       <DependentUpon>SchoolModal.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <EntityDeploy Include="SchoolModal.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

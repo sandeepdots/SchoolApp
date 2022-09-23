@@ -12,7 +12,6 @@ using System.Web;
 using System.Web.Mvc;
 using SchoolApp.Service.FacultyService;
 using SchoolApp.Service.DepartmentServices;
-using SchoolApp.Service.RegistrationService;
 
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectWebCommon), "Start")]
@@ -54,7 +53,6 @@ namespace SchoolApp.Web.App_Start
             kernel.Bind<IAttendanceServices>().To<AttendanceServices>();
             kernel.Bind<IFacultyServices>().To<FacultyServices>();
             kernel.Bind<IDepartmentServices>().To<DepartmentServices>();
-            kernel.Bind<IRegistrationServices>().To<RegistrationServices>();
 
         }
         //private static void ValidationConfiguration(IKernel kernel)

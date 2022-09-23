@@ -1,12 +1,13 @@
 ﻿(function ($) {
 
 
-    function FacultyList() {
+    function ClassList() {
         var $this = this;
 
         function initializeGrid() {
-            
-            var gridPresenter = new Global.GridHelper('#grid-faculty-management', {
+       
+
+            var gridPresenter = new Global.GridHelper('#grid-subjectmaster-management', {
                 "columnDefs": [
                     {
                         "targets": [0],
@@ -27,48 +28,13 @@
                     },
                     {
                         "targets": [3],
-                        "visible": true,
-                        "sortable": false,
-                        "searchable": false
-                    },
-                    {
-                        "targets": [4],
-                        "visible": true,
-                        "sortable": false,
-                        "searchable": false
-                    },
-                    {
-                        "targets": [5],
-                        "visible": true,
-                        "sortable": true,
-                        "searchable": true
-                    },
-                    {
-                        "targets": [6],
-                        "visible": true,
-                        "sortable": true,
-                        "searchable": true
-                    },
-                    {
-                        "targets": [7],
-                        "visible": true,
-                        "sortable": true,
-                        "searchable": true
-                    },
-                    {
-                        "targets": [8],
-                        "visible": true,
-                        "sortable": true,
-                        "searchable": true
-                    },
-                    {
-                        "targets": [9],
                         "sortable": true,
                         "searchable": false,
                         "data": "9",
                         "render": function (data, type, row, meta) {
-                        
+                          
                             var json = {
+                            
                                 type: "checkbox",
                                 class: "switchBox switch-medium",
                                 value: row[0],
@@ -76,25 +42,27 @@
                                 'data-off': "danger"
                             };
 
-                            if (data == "True") {
+                            if (data == "Active") {
                                 json.checked = true;
                             }
                             return $('<input/>', json).get(0).outerHTML;
                         }
                     },
 
+
+
                     {
-                        "targets": 10,
+                        "targets": [4],
                         "searchable": false,
                         "sortable": false,
                         "data": "0",
                         "render": function (data, type, row, meta) {
                             var actionLink = $("<a/>", {
-                                href: domain + "/Faculty/AddEditFaculty/" + row[0],
+                                href: domain + "SubjectClass/AddEditSubject/" + row[0],
                                 id: "editPresenterModal",
                                 class: "btn btn-primary btn-sm",
                                 'data-toggle': "modal",
-                                'data-target': "#modal-add-edit-faculty",
+                                'data-target': "#modal-add-edit-subjectmaster",
                                 html: $("<i/>", {
                                     class: "fa fa-pencil"
                                 }),
@@ -102,24 +70,15 @@
 
 
                             actionLink += $("<a/>", {
-                                href: domain + "/Faculty/DeleteFaculty/" + row[0],
-                                id: "deletePresenter",
+                                href: domain + "SubjectClass/DeleteSubjectMaster/" + row[0],
+                                id: "deleteSubjectMaster",
                                 class: "btn btn-danger btn-sm",
                                 'data-toggle': "modal",
-                                'data-target': "#modal-delete-faculty",
+                                'data-target': "#modal-delete-subjectmaster",
                                 html: $("<i/>", {
                                     class: "fa fa-trash-o"
                                 }),
                             }).append(" Delete").get(0).outerHTML + "&nbsp;"
-                            actionLink += $("<a/>", {
-                                href: domain + "/FacultyAllocation/GetFacultyDasboard/" + row[0],
-                                id: "deletePresenter",
-                                class: "btn btn-primary btn-sm",
-                                
-                                html: $("<i/>", {
-                                    class: "fa fa-trash-o"
-                                }),
-                            }).append(" Dasboard").get(0).outerHTML + "&nbsp;"
 
                             return actionLink;
                         }
@@ -132,10 +91,8 @@
                 "bServerSide": true,
                 "bAutoWidth": false,
                 "stateSave": false,
-                "sAjaxSource": domain + "Faculty/FacultyIndex",   //some changes here //
-
+                "sAjaxSource": domain + "SubjectClass/Index",
                 "fnServerData": function (url, data, callback) {
-                    
                     $.ajax({
                         "url": url,
                         "data": data,
@@ -189,70 +146,64 @@
                 .on('switchChange.bootstrapSwitch', function () {
                     var switchElement = this;
 
-                    $.post(domain + 'Admin/Brand/UpdateStatus', { brandId: this.value },
-                        function (result) {
-                            alertify.dismissAll();
-                            alertify.success(result.message)
-                        })
+                //    $.post(domain + 'Admin/Brand/UpdateStatus', { brandId: this.value },
+                //        function (result) {
+                //            alertify.dismissAll();
+                //            alertify.success(result.message)
+                //        })
                 });
         }
-        ///chh
 
         function initializeModalWithForm() {
-            $("#modal-add-edit-faculty").on('loaded.bs.modal', function (e) {
-
-
+            $("#modal-add-edit-subjectmaster").on('loaded.bs.modal', function (e) {
                 $attendanceValue = [];
-                
-                formAddEditPresenter = new Global.FormHelper($("#form-Add-Edit-Faculty"),
+                formAddEditSubjectMaster = new Global.FormHelper($(this).find("form"),
                     { updateTargetId: "validation-summary" }, function onSuccess(result) {
                         window.location.reload();
                     });
-                $('.form-checkbox').bootstrapSwitch();
-                $('.datefield').datepicker({
-                    dateFormat: 'yy-mm-dd',
-                    autoclose: true,
-                    changeMonth: true,
-                    changeYear:true,
-                    minDate: new Date()
-                }).on('change', function (e) {
 
+                $('.form-checkbox').bootstrapSwitch();
+
+            }).on('hidden.bs.modal', function (e) {
+                $(this).removeData('bs.modal');
+            });
+            
+            $("#modal-delete-subjectmaster").on('loaded.bs.modal', function (e) {
+
+                formDeleteJobTitle = new Global.FormHelper($(this).find("form"), { updateTargetId: "validation-summary" }, function (data) {
+                    if (data.isSuccess) {
+
+                        window.location.reload();
+                    }
+                    else {
+
+                    }
                 });
             }).on('hidden.bs.modal', function (e) {
-                $("#modal-add-edit-faculty").find(".modal-content").html("");
+
                 $(this).removeData('bs.modal');
             });
-
-
-            $("#modal-delete-faculty").on('loaded.bs.modal', function (e) {
-
-                $attendanceValue = [];
-                formDeleteFaculty = new Global.FormHelper($("#formDeleteFaculty"),
-                    { updateTargetId: "validation-summary" }, function onSuccess(result) {
-                        window.location.reload();
-                    });
-
-            }).on('hidden.bs.modal', function (e) {
-                $("#modal-delete-faculty").find(".modal-content").html("");
-                $(this).removeData('bs.modal');
-            });
-
 
         }
-
-  
         $this.init = function () {
             initializeGrid();
             initializeModalWithForm();
         };
     }
-
- 
     $(function () {
-        var self = new FacultyList();
+        var self = new ClassList();
         self.init();
     });
 
-    
-
 }(jQuery));
+
+
+
+
+
+
+
+
+
+
+
