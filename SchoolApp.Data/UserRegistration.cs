@@ -14,16 +14,17 @@ namespace SchoolApp.Data
     
     public partial class UserRegistration
     {
-        public int UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string EmailId { get; set; }
         public string Password { get; set; }
         public string SaltKey { get; set; }
-        public int RoleId { get; set; }
+        public Nullable<int> RoleId { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public Nullable<System.DateTime> Updatedon { get; set; }
         public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }
+        public System.Guid UserId { get; set; }
+        public string UserName { get; set; }
     }
 }

@@ -195,7 +195,7 @@ namespace SchoolApp.Repo
 
             if (includeProperties != null)
                 includeProperties.ForEach(i => { query = query.Include(i); });
-
+            
             if (filter != null)
                 query = query.Where(filter);
 

@@ -35,7 +35,7 @@ namespace SchoolApp.Service.RegistrationService
                 return user;
             }
 
-            public UserRegistration GetUserRegisterbyId(int Id)
+            public UserRegistration GetUserRegisterbyId(Guid Id)
             {
                 return _repoUserRegistration.FindById(Id);
             }
@@ -53,12 +53,12 @@ namespace SchoolApp.Service.RegistrationService
                 return _repoUserRegistration.Query().Filter(x => x.EmailId == email).Get().FirstOrDefault();
             }
 
-            public List<UserRegistration> GetAllUser(int Id)
+            public List<UserRegistration> GetAllUser(Guid Id)
             {
-                return _repoUserRegistration.Query().Filter(x => x.UserId != Id).Get().ToList();
+            return _repoUserRegistration.Query().Filter(x => x.UserId != Id).Get().ToList();
             }
 
-            public string GetUserName(int Id)
+            public string GetUserName(Guid Id)
             {
                 return _repoUserRegistration.Query().Filter(x => x.UserId == Id).Get().FirstOrDefault().FirstName;
             }
@@ -67,12 +67,12 @@ namespace SchoolApp.Service.RegistrationService
             {
                 return _repoUserRegistration.Query().Get().ToList();
             }
-            public int GetUserIdByEmail(string emailId)
-            {
-                return _repoUserRegistration.Query().Filter(x => x.EmailId == emailId).Get().FirstOrDefault().UserId;
-            }
-
+        public Guid GetUserIdByEmail(string emailId)
+        {
+            return _repoUserRegistration.Query().Filter(x => x.EmailId == emailId).Get().Select(x => x.UserId).FirstOrDefault();
         }
+
+    }
     }
 
 

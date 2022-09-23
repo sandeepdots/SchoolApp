@@ -11,8 +11,9 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
 using SchoolApp.Service.FacultyService;
-
 using SchoolApp.Service.DepartmentServices;
+using SchoolApp.Service.RegistrationService;
+
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(NinjectWebCommon), "Stop")]
@@ -53,8 +54,15 @@ namespace SchoolApp.Web.App_Start
             kernel.Bind<IAttendanceServices>().To<AttendanceServices>();
             kernel.Bind<IFacultyServices>().To<FacultyServices>();
             kernel.Bind<IDepartmentServices>().To<DepartmentServices>();
+            kernel.Bind<IRegistrationServices>().To<RegistrationServices>();
 
         }
+        //private static void ValidationConfiguration(IKernel kernel)
+        //{
+        //    ValidatorFactory validatorFactory = new ValidatorFactory();
+        //    FluentValidationModelValidatorProvider.Configure(x => x.ValidatorFactory = validatorFactory);
+        //    DataAnnotationsModelValidatorProvider.AddImplicitRequiredAttributeForValueTypes = false;
+        //}
     }
     public class NinjectDependencyResolver : IDependencyResolver
     {

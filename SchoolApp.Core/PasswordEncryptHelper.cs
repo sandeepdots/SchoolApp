@@ -88,5 +88,7 @@ namespace SchoolApp.Core
                 throw new Exception("Error in base64Decode" + ex.Message);
             }
         }
+
+
     }
 }

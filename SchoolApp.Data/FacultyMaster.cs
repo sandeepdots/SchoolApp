@@ -24,6 +24,8 @@ namespace SchoolApp.Data
         public System.DateTime DOJ { get; set; }
         public Nullable<bool> active { get; set; }
         public Nullable<int> DepartmentId { get; set; }
+        public Nullable<System.Guid> Faculty_ID { get; set; }
+        public string Password { get; set; }
     
         public virtual DepartmentMaster DepartmentMaster { get; set; }
     }

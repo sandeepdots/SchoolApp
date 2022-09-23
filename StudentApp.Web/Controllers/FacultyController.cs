@@ -29,27 +29,6 @@ namespace SchoolApp.Web.Controllers
           
         }
 
-
-
-        private System.Data.DataTable GetData(DateTime? StartDate, DateTime? EndDate, int? StudentId)
-        {
-
-            SqlConnection con = new SqlConnection("Data Source=ds252.projectstatus.co.uk;initial catalog=SchoolApp;User ID=schoolapp;Password=schoolapp@909");
-            using (SqlCommand cmd = new SqlCommand("FacultyMaster", con))
-            {
-                //cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@StartDate", StartDate);
-                cmd.Parameters.AddWithValue("@EndDate", EndDate);
-                cmd.Parameters.AddWithValue("@StudentId", StudentId);
-                con.Open();
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                System.Data.DataTable dt = new System.Data.DataTable();
-                da.Fill(dt);
-                con.Close();
-                return dt;
-            }
-        }
-       
         
         // GET: FacultyMaster
         [HttpGet]

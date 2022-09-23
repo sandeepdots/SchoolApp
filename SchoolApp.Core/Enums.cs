@@ -18,7 +18,7 @@ namespace SchoolApp.Core
         Networking = 6
     }
 
-    public enum UserRoles
+    public enum UserRoles : int
     {
         [Description("Admin")]
         Admin = 1,
@@ -27,7 +27,7 @@ namespace SchoolApp.Core
         Manager = 2,
 
         [Description("Teacher")]
-        Teacher = 3,
+        Faculty = 3,
         [Description("Student")]
         Student = 4,
 

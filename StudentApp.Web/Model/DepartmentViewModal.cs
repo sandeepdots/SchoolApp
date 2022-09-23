@@ -18,6 +18,7 @@ namespace SchoolApp.Web.Model
         public System.DateTime UpdateOn { get; set; }
         [Required(ErrorMessage = "IsActive is required.")]
         public bool IsActive { get; set; }
+        
 
 
     }
