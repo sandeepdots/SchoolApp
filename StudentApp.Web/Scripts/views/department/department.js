@@ -25,13 +25,15 @@
                         "sortable": true,
                         "searchable": true
                     },
+                 
                     {
                         "targets": [3],
                         "visible": true,
                         "sortable": true,
                         "searchable": true
                     },
-                  
+                 
+                 
                     {
                         "targets": 4,
                         "searchable": false,
@@ -137,6 +139,7 @@
 
         function initializeModalWithForm() {
             $("#modal-add-edit-department").on('loaded.bs.modal', function (e) {
+                $('.form-checkbox').bootstrapSwitch(),
                 $attendanceValue = [];
                 formAddEditDepartment = new Global.FormHelper($(this).find("form"),
                     { updateTargetId: "validation-summary" }, function onSuccess(result) {
@@ -150,7 +153,7 @@
             });
 
             $("#modal-delete-department").on('loaded.bs.modal', function (e) {
-
+            
                 formDeleteJobTitle = new Global.FormHelper($(this).find("form"), { updateTargetId: "validation-summary" }, function (data) {
                     if (data.isSuccess) {
                         alert(data.data);

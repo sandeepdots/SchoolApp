@@ -13,14 +13,14 @@ namespace SchoolApp.Service.FacultyService
     {
 
         List<FacultyMaster> GetFaculty();
-        FacultyMaster SaveFaculty(FacultyMaster employee);
+        FacultyMaster SaveFaculty(FacultyMaster facultyMaster);
         bool DeleteFaculty(int id);
         FacultyMaster FindById(int id);
         FacultyMaster GetFacultyPresenter(int id);
         PagedListResult<FacultyMaster> GetFacultyList(SearchQuery<FacultyMaster> query, out int totalItems);
 
-        FacultyMaster SaveFacultyPresenter(FacultyMaster student);
-        FacultyMaster UpdateFacultyPresenter(FacultyMaster student);
+        FacultyMaster SaveFacultyPresenter(FacultyMaster facultyMaster);
+        FacultyMaster UpdateFacultyPresenter(FacultyMaster facultyMaster);
         int DeleteFacultyPresenter(int id);
       
     }

@@ -7,73 +7,84 @@ using System.Linq;
 
 namespace SchoolApp.Service.RegistrationService
 {
-    
-        public class RegistrationServices : IRegistrationServices
+
+    public class RegistrationServices : IRegistrationServices
     {
 
-            private readonly IRepository<UserRegistration> _repoUserRegistration;
+        private readonly IRepository<UserRegistration> _repoUserRegistration;
 
-            public RegistrationServices(IRepository<UserRegistration> repoUserRegistration)
-            {
+        public RegistrationServices(IRepository<UserRegistration> repoUserRegistration)
+        {
             _repoUserRegistration = repoUserRegistration;
-            }
+        }
 
-            public bool GetUser(string email, string password)
-            {
-                var db = _repoUserRegistration.Query().Filter(x => x.EmailId == email && x.Password == password).Get().Any();
-                return db;
-            }
+        public bool GetUser(string email, string password)
+        {
+            var db = _repoUserRegistration.Query().Filter(x => x.EmailId == email && x.Password == password).Get().Any();
+            return db;
+        }
 
-            public bool isuserexist(string email)
-            {
-                var db = _repoUserRegistration.Query().Filter(x => x.EmailId == email).Get().Any();
-                return db;
-            }
-            public UserRegistration SavePresenter(UserRegistration user)
-            {
+        public bool isuserexist(string email)
+        {
+            var db = _repoUserRegistration.Query().Filter(x => x.EmailId == email).Get().Any();
+            return db;
+        }
+        public UserRegistration SavePresenter(UserRegistration user)
+        {
             _repoUserRegistration.Insert(user);
-                return user;
-            }
+            return user;
+        }
 
-            public UserRegistration GetUserRegisterbyId(int Id)
-            {
-                return _repoUserRegistration.FindById(Id);
-            }
+        public UserRegistration GetUserRegisterbyId(int Id)
+        {
+            return _repoUserRegistration.FindById(Id);
+        }
 
-            public UserRegistration UpdateuserRegister(UserRegistration userRegister)
-            {
+        public UserRegistration UpdateuserRegister(UserRegistration userRegister)
+        {
 
             _repoUserRegistration.Update(userRegister);
-                return userRegister;
-
-            }
-
-            public UserRegistration GetUserRegisterRole(string email)
-            {
-                return _repoUserRegistration.Query().Filter(x => x.EmailId == email).Get().FirstOrDefault();
-            }
-
-            public List<UserRegistration> GetAllUser(int Id)
-            {
-                return _repoUserRegistration.Query().Filter(x => x.UserId != Id).Get().ToList();
-            }
-
-            public string GetUserName(int Id)
-            {
-                return _repoUserRegistration.Query().Filter(x => x.UserId == Id).Get().FirstOrDefault().FirstName;
-            }
-
-            public List<UserRegistration> GetSenderName()
-            {
-                return _repoUserRegistration.Query().Get().ToList();
-            }
-            public int GetUserIdByEmail(string emailId)
-            {
-                return _repoUserRegistration.Query().Filter(x => x.EmailId == emailId).Get().FirstOrDefault().UserId;
-            }
+            return userRegister;
 
         }
+
+        public UserRegistration GetUserRegisterRole(string email)
+        {
+            return _repoUserRegistration.Query().Filter(x => x.EmailId == email).Get().FirstOrDefault();
+        }
+
+        public List<UserRegistration> GetAllUser(Guid Id)
+        {
+            return _repoUserRegistration.Query().Filter(x => x.UserId != Id).Get().ToList();
+        }
+
+        public string GetUserName(Guid Id)
+        {
+            return _repoUserRegistration.Query().Filter(x => x.UserId == Id).Get().FirstOrDefault().FirstName;
+        }
+
+        public List<UserRegistration> GetSenderName()
+        {
+            return _repoUserRegistration.Query().Get().ToList();
+        }
+        public Guid GetUserIdByEmail(string emailId)
+        {
+            return _repoUserRegistration.Query().Filter(x => x.EmailId == emailId).Get().Select(x => x.UserId).FirstOrDefault();
+        }
+
+
+        public UserRegistration GetRegistrationDetails(int id)
+        {
+            return _repoUserRegistration.FindById(id);
+        }
+
+        public bool CheckDuplicateEmail(string email)
+        {
+            return _repoUserRegistration.Query().Filter(x => x.EmailId.Contains(email)).Get().Any();
+        }
+
     }
+}
 
 
 

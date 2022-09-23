@@ -88,5 +88,17 @@ namespace SchoolApp.Core
                 throw new Exception("Error in base64Decode" + ex.Message);
             }
         }
+        public static string CreateSaltKey(int size = 32)
+        {
+            //generate a cryptographic random number
+            using (var provider = new RNGCryptoServiceProvider())
+            {
+                var buff = new byte[size];
+                provider.GetBytes(buff);
+
+                // Return a Base64 string representation of the random number
+                return Convert.ToBase64String(buff);
+            }
+        }
     }
 }

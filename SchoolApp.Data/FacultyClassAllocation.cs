@@ -12,19 +12,19 @@ namespace SchoolApp.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class UserRegistration
+    public partial class FacultyClassAllocation
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string EmailId { get; set; }
-        public string Password { get; set; }
-        public string SaltKey { get; set; }
-        public int RoleId { get; set; }
+        public int FacultyAllocationId { get; set; }
+        public Nullable<int> FacultyId { get; set; }
+        public Nullable<int> ClassId { get; set; }
+        public Nullable<int> SubjectId { get; set; }
+        public System.TimeSpan Class_Start_Time { get; set; }
+        public System.TimeSpan Class_End_Time { get; set; }
         public System.DateTime CreatedDate { get; set; }
-        public Nullable<System.DateTime> Updatedon { get; set; }
         public bool IsActive { get; set; }
-        public bool IsDeleted { get; set; }
-        public System.Guid UserId { get; set; }
-        public string UserName { get; set; }
+    
+        public virtual ClassMaster ClassMaster { get; set; }
+        public virtual FacultyMaster FacultyMaster { get; set; }
+        public virtual SubjectMaster SubjectMaster { get; set; }
     }
 }

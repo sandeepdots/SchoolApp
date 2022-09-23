@@ -13,6 +13,8 @@ using System.Web.Mvc;
 using SchoolApp.Service.FacultyService;
 
 using SchoolApp.Service.DepartmentServices;
+using SchoolApp.Service.RegistrationService;
+using SchoolApp.Service.ClassMasterServices;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(NinjectWebCommon), "Stop")]
@@ -53,6 +55,8 @@ namespace SchoolApp.Web.App_Start
             kernel.Bind<IAttendanceServices>().To<AttendanceServices>();
             kernel.Bind<IFacultyServices>().To<FacultyServices>();
             kernel.Bind<IDepartmentServices>().To<DepartmentServices>();
+            kernel.Bind<IRegistrationServices>().To<RegistrationServices>();
+            kernel.Bind<IClassMasterService>().To<ClassMasterService>();
 
         }
     }
