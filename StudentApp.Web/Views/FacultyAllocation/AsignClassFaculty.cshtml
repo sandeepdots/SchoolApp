@@ -1,0 +1,105 @@
+﻿@model SchoolApp.Web.Model.FacultyAllocationModel
+
+@using SchoolApp.Web.Models
+
+
+@section Styles{
+    <link href="~/Content/css/bootstrap-switch.css" rel="stylesheet" />
+
+    <link href="~/Content/timepicker/jquery.timepicker.min.css" rel="stylesheet" />
+
+    }
+
+<div id="adminUpdateLocationModal">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header ">
+            <button type="button" class="close font16" data-dismiss="modal"><i class="fa fa-times"></i></button>
+            Add Class Faculty
+            <h4 class="modal-title"><b><span class="UpdateBrand"></span></b></h4>
+        </div>
+        <div class="modal-body">
+           
+                <div class="full-wdth clearfix otp-section">
+                    @using (Html.BeginForm("SaveFacultyAllocation", "FacultyAllocation", null, FormMethod.Post, new { @class = "form-horizontal", id = "formAddEditAllocation" }))
+                    {
+
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+
+
+                        @Html.HiddenFor(model => model.FacultyAllocationId);
+                        <div id="validation-summary"></div>
+                        <div id="adminAddAllergyMessageDiv" class="alert " style="display:none"> </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.Label("Class", "Faculty Name", new { @class = "main-label requiredasterisk" })
+                                @Html.DropDownListFor(x => x.FacultyId, Model.FacultyList, "Choose Faculty", new { @class = "form-control", id = "facultyListId" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.Label("Class", "Subject", new { @class = "main-label requiredasterisk" })
+                                @Html.DropDownListFor(x => x.SubjectId, Model.SubjectList, "Choose Subject", new { @class = "form-control", id = "ClassListId" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.Label("Class", "Class", new { @class = "main-label requiredasterisk" })
+                                @Html.DropDownListFor(x => x.ClassId, Model.ClassList, "Choose Class", new { @class = "form-control", id = "SubjectListId" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.Label("Class", "Class Start Time", new { @class = "main-label requiredasterisk" })
+                                @*@Html.DropDownListFor(x => x.SelectedStartValue, Model.Values, "Choose Class Start Time", new { @class = "form-control", id = "starttime" })*@
+
+
+
+                                @Html.TextBoxFor(x => x.Class_Start_Time, null, htmlAttributes: new { @type = "time", @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.Label("Class", "Class End Time", new { @class = "main-label requiredasterisk" })
+
+
+                                @*@Html.DropDownListFor(x => x.SelectedEndValue, Model.period, "Choose Class End Time", new { @class = "form-control", id = "endtime" })*@
+                                @Html.TextBoxFor(x => x.Class_End_Time, null, htmlAttributes: new { @id = "timefield ", @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <div class="checkbox">
+                                    @Html.CheckBoxFor(model => model.IsActive, new { @class = "form-checkbox" })
+                                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer customMargin">
+                            <button data-dismiss="modal" id="btn-cancel" class="btn btn-default" type="button">Cancel</button>
+                            <button class="btn btn-primary" id="btn-submit" type="submit">
+                                Submit
+                            </button>
+                        </div>
+                    }
+
+                </div>
+       
+        
+        
+        </div>
+
+    </div>
+</div>
+@*<script>
+    
+
+ 
+</script>
+<script src="~/Content/timepicker/timepicker.js"></script>*@

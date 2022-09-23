@@ -15,6 +15,14 @@
           <Property Name="SessionFirst" Type="varchar" MaxLength="50" />
           <Property Name="SessionSecond" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="ClassMaster">
+          <Key>
+            <PropertyRef Name="ClassId" />
+          </Key>
+          <Property Name="ClassId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Class" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="DepartmentMaster">
           <Key>
             <PropertyRef Name="DepartmentId" />
@@ -24,6 +32,19 @@
           <Property Name="DepartmentDescription" Type="nvarchar" MaxLength="225" />
           <Property Name="UpdateOn" Type="datetime" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FacultyClassAllocation">
+          <Key>
+            <PropertyRef Name="FacultyAllocationId" />
+          </Key>
+          <Property Name="FacultyAllocationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FacultyId" Type="int" />
+          <Property Name="ClassId" Type="int" />
+          <Property Name="SubjectId" Type="int" />
+          <Property Name="Class_Start_Time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Class_End_Time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="FacultyMaster">
@@ -40,6 +61,8 @@
           <Property Name="DOJ" Type="date" Nullable="false" />
           <Property Name="active" Type="bit" />
           <Property Name="DepartmentId" Type="int" />
+          <Property Name="Faculty_ID" Type="uniqueidentifier" />
+          <Property Name="Password" Type="nvarchar" MaxLength="150" />
         </EntityType>
         <EntityType Name="Students">
           <Key>
@@ -61,12 +84,21 @@
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="RollNo" Type="uniqueidentifier" />
+          <Property Name="Password" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="SubjectMaster">
+          <Key>
+            <PropertyRef Name="SubjectId" />
+          </Key>
+          <Property Name="SubjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="UserRegistration">
           <Key>
             <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="EmailId" Type="nvarchar" MaxLength="500" Nullable="false" />
@@ -77,7 +109,45 @@
           <Property Name="Updatedon" Type="datetime" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="255" />
         </EntityType>
+        <Association Name="FK__FacultyCl__Class__6FE99F9F">
+          <End Role="ClassMaster" Type="Self.ClassMaster" Multiplicity="0..1" />
+          <End Role="FacultyClassAllocation" Type="Self.FacultyClassAllocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassMaster">
+              <PropertyRef Name="ClassId" />
+            </Principal>
+            <Dependent Role="FacultyClassAllocation">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FacultyCl__Facul__6EF57B66">
+          <End Role="FacultyMaster" Type="Self.FacultyMaster" Multiplicity="0..1" />
+          <End Role="FacultyClassAllocation" Type="Self.FacultyClassAllocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FacultyMaster">
+              <PropertyRef Name="FacultyId" />
+            </Principal>
+            <Dependent Role="FacultyClassAllocation">
+              <PropertyRef Name="FacultyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FacultyCl__Subje__70DDC3D8">
+          <End Role="SubjectMaster" Type="Self.SubjectMaster" Multiplicity="0..1" />
+          <End Role="FacultyClassAllocation" Type="Self.FacultyClassAllocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubjectMaster">
+              <PropertyRef Name="SubjectId" />
+            </Principal>
+            <Dependent Role="FacultyClassAllocation">
+              <PropertyRef Name="SubjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__FacultyMa__Depar__46E78A0C">
           <End Role="DepartmentMaster" Type="Self.DepartmentMaster" Multiplicity="0..1" />
           <End Role="FacultyMaster" Type="Self.FacultyMaster" Multiplicity="*" />
@@ -121,10 +191,25 @@
         </Function>
         <EntityContainer Name="SchoolAppModelStoreContainer">
           <EntitySet Name="Attendance" EntityType="Self.Attendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassMaster" EntityType="Self.ClassMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DepartmentMaster" EntityType="Self.DepartmentMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FacultyClassAllocation" EntityType="Self.FacultyClassAllocation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FacultyMaster" EntityType="Self.FacultyMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubjectMaster" EntityType="Self.SubjectMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRegistration" EntityType="Self.UserRegistration" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__FacultyCl__Class__6FE99F9F" Association="Self.FK__FacultyCl__Class__6FE99F9F">
+            <End Role="ClassMaster" EntitySet="ClassMaster" />
+            <End Role="FacultyClassAllocation" EntitySet="FacultyClassAllocation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FacultyCl__Facul__6EF57B66" Association="Self.FK__FacultyCl__Facul__6EF57B66">
+            <End Role="FacultyMaster" EntitySet="FacultyMaster" />
+            <End Role="FacultyClassAllocation" EntitySet="FacultyClassAllocation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FacultyCl__Subje__70DDC3D8" Association="Self.FK__FacultyCl__Subje__70DDC3D8">
+            <End Role="SubjectMaster" EntitySet="SubjectMaster" />
+            <End Role="FacultyClassAllocation" EntitySet="FacultyClassAllocation" />
+          </AssociationSet>
           <AssociationSet Name="FK__FacultyMa__Depar__46E78A0C" Association="Self.FK__FacultyMa__Depar__46E78A0C">
             <End Role="DepartmentMaster" EntitySet="DepartmentMaster" />
             <End Role="FacultyMaster" EntitySet="FacultyMaster" />
@@ -181,6 +266,9 @@
           <Property Name="active" Type="Boolean" />
           <Property Name="DepartmentId" Type="Int32" />
           <NavigationProperty Name="DepartmentMaster" Relationship="Self.FK__FacultyMa__Depar__46E78A0C" FromRole="FacultyMaster" ToRole="DepartmentMaster" />
+          <Property Name="Faculty_ID" Type="Guid" />
+          <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FacultyClassAllocations" Relationship="SchoolAppModel.FK__FacultyCl__Facul__6EF57B66" FromRole="FacultyMaster" ToRole="FacultyClassAllocation" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
@@ -204,6 +292,8 @@
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Attendances" Relationship="Self.FK_Students_Attendance" FromRole="Students" ToRole="Attendance" />
           <NavigationProperty Name="DepartmentMaster" Relationship="Self.FK__Students__Depart__412EB0B6" FromRole="Students" ToRole="DepartmentMaster" />
+          <Property Name="RollNo" Type="Guid" />
+          <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Students_Attendance">
           <End Role="Students" Type="Self.Student" Multiplicity="1" />
@@ -263,13 +353,36 @@
             <Parameter Name="EndDate" Mode="In" Type="DateTime" />
             <Parameter Name="StudentId" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="SubjectMasters" EntityType="SchoolAppModel.SubjectMaster" />
           <EntitySet Name="UserRegistrations" EntityType="SchoolAppModel.UserRegistration" />
-        </EntityContainer>
+          <EntitySet Name="ClassMasters" EntityType="SchoolAppModel.ClassMaster" />
+          <EntitySet Name="FacultyClassAllocations" EntityType="SchoolAppModel.FacultyClassAllocation" />
+          <AssociationSet Name="FK__FacultyCl__Class__6FE99F9F" Association="SchoolAppModel.FK__FacultyCl__Class__6FE99F9F">
+            <End Role="ClassMaster" EntitySet="ClassMasters" />
+            <End Role="FacultyClassAllocation" EntitySet="FacultyClassAllocations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FacultyCl__Facul__6EF57B66" Association="SchoolAppModel.FK__FacultyCl__Facul__6EF57B66">
+            <End Role="FacultyMaster" EntitySet="FacultyMasters" />
+            <End Role="FacultyClassAllocation" EntitySet="FacultyClassAllocations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FacultyCl__Subje__70DDC3D8" Association="SchoolAppModel.FK__FacultyCl__Subje__70DDC3D8">
+            <End Role="SubjectMaster" EntitySet="SubjectMasters" />
+            <End Role="FacultyClassAllocation" EntitySet="FacultyClassAllocations" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="SubjectMaster">
+          <Key>
+            <PropertyRef Name="SubjectId" />
+          </Key>
+          <Property Name="SubjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="FacultyClassAllocations" Relationship="SchoolAppModel.FK__FacultyCl__Subje__70DDC3D8" FromRole="SubjectMaster" ToRole="FacultyClassAllocation" />
+        </EntityType>
         <EntityType Name="UserRegistration">
           <Key>
             <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="EmailId" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
@@ -280,8 +393,71 @@
           <Property Name="Updatedon" Type="DateTime" Precision="3" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
-      </Schema>
+        <EntityType Name="ClassMaster">
+          <Key>
+            <PropertyRef Name="ClassId" />
+          </Key>
+          <Property Name="ClassId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Class" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="FacultyClassAllocations" Relationship="SchoolAppModel.FK__FacultyCl__Class__6FE99F9F" FromRole="ClassMaster" ToRole="FacultyClassAllocation" />
+        </EntityType>
+        <EntityType Name="FacultyClassAllocation">
+          <Key>
+            <PropertyRef Name="FacultyAllocationId" />
+          </Key>
+          <Property Name="FacultyAllocationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FacultyId" Type="Int32" />
+          <Property Name="ClassId" Type="Int32" />
+          <Property Name="SubjectId" Type="Int32" />
+          <Property Name="Class_Start_Time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Class_End_Time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ClassMaster" Relationship="SchoolAppModel.FK__FacultyCl__Class__6FE99F9F" FromRole="FacultyClassAllocation" ToRole="ClassMaster" />
+          <NavigationProperty Name="FacultyMaster" Relationship="SchoolAppModel.FK__FacultyCl__Facul__6EF57B66" FromRole="FacultyClassAllocation" ToRole="FacultyMaster" />
+          <NavigationProperty Name="SubjectMaster" Relationship="SchoolAppModel.FK__FacultyCl__Subje__70DDC3D8" FromRole="FacultyClassAllocation" ToRole="SubjectMaster" />
+        </EntityType>
+        <Association Name="FK__FacultyCl__Class__6FE99F9F">
+          <End Type="SchoolAppModel.ClassMaster" Role="ClassMaster" Multiplicity="0..1" />
+          <End Type="SchoolAppModel.FacultyClassAllocation" Role="FacultyClassAllocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassMaster">
+              <PropertyRef Name="ClassId" />
+            </Principal>
+            <Dependent Role="FacultyClassAllocation">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FacultyCl__Facul__6EF57B66">
+          <End Type="SchoolAppModel.FacultyMaster" Role="FacultyMaster" Multiplicity="0..1" />
+          <End Type="SchoolAppModel.FacultyClassAllocation" Role="FacultyClassAllocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FacultyMaster">
+              <PropertyRef Name="FacultyId" />
+            </Principal>
+            <Dependent Role="FacultyClassAllocation">
+              <PropertyRef Name="FacultyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FacultyCl__Subje__70DDC3D8">
+          <End Type="SchoolAppModel.SubjectMaster" Role="SubjectMaster" Multiplicity="0..1" />
+          <End Type="SchoolAppModel.FacultyClassAllocation" Role="FacultyClassAllocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubjectMaster">
+              <PropertyRef Name="SubjectId" />
+            </Principal>
+            <Dependent Role="FacultyClassAllocation">
+              <PropertyRef Name="SubjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -313,6 +489,8 @@
           <EntitySetMapping Name="FacultyMasters">
             <EntityTypeMapping TypeName="SchoolAppModel.FacultyMaster">
               <MappingFragment StoreEntitySet="FacultyMaster">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Faculty_ID" ColumnName="Faculty_ID" />
                 <ScalarProperty Name="FacultyId" ColumnName="FacultyId" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -329,6 +507,8 @@
           <EntitySetMapping Name="Students">
             <EntityTypeMapping TypeName="SchoolAppModel.Student">
               <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="RollNo" ColumnName="RollNo" />
                 <ScalarProperty Name="StudentId" ColumnName="StudentId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
@@ -349,9 +529,20 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="Demo1" FunctionName="SchoolAppModel.Store.Demo1" />
+          <EntitySetMapping Name="SubjectMasters">
+            <EntityTypeMapping TypeName="SchoolAppModel.SubjectMaster">
+              <MappingFragment StoreEntitySet="SubjectMaster">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="UserRegistrations">
             <EntityTypeMapping TypeName="SchoolAppModel.UserRegistration">
               <MappingFragment StoreEntitySet="UserRegistration">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Updatedon" ColumnName="Updatedon" />
@@ -362,7 +553,29 @@
                 <ScalarProperty Name="EmailId" ColumnName="EmailId" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassMasters">
+            <EntityTypeMapping TypeName="SchoolAppModel.ClassMaster">
+              <MappingFragment StoreEntitySet="ClassMaster">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FacultyClassAllocations">
+            <EntityTypeMapping TypeName="SchoolAppModel.FacultyClassAllocation">
+              <MappingFragment StoreEntitySet="FacultyClassAllocation">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Class_End_Time" ColumnName="Class_End_Time" />
+                <ScalarProperty Name="Class_Start_Time" ColumnName="Class_Start_Time" />
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+                <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+                <ScalarProperty Name="FacultyId" ColumnName="FacultyId" />
+                <ScalarProperty Name="FacultyAllocationId" ColumnName="FacultyAllocationId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

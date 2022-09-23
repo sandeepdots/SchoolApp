@@ -175,9 +175,9 @@ namespace SchoolApp
                "~/Content/css/_all-skins.css",
                "~/Content/css/blue.css",
                "~/Content/css/loader.css",
-                "~/Content/css/admin-custom-style.css",
-                "~/Content/bootstrap-datepicker.css",
-                "~/Content/alertify/alertify.min.css", "~/Content/css/popover_custom.css"
+                "~/content/bootstrap-datepicker.css"
+
+
               ));
 
             bundles.Add(new StyleBundle("~/bundles/FrontCss").Include(

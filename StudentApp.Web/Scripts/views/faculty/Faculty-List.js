@@ -63,9 +63,24 @@
                     },
                     {
                         "targets": [9],
-                        "visible": true,
                         "sortable": true,
-                        "searchable": true
+                        "searchable": false,
+                        "data": "9",
+                        "render": function (data, type, row, meta) {
+                        
+                            var json = {
+                                type: "checkbox",
+                                class: "switchBox switch-medium",
+                                value: row[0],
+                                'data-on': "success",
+                                'data-off': "danger"
+                            };
+
+                            if (data == "True") {
+                                json.checked = true;
+                            }
+                            return $('<input/>', json).get(0).outerHTML;
+                        }
                     },
 
                     {
@@ -96,6 +111,15 @@
                                     class: "fa fa-trash-o"
                                 }),
                             }).append(" Delete").get(0).outerHTML + "&nbsp;"
+                            actionLink += $("<a/>", {
+                                href: domain + "/FacultyAllocation/GetFacultyDasboard/" + row[0],
+                                id: "deletePresenter",
+                                class: "btn btn-primary btn-sm",
+                                
+                                html: $("<i/>", {
+                                    class: "fa fa-trash-o"
+                                }),
+                            }).append(" Dasboard").get(0).outerHTML + "&nbsp;"
 
                             return actionLink;
                         }
@@ -175,17 +199,21 @@
         ///chh
 
         function initializeModalWithForm() {
-            $("#modal-add-edit-faculty").on('loaded.bs.modal', function (e) {            
+            $("#modal-add-edit-faculty").on('loaded.bs.modal', function (e) {
+
+
                 $attendanceValue = [];
+                
                 formAddEditPresenter = new Global.FormHelper($("#form-Add-Edit-Faculty"),
                     { updateTargetId: "validation-summary" }, function onSuccess(result) {
                         window.location.reload();
                     });
-                $('.form-checkbox').bootstrapSwitch(
-                );
+                $('.form-checkbox').bootstrapSwitch();
                 $('.datefield').datepicker({
                     dateFormat: 'yy-mm-dd',
                     autoclose: true,
+                    changeMonth: true,
+                    changeYear:true,
                     minDate: new Date()
                 }).on('change', function (e) {
 
@@ -212,16 +240,19 @@
 
         }
 
-
-
+  
         $this.init = function () {
             initializeGrid();
             initializeModalWithForm();
         };
     }
+
+ 
     $(function () {
         var self = new FacultyList();
         self.init();
     });
+
+    
 
 }(jQuery));

@@ -14,25 +14,26 @@ namespace SchoolApp.Web.Controllers
         {
             this._registerationService = userRegisterService;
         }
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    UserRegisterVierwModel userModel = new UserRegisterVierwModel();
+        //    var enumList = Enum.GetValues(typeof(UserEnum));
+        //    foreach (var item in enumList)
+        //    {
+        //        userModel.Role.Add(new SelectListItem
+        //        {
+        //            Value = ((int)item).ToString(),   //Getting Rolename in dropdown from UserEnum
+        //            Text = item.GetDescription()
+        //        });
+        //    }
+
+        [HttpGet]
+        public ActionResult Registration()
+
         {
-            UserRegisterVierwModel userModel = new UserRegisterVierwModel();
-            var enumList = Enum.GetValues(typeof(UserEnum));
-            foreach (var item in enumList)
-            {
-                userModel.Role.Add(new SelectListItem
-                {
-                    Value = ((int)item).ToString(),   //Getting Rolename in dropdown from UserEnum
-                    Text = item.GetDescription()
-                });
-            }
-
-            //    [HttpGet]
-            //public ActionResult Registration()
-
-            //{
-            //    return View();
+            return View();
         }
 
-      
+
     }
+}

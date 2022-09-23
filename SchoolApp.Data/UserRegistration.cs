@@ -14,7 +14,6 @@ namespace SchoolApp.Data
     
     public partial class UserRegistration
     {
-        public int UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string EmailId { get; set; }
@@ -25,5 +24,7 @@ namespace SchoolApp.Data
         public Nullable<System.DateTime> Updatedon { get; set; }
         public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }
+        public System.Guid UserId { get; set; }
+        public string UserName { get; set; }
     }
 }

@@ -1,0 +1,62 @@
+﻿
+@model SchoolApp.Web.Models.SubjectViewModel
+
+
+<div id="adminUpdateLocationModal">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header ">
+            <button type="button" class="close font16" data-dismiss="modal"><i class="fa fa-times"></i></button>
+            Add/Update  ClassMaster
+            <h4 class="modal-title"><b><span class="UpdateBrand"></span></b></h4>
+        </div>
+        <div class="modal-body">
+            <div class="full-wdth clearfix otp-section">
+                @using (Html.BeginForm("SaveSubjectMaster", "SubjectClass", null, FormMethod.Post, new { @class = "form-horizontal", id = "formAddEditSubjectMaster" }))
+                {
+
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+                    <input type="hidden" name="SubjectId" id="ClassId"  value="@Model.SubjectId" />
+                    <div id="validation-summary"></div>
+                    <div id="adminAddAllergyMessageDiv" class="alert " style="display:none"> </div>
+                    <div class="form-group">
+                        <div class="col-sm-3 label-schedule">@Html.Label("Subject", "Subject Name", new { @class = "main-label requiredasterisk" })</div>
+                        <div class="col-sm-9">
+                            @Html.TextBoxFor(model =>model.Subject, null, htmlAttributes: new { @class = "form-control form-control-sm", placeholder = "Enter Class", maxlength = "100" })
+                            @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(model => model.IsActive, new { @class = "form-checkbox" })
+                                @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="modal-footer customMargin">
+                        <button data-dismiss="modal" id="btn-cancel" class="btn btn-default" type="button">Cancel</button>
+                        <button class="btn btn-primary" id="btn-submit" type="submit">
+                            Submit
+                        </button>
+                    </div>
+                }
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<link href="~/Content/css/bootstrap-switch.css" rel="stylesheet" />
+
+

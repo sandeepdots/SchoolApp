@@ -117,8 +117,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\SchoolApp.Web.dll" />
-    <Content Include="bin\SchoolApp.Web.pdb" />
     <Content Include="Content\alertify\alertify.css" />
     <Content Include="Content\alertify\alertify.min.css" />
     <Content Include="Content\alertify\alertify.rtl.css" />
@@ -283,14 +281,6 @@
     <Content Include="Content\jquery.fancybox.min.css" />
     <Content Include="Content\lightbox.min.css" />
     <Content Include="Content\RegisterLte\adminlte.css" />
-    <Content Include="Content\RegisterLte\adminlte.min.css" />
-    <Content Include="Content\RegisterLte\all.css" />
-    <Content Include="Content\RegisterLte\all.min.css" />
-    <Content Include="Content\RegisterLte\LteJs\additional-methods.min.js" />
-    <Content Include="Content\RegisterLte\LteJs\adminlte.js" />
-    <Content Include="Content\RegisterLte\LteJs\bootstrap.bundle.js" />
-    <Content Include="Content\RegisterLte\LteJs\bootstrap.min.js" />
-    <Content Include="Content\RegisterLte\LteJs\demo.js" />
     <Content Include="Content\responsive.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />
@@ -319,6 +309,8 @@
     <Content Include="Content\css\select2.css" />
     <Content Include="Content\css\_all-skins.css" />
     <Content Include="Content\css\_all-skins.min.css" />
+    <Content Include="Content\timepicker\jquery.timepicker.min.css" />
+    <Content Include="Content\timepicker\timepicker.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -423,11 +415,14 @@
     <Content Include="Scripts\rowReorder.dataTables.js" />
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\views\AttendanceDetails.js" />
+    <Content Include="Scripts\views\classmaster\classmaster.js" />
     <Content Include="Scripts\views\department\department.js" />
+    <Content Include="Scripts\views\FacultyAllocationList\AllocationList.js" />
     <Content Include="Scripts\views\faculty\Faculty-List.js" />
     <Content Include="Scripts\views\student\student-list.js" />
     <Content Include="Scripts\views\AttendanceList.js" />
     <None Include="Scripts\_references.js" />
+    <Content Include="Scripts\views\subjectmaster\subjectlist.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -441,22 +436,28 @@
     <Compile Include="Code\Serialization\RequestOutcome.cs" />
     <Compile Include="Code\Serialization\SiteKeys.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ClassMasterController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\FacultyAllocationController.cs" />
     <Compile Include="Controllers\FacultyController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
+    <Compile Include="Controllers\SubjectClassController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Model\AddAttendance.cs" />
+    <Compile Include="Model\FacultyAllocationModel.cs" />
     <Compile Include="Model\AttendanceViewModel.cs" />
+    <Compile Include="Model\ClassMasterViewmodel.cs" />
+    <Compile Include="Model\SubjectViewModel.cs" />
     <Compile Include="Model\Common\Modal.cs" />
     <Compile Include="Model\Common\ModalFooter.cs" />
     <Compile Include="Model\Common\ModalHeader.cs" />
     <Compile Include="Model\Common\Notification.cs" />
     <Compile Include="Model\DepartmentViewModal.cs" />
     <Compile Include="Model\Faculty\FacultyViewModel.cs" />
-    <Compile Include="Model\UserRegister.cs" />
+    <Compile Include="Model\RegistrationViewModel.cs" />
     <Compile Include="Model\StudentsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -496,6 +497,13 @@
     <Content Include="Views\Shared\_ValidationSummary.cshtml" />
     <Content Include="Views\Shared\_RegisterMaster.cshtml" />
     <Content Include="Views\Registration\Registration.cshtml" />
+    <Content Include="Views\SubjectClass\Index.cshtml" />
+    <Content Include="Views\ClassMaster\ClassViewIndex.cshtml" />
+    <Content Include="Views\ClassMaster\AddUpdateClassMaster.cshtml" />
+    <Content Include="Views\SubjectClass\AddEditSubject.cshtml" />
+    <Content Include="Views\FacultyAllocation\AllocationIndex.cshtml" />
+    <Content Include="Views\FacultyAllocation\AsignClassFaculty.cshtml" />
+    <Content Include="Views\FacultyAllocation\GetFacultyDasboard.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -505,10 +513,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="bin\" />
     <Folder Include="Connected Services\" />
+    <Folder Include="Content\RegisterLte\LteJs\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Home\" />
-    <Folder Include="Views\Registration\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SchoolApp.Core\SchoolApp.Core.csproj">
