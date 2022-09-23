@@ -19,7 +19,7 @@ namespace SchoolApp.Data
         public string EmailId { get; set; }
         public string Password { get; set; }
         public string SaltKey { get; set; }
-        public Nullable<int> RoleId { get; set; }
+        public int RoleId { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public Nullable<System.DateTime> Updatedon { get; set; }
         public bool IsActive { get; set; }

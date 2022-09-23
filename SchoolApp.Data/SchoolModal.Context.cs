@@ -28,17 +28,13 @@ namespace SchoolApp.Data
         }
     
         public virtual DbSet<Attendance> Attendances { get; set; }
+        public virtual DbSet<ClassMaster> ClassMasters { get; set; }
         public virtual DbSet<DepartmentMaster> DepartmentMasters { get; set; }
+        public virtual DbSet<FacultyClassAllocation> FacultyClassAllocations { get; set; }
         public virtual DbSet<FacultyMaster> FacultyMasters { get; set; }
-        public virtual DbSet<UserRegistration> UserRegistrations { get; set; }
         public virtual DbSet<Student> Students { get; set; }
-        public virtual DbSet<ClassMaster> ClassMasters { get; set; }
-        public virtual DbSet<FacultyClassAllocation> FacultyClassAllocations { get; set; }
-        public virtual DbSet<SubjectMaster> SubjectMasters { get; set; }
         public virtual DbSet<SubjectMaster> SubjectMasters { get; set; }
         public virtual DbSet<UserRegistration> UserRegistrations { get; set; }
-        public virtual DbSet<ClassMaster> ClassMasters { get; set; }
-        public virtual DbSet<FacultyClassAllocation> FacultyClassAllocations { get; set; }
     
         public virtual int Demo1(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate, Nullable<int> studentId)
         {

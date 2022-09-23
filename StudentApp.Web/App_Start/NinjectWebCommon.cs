@@ -11,10 +11,13 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
 using SchoolApp.Service.FacultyService;
+
 using SchoolApp.Service.DepartmentServices;
 using SchoolApp.Service.RegistrationService;
-using SchoolApp.Service.ClassMasterServices;
 
+using SchoolApp.Service.ClassMasterServices;
+using SchoolApp.Service.SubjectService;
+using SchoolApp.Service.FacultyAllocation;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(NinjectWebCommon), "Stop")]
@@ -49,22 +52,18 @@ namespace SchoolApp.Web.App_Start
         }
         private static void RegisterServices(IKernel kernel)
         {
-            
+
             kernel.Bind(typeof(IRepository<>)).To(typeof(Repository<>));
             kernel.Bind<IStudentServices>().To<StudentServices>();
             kernel.Bind<IAttendanceServices>().To<AttendanceServices>();
             kernel.Bind<IFacultyServices>().To<FacultyServices>();
             kernel.Bind<IDepartmentServices>().To<DepartmentServices>();
             kernel.Bind<IRegistrationServices>().To<RegistrationServices>();
+            kernel.Bind<ISubjectService>().To<SubjectService>();
+            kernel.Bind<IFacultyAllocationServices>().To<FacultyAllocationServices>();
             kernel.Bind<IClassMasterService>().To<ClassMasterService>();
 
         }
-        //private static void ValidationConfiguration(IKernel kernel)
-        //{
-        //    ValidatorFactory validatorFactory = new ValidatorFactory();
-        //    FluentValidationModelValidatorProvider.Configure(x => x.ValidatorFactory = validatorFactory);
-        //    DataAnnotationsModelValidatorProvider.AddImplicitRequiredAttributeForValueTypes = false;
-        //}
     }
     public class NinjectDependencyResolver : IDependencyResolver
     {

@@ -96,7 +96,7 @@ namespace SchoolApp.Web.Controllers
 
                         if (userRegistration != null)
                         {
-                            if (users.RoleId == (int)UserRoles.Teacher)
+                            if (users.RoleId == (int)UserRoles.Faculty)
                             {
                                 FacultyMaster teamLead = new FacultyMaster();
                                 teamLead.Faculty_ID = users.UserId;

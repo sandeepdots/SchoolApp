@@ -97,12 +97,12 @@
     <Reference Include="Ninject.Web.Mvc">
       <HintPath>..\packages\Ninject.MVC5.3.3.0\lib\net45\Ninject.Web.Mvc.dll</HintPath>
     </Reference>
-	  <Reference Include="RestSharp, Version=106.12.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
-		  <HintPath>..\packages\RestSharp.106.12.0\lib\net452\RestSharp.dll</HintPath>
-	  </Reference>
-	  <Reference Include="RestSharp.Authenticators, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-		  <HintPath>..\packages\RestSharp.Authenticators.1.1.1\lib\netstandard2.0\RestSharp.Authenticators.dll</HintPath>
-	  </Reference>
+    <Reference Include="RestSharp, Version=106.12.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.12.0\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp.Authenticators, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.Authenticators.1.1.1\lib\netstandard2.0\RestSharp.Authenticators.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.Annotations, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ComponentModel.Annotations.4.4.1\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
     </Reference>
@@ -172,6 +172,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\adminlte.min.css" />
     <Content Include="Content\alertify\alertify.css" />
     <Content Include="Content\alertify\alertify.min.css" />
     <Content Include="Content\alertify\alertify.rtl.css" />
@@ -189,6 +190,7 @@
     <Content Include="Content\alertify\themes\semantic.rtl.css" />
     <Content Include="Content\alertify\themes\semantic.rtl.min.css" />
     <Content Include="Content\all.css" />
+    <Content Include="Content\all.min.css" />
     <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap-switch.css" />
     <Content Include="Content\bootstrap-switch.min.css" />
@@ -335,23 +337,6 @@
     <Content Include="Content\ionicons.css" />
     <Content Include="Content\jquery.fancybox.min.css" />
     <Content Include="Content\lightbox.min.css" />
-    <Content Include="Content\RegisterLte\adminlte.css" />
-    <Content Include="Content\RegisterLte\adminlte.min.css" />
-    <Content Include="Content\RegisterLte\all.css" />
-    <Content Include="Content\RegisterLte\all.min.css" />
-    <Content Include="Content\RegisterLte\LteJs\additional-methods.min.js" />
-    <Content Include="Content\RegisterLte\LteJs\adminlte.js" />
-    <Content Include="Content\RegisterLte\LteJs\bootstrap.bundle.js" />
-    <Content Include="Content\RegisterLte\LteJs\bootstrap.min.js" />
-    <Content Include="Content\RegisterLte\LteJs\demo.js" />
-    <Content Include="Content\RegisterLte\LteJs\adminlte.js" />
-    <Content Include="Content\RegisterLte\LteJs\bootstrap.bundle.js" />
-    <Content Include="Content\RegisterLte\LteJs\bootstrap.min.js" />
-    <Content Include="Content\RegisterLte\LteJs\demo.js" />
-    <Content Include="Content\RegisterLte\LteJs\adminlte.js" />
-    <Content Include="Content\RegisterLte\LteJs\bootstrap.bundle.js" />
-    <Content Include="Content\RegisterLte\LteJs\bootstrap.min.js" />
-    <Content Include="Content\RegisterLte\LteJs\demo.js" />
     <Content Include="Content\responsive.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />
@@ -513,17 +498,20 @@
     <Compile Include="Controllers\FacultyAllocationController.cs" />
     <Compile Include="Controllers\FacultyController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\SubjectClassController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Model\AddAttendance.cs" />
+    <Compile Include="Model\ClassMasterViewmodel.cs" />
     <Compile Include="Model\FacultyAllocationModel.cs" />
     <Compile Include="Model\AttendanceViewModel.cs" />
     <Compile Include="Model\ForgotPasswordViewModel.cs" />
     <Compile Include="Model\LoginViewModel.cs" />
     <Compile Include="Model\RegistrationViewModel.cs" />
+    <Compile Include="Model\Security\CustomPrincipal.cs" />
     <Compile Include="Model\SubjectViewModel.cs" />
     <Compile Include="Model\Common\Modal.cs" />
     <Compile Include="Model\Common\ModalFooter.cs" />
@@ -532,7 +520,6 @@
     <Compile Include="Model\DepartmentViewModal.cs" />
     <Compile Include="Model\Faculty\FacultyViewModel.cs" />
     <Compile Include="Model\MailSenderModel.cs" />
-    <Compile Include="Model\RegistrationViewModel.cs" />
     <Compile Include="Model\StudentsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SendMail\Models.cs" />
@@ -576,6 +563,13 @@
     <Content Include="Views\Shared\_RegisterMaster.cshtml" />
     <Content Include="Views\Registration\Addregistration.cshtml" />
     <Content Include="Views\Registration\Dashboard.cshtml" />
+    <Content Include="Views\ClassMaster\AddUpdateClassMaster.cshtml" />
+    <Content Include="Views\ClassMaster\ClassViewIndex.cshtml" />
+    <Content Include="Views\FacultyAllocation\AllocationIndex.cshtml" />
+    <Content Include="Views\FacultyAllocation\AsignClassFaculty.cshtml" />
+    <Content Include="Views\FacultyAllocation\GetFacultyDasboard.cshtml" />
+    <Content Include="Views\SubjectClass\AddEditSubject.cshtml" />
+    <Content Include="Views\SubjectClass\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -586,9 +580,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="bin\" />
-    <Folder Include="Connected Services\" />
-    <Folder Include="Content\RegisterLte\LteJs\" />
-    <Folder Include="Connected Services\" />
     <Folder Include="Scripts\views\Registration\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Home\" />
