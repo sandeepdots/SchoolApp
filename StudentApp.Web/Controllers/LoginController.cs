@@ -58,7 +58,7 @@ namespace SchoolApp.Web.Controllers
                         {
                             actionName = "dashboard";
                             controllerName = "admin";
-                            
+
 
                         }
                         else if (user.RoleId == (byte)UserRoles.Faculty)
@@ -67,7 +67,7 @@ namespace SchoolApp.Web.Controllers
                             {
                                 actionName = "dashboard";
                                 controllerName = "faculty";
-                                
+
                             }
 
                         }
@@ -77,22 +77,22 @@ namespace SchoolApp.Web.Controllers
                             {
                                 actionName = "dashboard";
                                 controllerName = "student";
-                                
+
                             }
 
                         }
 
                         if (Redirecturl != "")
-                            return NewtonSoftJsonResult(new RequestOutcome<dynamic> {ReturnParameter = user.UserId.ToString(), RedirectUrl = Redirecturl });
+                            return NewtonSoftJsonResult(new RequestOutcome<dynamic> { ReturnParameter = user.UserId.ToString(), RedirectUrl = Redirecturl });
                         else
-                            return NewtonSoftJsonResult(new RequestOutcome<dynamic> {ReturnParameter = user.UserId.ToString(), RedirectUrl = @Url.Action(actionName, controllerName) });
+                            return NewtonSoftJsonResult(new RequestOutcome<dynamic> { ReturnParameter = user.UserId.ToString(), RedirectUrl = @Url.Action(actionName, controllerName) });
                     }
                     else
                     {
                         if (Redirecturl != "")
-                            return NewtonSoftJsonResult(new RequestOutcome<dynamic> {ReturnParameter = user.UserId.ToString(), RedirectUrl = Redirecturl });
+                            return NewtonSoftJsonResult(new RequestOutcome<dynamic> { ReturnParameter = user.UserId.ToString(), RedirectUrl = Redirecturl });
                         else
-                            return NewtonSoftJsonResult(new RequestOutcome<dynamic> {ReturnParameter = user.UserId.ToString(), RedirectUrl = @Url.Action("signn", "login") });
+                            return NewtonSoftJsonResult(new RequestOutcome<dynamic> { ReturnParameter = user.UserId.ToString(), RedirectUrl = @Url.Action("signn", "login") });
                     }
 
                     //}
