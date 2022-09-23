@@ -3,11 +3,20 @@ using System.Linq;
 using System.Web.Mvc;
 using SchoolApp.Web.Models;
 using SchoolApp.Core;
+using System.Web.Security;
 
 namespace SchoolApp.Web.Controllers
 {
     public class BaseController : Controller
     {
+        public CustomPrincipal CurrentUser
+        {
+            get { return HttpContext.User as CustomPrincipal; }
+        }
+        public void RemoveAuthentication()
+        {
+            FormsAuthentication.SignOut();
+        }
         public JsonNetResult NewtonSoftJsonResult(object data)
         {
             return new JsonNetResult
@@ -23,7 +32,7 @@ namespace SchoolApp.Web.Controllers
         /// <param name="message"></param>
         /// <param name="messageType"></param>
         /// <param name="isCurrentView"></param>
-        private void ShowMessages(string title, string message, MessageType messageType, bool isCurrentView)
+        private void ShowMessages(string title, string message, MessageType messageType, bool isCurrentView, bool isLogin = false)
         {
             Notification model = new Notification
             {
@@ -32,15 +41,25 @@ namespace SchoolApp.Web.Controllers
                 Type = messageType
             };
 
-            if (isCurrentView)
-                this.ViewData.AddOrReplace("NotificationModel", model);
+            if (isLogin)
+            {
+                if (isCurrentView)
+                    this.ViewData.AddOrReplace("NotificationModelForLogin", model);
+                else
+                    this.TempData.AddOrReplace("NotificationModelForLogin", model);
+            }
             else
-                this.TempData.AddOrReplace("NotificationModel", model);
+            {
+                if (isCurrentView)
+                    this.ViewData.AddOrReplace("NotificationModel", model);
+                else
+                    this.TempData.AddOrReplace("NotificationModel", model);
+            }
         }
 
-        protected void ShowErrorMessage(string title, string message, bool isCurrentView = true)
+        protected void ShowErrorMessage(string title, string message, bool isCurrentView = true, bool isLogin = false)
         {
-            ShowMessages(title, message, MessageType.Danger, isCurrentView);
+            ShowMessages(title, message, MessageType.Danger, isCurrentView, isLogin);
         }
 
         protected void ShowSuccessMessage(string title, string message, bool isCurrentView = true)

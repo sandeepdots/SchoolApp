@@ -35,10 +35,10 @@ namespace SchoolApp.Service.RegistrationService
             return user;
         }
 
-        public UserRegistration GetUserRegisterbyId(int Id)
-        {
-            return _repoUserRegistration.FindById(Id);
-        }
+            public UserRegistration GetUserRegisterbyId(Guid Id)
+            {
+                return _repoUserRegistration.FindById(Id);
+            }
 
         public UserRegistration UpdateuserRegister(UserRegistration userRegister)
         {
@@ -53,15 +53,15 @@ namespace SchoolApp.Service.RegistrationService
             return _repoUserRegistration.Query().Filter(x => x.EmailId == email).Get().FirstOrDefault();
         }
 
-        public List<UserRegistration> GetAllUser(Guid Id)
-        {
+            public List<UserRegistration> GetAllUser(Guid Id)
+            {
             return _repoUserRegistration.Query().Filter(x => x.UserId != Id).Get().ToList();
-        }
+            }
 
-        public string GetUserName(Guid Id)
-        {
-            return _repoUserRegistration.Query().Filter(x => x.UserId == Id).Get().FirstOrDefault().FirstName;
-        }
+            public string GetUserName(Guid Id)
+            {
+                return _repoUserRegistration.Query().Filter(x => x.UserId == Id).Get().FirstOrDefault().FirstName;
+            }
 
         public List<UserRegistration> GetSenderName()
         {
@@ -84,7 +84,7 @@ namespace SchoolApp.Service.RegistrationService
         }
 
     }
-}
+    }
 
 
 

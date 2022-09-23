@@ -1,0 +1,271 @@
+﻿@model IEnumerable<SchoolApp.Web.Model.FacultyAllocationModel>
+
+@{
+    ViewBag.Title = "GetFacultyDasboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model != null && Model.Any())
+{
+    <section class="content-header">
+        <h1>Faculty Management</h1>
+    </section>
+
+    <section class="content">
+
+        <div class="row">
+            <div class="col-lg-3 col-6">
+
+                <div class="small-box bg-primary">
+                    <div class="inner">
+                        <h3>55</h3>
+                        <b>Faculty List</b>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-ios-book"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-6">
+
+                <div class="small-box bg-yellow-gradient">
+                    <div class="inner">
+                        <h3>12<sup style="font-size: 20px">%</sup></h3>
+                        <b>Class List</b>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-6">
+
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>22</h3>
+                        <b>Subject List</b>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-pie-graph"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-6">
+
+                <div class="small-box bg-olive">
+                    <div class="inner">
+                        <h3>165</h3>
+                        <b>Student List</b>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person-add"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="card">
+                <div class="card-header">
+
+                    <div class="row">
+                        @{
+                            var cuitem = Model.ToList().FirstOrDefault();
+                            <div class="col-sm-12">
+
+                                <div class="row bg-primary">
+                                    
+                                    <h3 style="text-align:center;"> <b>Name -</b>@cuitem.FacultyName</h3>
+
+                                </div>
+                                
+                            </div>
+                            <div class="col-sm-3">
+
+                            </div>
+                            <div class="col-sm-3"></div>
+
+                        }
+
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @{
+                            foreach (var item in Model)
+                            {
+                                <div class="col-sm-3">
+                                    <h4><b>Subject Name</b>:@item.SubjectName</h4>
+                                    <h4><b>Class Name</b>:@item.ClassName</h4>
+                                    <h4><span><b>Start Time</b>:@item.Class_Start_Time</span> <span><b>EndTime</b>: @item.Class_End_Time</span></h4>
+                                </div>
+                            }
+
+
+                        }
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+}
+else
+{
+    <div class="row text-center">
+        <h1>Record Not Found</h1>
+    </div>
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*@if (Model != null && Model.Any())
+    {
+
+        <div class="row">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        @{
+                            var cuitem = Model.ToList().FirstOrDefault();
+                            <div class="col-sm-3">
+                                <h1>   <b>Name:</b>@cuitem.FacultyName</h1>
+                            </div>
+                            <div class="col-sm-3">
+
+                            </div>
+                            <div class="col-sm-3"></div>
+
+                        }
+
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @{
+                            foreach (var item in Model)
+                            {
+                                <div class="col-sm-3">
+                                    <h4><b>Subject Name</b>:@item.SubjectName</h4>
+                                    <h5><b>Class Name</b>:@item.ClassName</h5>
+                                    <h5><span><b>Start Time</b>:@item.Class_Start_Time</span> <span><b>EndTime</b>: @item.Class_End_Time</span></h5>
+                                </div>
+                            }
+
+
+                        }
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    }
+    else
+    {
+        <div class="row text-center">
+            <h1>Record Not Found</h1>
+        </div>
+    }*@

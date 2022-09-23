@@ -88,5 +88,12 @@ namespace SchoolApp.Service.StudentService
             return _FacultyRepo.Search(query, out totalItems);
         }
 
+
+
+        public List<FacultyMaster> GetAllFacultyList(bool IsAllFaculty=false)
+        {
+            return IsAllFaculty ? _FacultyRepo.Query().Get().OrderBy(x=>x.FirstName).ToList() : _FacultyRepo.Query().Filter(x=>x.active==true).Get().OrderBy(x => x.FirstName).ToList();
+        }
+
     }
 }

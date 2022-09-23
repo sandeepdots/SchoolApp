@@ -17,6 +17,7 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MAIN NAVIGATION</li>
+           
             <li id="home" class="Students">
                 <a href="@Url.Action("StudentIndex", "Students")">
                     <i class="fa fa-user"></i> <span>Students</span>
@@ -26,6 +27,19 @@
             <li id="home" class="Attendance">
                 <a href="@Url.Action("Index", "Students")">
                     <i class="fa fa-desktop"></i> <span>Attendance</span>
+                </a>
+            </li>
+
+
+            <li id="home" class="ClassMaster">
+                <a href="@Url.Action("ClassViewIndex", "ClassMaster")">
+                    <i class="fa fa-id-card"></i> <span>Class Master</span>
+                </a>
+            </li>
+
+            <li id="home" class="SubjectMaster">
+                <a href="@Url.Action("Index", "SubjectClass")">
+                    <i class="fa fa-h-square"></i> <span>Subject Master</span>
                 </a>
             </li>
             <li id="Departments" class="Departments">

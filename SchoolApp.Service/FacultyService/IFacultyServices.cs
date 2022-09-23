@@ -13,16 +13,24 @@ namespace SchoolApp.Service.FacultyService
     {
 
         List<FacultyMaster> GetFaculty();
-        FacultyMaster SaveFaculty(FacultyMaster facultyMaster);
+        FacultyMaster SaveFaculty(FacultyMaster faculty);
         bool DeleteFaculty(int id);
         FacultyMaster FindById(int id);
         FacultyMaster GetFacultyPresenter(int id);
         PagedListResult<FacultyMaster> GetFacultyList(SearchQuery<FacultyMaster> query, out int totalItems);
 
-        FacultyMaster SaveFacultyPresenter(FacultyMaster facultyMaster);
-        FacultyMaster UpdateFacultyPresenter(FacultyMaster facultyMaster);
+        FacultyMaster SaveFacultyPresenter(FacultyMaster faculty);
+        FacultyMaster UpdateFacultyPresenter(FacultyMaster faculty);
         int DeleteFacultyPresenter(int id);
-      
+
+        /// <summary>
+        /// Get List of faculty: Pass true to get all members and pass false to get active member
+        /// </summary>
+        /// <param name="IsAllFaculty"></param>
+        /// <returns></returns>
+        List<FacultyMaster> GetAllFacultyList(bool IsAllFaculty = false);
+
+
     }
 }
 

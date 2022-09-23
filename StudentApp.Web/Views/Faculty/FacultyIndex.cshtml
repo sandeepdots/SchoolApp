@@ -39,14 +39,15 @@
                             <tr>
                                 <th>Faculty Id</th>
                                 <th width="1%">#</th>
-                                <th>First  Name</th>
+                                <th>First Name</th>
                                 <th>Last Name</th>
                                 <th>Phone</th>
                                 <th>Email</th>
                                 <th>Address</th>
                                 <th>Salary</th>
                                 <th>Date Of Joining</th>
-                                <th>Status </th>
+                                <th>IsActive </th>
+                                <th>Action </th>
                             </tr>
                         </thead>
                         <tbody></tbody>
@@ -60,12 +61,13 @@
 
 
 
-@Html.Partial("_modal", new Modal { ID = "modal-add-edit-faculty", AreaLabeledId = "modal-add-edit-faculty-label", Size = ModalSize.Medium })
+@Html.Partial("_modal", new Modal { ID = "modal-add-edit-faculty", AreaLabeledId = "modal-add-edit-faculty-label", Size = ModalSize.Large })
 @Html.Partial("_modal", new Modal { ID = "modal-delete-faculty", AreaLabeledId = "modal-delete-faculty-label", Size = ModalSize.Medium })
 
 @section scripts
 {
     @Scripts.Render("~/Scripts/views/faculty/Faculty-List.js")
+<link href="~/Content/css/bootstrap-switch.css" rel="stylesheet" />
 
 }
 

@@ -11,6 +11,7 @@ namespace SchoolApp.Web.Models
         {
             StudentAttendance = new System.Data.DataTable();
             Student = new List<SelectListItem>();
+            Department = new List<SelectListItem>();
         }
         public int StudentId { get; set; }
         [Required(ErrorMessage = "Name is required.")]
@@ -44,5 +45,11 @@ namespace SchoolApp.Web.Models
         public bool IsActive { get; set; }
         public List<SelectListItem> Student { get; set; }
         public System.Data.DataTable StudentAttendance { get; set; }
+        public List<SelectListItem> Department { get; set; }
+    }
+    public enum Genders
+    {
+        Male,
+        Female
     }
 }

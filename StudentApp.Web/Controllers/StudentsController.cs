@@ -4,6 +4,7 @@ using SchoolApp.DataTable.Extension;
 using SchoolApp.DataTable.Search;
 using SchoolApp.DataTable.Sort;
 using SchoolApp.Service.AttendanceService;
+using SchoolApp.Service.DepartmentServices;
 using SchoolApp.Service.StudentService;
 using SchoolApp.Web.Code.Serialization;
 using SchoolApp.Web.Models;
@@ -21,11 +22,13 @@ namespace SchoolApp.Web.Controllers
     {
         private readonly IStudentServices _studentServices;
         private readonly IAttendanceServices _attendanceServices;
+        private readonly IDepartmentServices _departmentServices;
 
-        public StudentsController(IStudentServices studentServices, IAttendanceServices attendanceServices)
+        public StudentsController(IStudentServices studentServices, IAttendanceServices attendanceServices, IDepartmentServices departmentServices)
         {
             this._studentServices = studentServices;
             this._attendanceServices = attendanceServices;
+            this._departmentServices = departmentServices;
         }
         //Load Page
         [HttpGet]
@@ -252,9 +255,10 @@ namespace SchoolApp.Web.Controllers
                     !string.IsNullOrEmpty(student.Class)?$"{student.Class} / {student.Section}":"NA",//4
                     student.DOB.Value.ToString("MM/dd/yyyy"),//5
                     student.Gender,//6
-                    "CSE",//7
+                    "Science",//7
                     $"Email: {student.Email} Mob: {student.Phone}",//8
-                    student.IsActive?"Active":"Inactive" //9
+                    student.IsActive?"Active":"Inactive", //9
+                    
                 });
                 count++;
             }
@@ -286,8 +290,23 @@ namespace SchoolApp.Web.Controllers
                 model.DOB = student.DOB;
                 model.Address = student.Address;
                 model.Location = student.Location;
-                model.DepartmentId = student.DepartmentId;
-                model.IsActive = student.IsActive;
+                model.Department = _departmentServices.GetDepartment().Select(x => new SelectListItem
+                {
+                    Value = x.DepartmentId.ToString(),
+                    Text = x.DepartmentName.ToString()
+                }).ToList();
+               
+            }
+            else
+            {
+                model = new StudentsViewModel
+                {
+                    Department = _departmentServices.GetDepartment().Select(x => new SelectListItem
+                    {
+                        Value = x.DepartmentId.ToString(),
+                        Text = x.DepartmentName.ToString()
+                    }).ToList()
+                };
             }
             return PartialView("_AddEditStudent", model);
         }
@@ -368,6 +387,16 @@ namespace SchoolApp.Web.Controllers
                 return NewtonSoftJsonResult(new RequestOutcome<string> { Data = ex.GetBaseException().Message, IsSuccess = false });
             }
         }
+
+        [HttpGet]
+        public ActionResult ActivePresenter(int id)
+        {
+            Student student = _studentServices.GetStudentPresenter(id);
+            student.IsActive = !student.IsActive;
+            _studentServices.UpdateStudentPresenter(student);
+            return NewtonSoftJsonResult(new RequestOutcome<string>());
+        }
+
 
     }
 

@@ -20,14 +20,14 @@ namespace SchoolApp.Web.Controllers
         public DepartmentController(IDepartmentServices departmentServices)
         {
             this._departmentServices = departmentServices;
-           
+
         }
-       [HttpGet]
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
-    
+
 
         [HttpPost]
         public ActionResult Index(SchoolApp.DataTable.DataTable dataTable)
@@ -62,7 +62,7 @@ namespace SchoolApp.Web.Controllers
                 case 4:
                     query.AddSortCriteria(new ExpressionSortCriteria<DepartmentMaster, DateTime>(q => q.CreatedOn, sortDirection == "asc" ? SortDirection.Ascending : SortDirection.Descending));
                     break;
-          
+
                 default:
                     query.AddSortCriteria(new ExpressionSortCriteria<DepartmentMaster, DateTime?>(q => q.UpdateOn, SortDirection.Ascending));
                     break;
@@ -93,11 +93,13 @@ namespace SchoolApp.Web.Controllers
         }
 
         [HttpGet]
-        public PartialViewResult AddUpdateDepartment(int id=0) {
+        public PartialViewResult AddUpdateDepartment(int id = 0)
+        {
             DepartmentViewModel model = new DepartmentViewModel();
             DepartmentMaster deptMaster = new DepartmentMaster();
 
-            if (id > 0) {
+            if (id > 0)
+            {
                 deptMaster = _departmentServices.FindById(id);
             }
             model.DepartmentId = id > 0 ? id : 0;
@@ -142,45 +144,42 @@ namespace SchoolApp.Web.Controllers
             }
 
         }
-            [HttpGet]
-            public PartialViewResult DeleteDepartment()
+        [HttpGet]
+        public PartialViewResult DeleteDepartment()
+        {
+            return PartialView("_ModalDelete", new Modal
             {
-                return PartialView("_ModalDelete", new Modal
-                {
-                    Size = ModalSize.Small,
-                    IsHeader = true,
-                    Message = "Are you sure want to delete this Department?",
-                    Header = new ModalHeader { Heading = "Delete Department" },
-                    Footer = new ModalFooter { SubmitButtonText = "Yes", CancelButtonText = "No" }
-                });
-            }
+                Size = ModalSize.Small,
+                IsHeader = true,
+                Message = "Are you sure want to delete this Department?",
+                Header = new ModalHeader { Heading = "Delete Department" },
+                Footer = new ModalFooter { SubmitButtonText = "Yes", CancelButtonText = "No" }
+            });
+        }
 
-            [HttpPost]
-            public ActionResult DeleteDepartment(int id)
+        [HttpPost]
+        public ActionResult DeleteDepartment(int id)
+        {
+            try
             {
-                try
+                int get = _departmentServices.DeleteDepartmentPresenter(id);
+                if (get == id)
                 {
-                    int get = _departmentServices.DeleteDepartmentPresenter(id);
-                    if (get == id)
-                    {
-                        ShowSuccessMessage("Success", "Department is successfully deleted", false);
-                        return NewtonSoftJsonResult(new RequestOutcome<string> { Data = "Data Deleted" });
-                    }
-                    else
-                    {
-                        return NewtonSoftJsonResult(new RequestOutcome<string> { Data = "Error Occourd" });
-                    }
-
+                    ShowSuccessMessage("Success", "Department is successfully deleted", false);
+                    return NewtonSoftJsonResult(new RequestOutcome<string> { Data = "Data Deleted" });
                 }
-                catch (Exception ex)
+                else
                 {
-                    return NewtonSoftJsonResult(new RequestOutcome<string> { Data = ex.GetBaseException().Message, IsSuccess = false });
+                    return NewtonSoftJsonResult(new RequestOutcome<string> { Data = "Error Occourd" });
                 }
 
             }
+            catch (Exception ex)
+            {
+                return NewtonSoftJsonResult(new RequestOutcome<string> { Data = ex.GetBaseException().Message, IsSuccess = false });
+            }
 
-
-
-        
+        }
+  
     }
 }

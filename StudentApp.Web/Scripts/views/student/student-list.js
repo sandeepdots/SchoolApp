@@ -62,9 +62,25 @@
                     },
                     {
                         "targets": [9],
-                        "visible": true,
                         "sortable": true,
-                        "searchable": true
+                        "searchable": false,
+                        "data": "9",
+                        "render": function (data, type, row, meta) {
+
+                            
+                            var json = {
+                                type: "checkbox",
+                                class: "switchBox switch-medium",
+                                value: row[0],
+                                'data-on': "success",
+                                'data-off': "danger"
+                            };
+
+                            if (data === "Active") {
+                                json.checked = true;
+                            }
+                            return $('<input/>', json).get(0).outerHTML;
+                        }
                     },
 
                     {
@@ -159,14 +175,15 @@
             }
 
             $('.switchBox').bootstrapSwitch()
-                .on('switchChange.bootstrapSwitch', function () {
+                .on('switch-change', function () {
                     var switchElement = this;
+                    $.get(domain + 'Students/ActivePresenter', { id: this.value }, function (result) {
+                        if (!result.isSuccess) {
+                            $(switchElement).bootstrapSwitch('toggleState', true);
+                        }
+                    }).fail(function () {
 
-                    $.post(domain + 'Admin/Brand/UpdateStatus', { brandId: this.value },
-                        function (result) {
-                            alertify.dismissAll();
-                            alertify.success(result.message)
-                        })
+                    })
                 });
         }
 
@@ -177,7 +194,8 @@
             $("#modal-add-edit-student").on('loaded.bs.modal', function (e) {
                
                 $attendanceValue = [];
-                formAddEditVendor = new Global.FormHelper($("#form-Add-Edit-Student"), { updateTargetId: "validation-summary" }, function (data) {
+                $('.form-checkbox').bootstrapSwitch();
+                formAddEditStudent = new Global.FormHelper($("#form-add-edit-student"), { updateTargetId: "validation-summary" }, function (data) {
 
                     //console.log(data.isSuccess);
                     if (data.isSuccess == true) {
@@ -191,8 +209,7 @@
                         $("#validation-summary").text(data.data).show().delay(5000).fadeOut(2000);
                     }
                 });
-                $('.form-checkbox').bootstrapSwitch(
-                );
+                
                 $('.datefield').datepicker({
                     dateFormat: 'yy-mm-dd',
                     autoclose: true,

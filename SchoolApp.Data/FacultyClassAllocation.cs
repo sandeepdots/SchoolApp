@@ -14,6 +14,12 @@ namespace SchoolApp.Data
     
     public partial class FacultyClassAllocation
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        //public FacultyClassAllocation()
+        //{
+        //    this.FacultyAllocation = new HashSet<FacultyClassAllocation>();
+           
+        //}
         public int FacultyAllocationId { get; set; }
         public Nullable<int> FacultyId { get; set; }
         public Nullable<int> ClassId { get; set; }
@@ -26,5 +32,9 @@ namespace SchoolApp.Data
         public virtual ClassMaster ClassMaster { get; set; }
         public virtual FacultyMaster FacultyMaster { get; set; }
         public virtual SubjectMaster SubjectMaster { get; set; }
+
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<FacultyClassAllocation> FacultyAllocation { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     }
 }

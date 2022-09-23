@@ -27,7 +27,7 @@ namespace SchoolApp.Core
         Manager = 2,
 
         [Description("Teacher")]
-        Teacher = 3,
+        Faculty = 3,
         [Description("Student")]
         Student = 4,
 
