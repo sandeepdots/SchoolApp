@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using SchoolApp.Web.Models;
 using SchoolApp.Core;
 using System.Web.Security;
+using SchoolApp.Web.Model;
 
 namespace SchoolApp.Web.Controllers
 {

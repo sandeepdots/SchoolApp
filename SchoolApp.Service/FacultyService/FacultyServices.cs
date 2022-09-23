@@ -40,17 +40,17 @@ namespace SchoolApp.Service.StudentService
             }
         }
 
-        public FacultyMaster SaveFaculty(FacultyMaster student)
+        public FacultyMaster SaveFaculty(FacultyMaster facultyMaster)
         {
-            if (student.FacultyId > 0)
+            if (facultyMaster.FacultyId > 0)
             {
-                _FacultyRepo.Update(student);
+                _FacultyRepo.Update(facultyMaster);
             }
             else
             {
-                _FacultyRepo.Insert(student);
+                _FacultyRepo.Insert(facultyMaster);
             }
-            return student;
+            return facultyMaster;
         }
 
         public FacultyMaster FindById(int id)
@@ -61,16 +61,16 @@ namespace SchoolApp.Service.StudentService
         {
             return _FacultyRepo.FindById(id);
         }
-        public FacultyMaster SaveFacultyPresenter(FacultyMaster student)
+        public FacultyMaster SaveFacultyPresenter(FacultyMaster facultyMaster)
         {
-            _FacultyRepo.Insert(student);
-            return student;
+            _FacultyRepo.Insert(facultyMaster);
+            return facultyMaster;
         }
 
-        public FacultyMaster UpdateFacultyPresenter(FacultyMaster student)
+        public FacultyMaster UpdateFacultyPresenter(FacultyMaster facultyMaster)
         {
-            _FacultyRepo.Update(student);
-            return student;
+            _FacultyRepo.Update(facultyMaster);
+            return facultyMaster;
         }
 
         public int DeleteFacultyPresenter(int id)

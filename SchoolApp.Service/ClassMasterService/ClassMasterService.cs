@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace SchoolApp.Service.ClassMasterServices
 {
-   public  class ClassMasterService:IClassMasterService
+    public class ClassMasterService : IClassMasterService
     {
 
         private readonly IRepository<ClassMaster> _ClassMasterRepo;
@@ -87,8 +87,10 @@ namespace SchoolApp.Service.ClassMasterServices
             return _ClassMasterRepo.Search(query, out totalItems);
         }
 
-        public List<ClassMaster> GetAllClassList(bool IsAllClass = false) {
+        public List<ClassMaster> GetAllClassList(bool IsAllClass = false)
+        {
             return IsAllClass ? _ClassMasterRepo.Query().Get().OrderBy(x => x.Class).ToList() : _ClassMasterRepo.Query().Filter(x => x.IsActive == true).Get().OrderBy(x => x.Class).ToList();
+            //return IsAllClass ? ClassMasterRepo.Query().Get().OrderBy(x => x.Class).ToList() : ClassMasterRepo.Query().Filter(x => x.IsActive == true).Get().OrderBy(x => x.Class).ToList();
         }
 
     }

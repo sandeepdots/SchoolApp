@@ -52,7 +52,7 @@ namespace SchoolApp.Web.Controllers
                 {
                     //Redirect user as per user role
                     string actionName = string.Empty, controllerName = string.Empty;
-                    if (user.RoleId != null && user.RoleId.HasValue)
+                    if (user.RoleId != null && user.RoleId>0)
                     {
                         if (user.RoleId == (byte)UserRoles.Admin)
                         {
@@ -104,6 +104,9 @@ namespace SchoolApp.Web.Controllers
                     ShowErrorMessage("Error", "Email id or password is incorrect.", false, true);
                 }
             }
+            return NewtonSoftJsonResult(new RequestOutcome<dynamic> { ReturnParameter = null, RedirectUrl = @Url.Action("signn", "login") });
+
+
         }
 
 
@@ -133,7 +136,7 @@ namespace SchoolApp.Web.Controllers
                 {
                     //Redirect user as per user role
                     string actionName = string.Empty, controllerName = string.Empty;
-                    if (user.RoleId != null && user.RoleId.HasValue)
+                    if (user.RoleId != null && user.RoleId>0)
                     {
                         if (user.RoleId == (byte)UserRoles.Admin)
                         {

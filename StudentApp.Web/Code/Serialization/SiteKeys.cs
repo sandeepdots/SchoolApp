@@ -12,5 +12,21 @@ namespace SchoolApp.Web.Code.Serialization
         {
             get { return ConfigurationManager.AppSettings["Domain"]; }
         }
+        public static string MailgunDomain
+        {
+            get { return ConfigurationManager.AppSettings["MailgunDomain"]; }
+        }
+        public static string MailgunAPIKey
+        {
+            get { return ConfigurationManager.AppSettings["MailgunAPIKey"]; }
+        }
+        public static string MailgunSender
+        {
+            get { return ConfigurationManager.AppSettings["MailgunSender"]; }
+        }
+        public static string MailgunFrom
+        {
+            get { return ConfigurationManager.AppSettings["MailgunFrom"]; }
+        }
     }
 }

@@ -12,7 +12,7 @@
             <div class="full-wdth clearfix otp-section">
                 @using (Html.BeginForm("SaveDepartment", "Department", null, FormMethod.Post, new { @class = "form-horizontal", id = "formAddEditDepartment" }))
                 {
-                   
+
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(true)
 
@@ -36,13 +36,19 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            <div class="checkbox">
-                                @Html.EditorFor(model => model.IsActive)
-                                @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                    @*<div class="form-group">
+                            @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.IsActive)
+                                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                                </div>
                             </div>
+                        </div>*@
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IsActive, new { @class = "col-lg-4 col-sm-3   control-label" })
+                        <div class="col-lg-2 col-sm-3  ">
+                            @Html.CheckBoxFor(model => model.IsActive, new { @class = "form-control form-checkbox", data_on = "success", data_off = "danger" })
                         </div>
                     </div>
 
@@ -60,7 +66,4 @@
     </div>
 
 </div>
-
-
-
 

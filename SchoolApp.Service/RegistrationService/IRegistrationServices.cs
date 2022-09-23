@@ -7,6 +7,7 @@ namespace SchoolApp.Service.RegistrationService
   public  interface IRegistrationServices
     {
         bool GetUser(string userName, String password);
+       
         UserRegistration SavePresenter(UserRegistration user);
         UserRegistration GetUserRegisterbyId(Guid Id);
         UserRegistration UpdateuserRegister(UserRegistration userRegister);

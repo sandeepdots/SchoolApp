@@ -189,10 +189,7 @@ namespace SchoolApp.Web.Controllers
 
         }
 
-       
-
-
-
+ 
         #region [Get Student Data]
 
         [HttpPost]

@@ -4,7 +4,7 @@
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>E</b>PT</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><img src="~/Images/download.jpg" alt="logo" height="40" width="150"@*style="width: 86px"*@></span>
+        <span class="logo-lg"><img src="~/Images/site-logo.jfif" alt="logo" style="width: 86px"></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -12,6 +12,7 @@
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
             <span class="sr-only">Toggle navigation</span>
         </a>
+
 
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
@@ -22,14 +23,14 @@
                         <span class="hidden-xs">Guest User</span>
 
                     </a>
-                <li id="login" class="login">
-                    <a href="@Url.Action("Index", "Login")">
-                        <i class="fa fa-users"></i>  <span>Login</span>
+                <li id="Registration" class="Registration">
+                    <a href="@Url.Action("Addregistration", "Registration")">
+                        <i class="fa fa-user icon"></i>  <span>Registration</span>
+
                     </a>
                 </li>
                 <ul class="dropdown-menu">
                     <!-- User image -->
-
                     <li class="user-header">
                         <img src="~/Images/default-user.png" height="20" width="20" class="img-circle" alt="User Image">
                         <p>
@@ -43,7 +44,6 @@
                         <div class="pull-left">
                             <a id="btnAdminUpdatePassword" data-toggle="modal" data-target="#change-password-modal" href="@Url.Action("ChangePassword","Account")" class="btn btn-default btn-flat">Change Password</a>
                         </div>
-
                         <div class="pull-right">
                             <a href="@Url.Action("Logout", "Account")" id="admsignot" class="btn btn-default btn-flat">Sign out</a>
                         </div>
